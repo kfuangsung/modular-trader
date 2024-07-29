@@ -1,6 +1,11 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 
-from typing import Any
+from typing import Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from framework_trader.framework.collection import FrameworkCollection
+    from framework_trader.indicator.handler.base import BaseIndicatorHandler
 
 
 class BaseEngine(ABC):
@@ -71,5 +76,5 @@ class BaseEngine(ABC):
         """Close a position for a given symbol."""
 
     @abstractmethod
-    def stream(self):
+    def stream(self, framework: FrameworkCollection, indicator: BaseIndicatorHandler):
         """Stream data from the engine"""

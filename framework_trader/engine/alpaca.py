@@ -45,6 +45,9 @@ from framework_trader.logging import BaseLogger, TradingLogger
 
 from .base import BaseEngine
 
+from framework_trader.framework.collection import FrameworkCollection
+from framework_trader.indicator.handler.alpaca import AlpacaIndicatorHandler
+
 if TYPE_CHECKING:
     from datetime import datetime
     from uuid import UUID
@@ -616,3 +619,7 @@ class AlpacaEngine(BaseEngine):
         - Order: The order object representing the closing of the position.
         """
         return self._trading_client.close_position(symbol)
+
+    @override
+    def stream(self, framework: FrameworkCollection, indicator: AlpacaIndicatorHandler):
+        return NotImplemented
