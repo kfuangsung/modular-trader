@@ -241,6 +241,10 @@ class AlpacaEngine(BaseEngine):
         return "Alpaca"
 
     @override
+    def get_logger(self):
+        return self.logger
+
+    @override
     def get_historical_data(
         self,
         symbols: str | list[str],
@@ -619,7 +623,15 @@ class AlpacaEngine(BaseEngine):
         - Order: The order object representing the closing of the position.
         """
         return self._trading_client.close_position(symbol)
+    
+    def attach_indicators(self): ...
+
+    def handle_trader_update(self): ...
+
+    def handle_daily_bar(self): ...
+
+    def handle_minute_bar(self):...
 
     @override
-    def stream(self, framework: FrameworkCollection, indicator: AlpacaIndicatorHandler):
+    def stream(self, context, framework: FrameworkCollection, indicator: AlpacaIndicatorHandler):
         return NotImplemented

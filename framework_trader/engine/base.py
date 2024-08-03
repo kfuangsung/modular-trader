@@ -14,6 +14,9 @@ class BaseEngine(ABC):
         """Get the name of the engine"""
 
     @abstractmethod
+    def get_logger(self): ...
+
+    @abstractmethod
     def get_historical_data(self):
         """Get the historical data"""
 

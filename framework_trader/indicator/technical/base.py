@@ -5,7 +5,7 @@ from copy import deepcopy
 from datetime import datetime
 from typing import Iterable
 
-from multimethod import multimethod
+from multimethod import multidispatch
 from talipp.input import Sampler, SamplingPeriodType
 from talipp.ohlcv import OHLCV, OHLCVFactory
 
@@ -18,17 +18,20 @@ class BaseIndicator(ABC):
         cache_size: int,
         sampling_period: SamplingPeriodType | None = None,
         input_indicator: BaseIndicator | None = None,
+        name: str | None = None,
     ):
         self._cache_size = cache_size
         self._sampler = (
             Sampler(period_type=sampling_period) if sampling_period else None
         )
         self._previous_time = datetime.min
+        self._name = name or self.__class__.__name__
         self.calibrate_cache_size(input_indicator)
 
     cache_size = property(fget=lambda self: self._cache_size)
     sampler = property(fget=lambda self: self._sampler)
     previous_time = property(fget=lambda self: self._previous_time)
+    name = property(fget=lambda self: self._name)
 
     @property
     def is_ready(self) -> bool:
@@ -59,16 +62,16 @@ class BaseIndicator(ABC):
                 self.cache_size, input_indicator.cache_size
             )
 
-    def is_same_period(self, datetime: datetime | None) -> bool:
-        if not self.sampler or not datetime:
+    def is_same_period(self, timestamp: DateOrDatetime | None) -> bool:
+        if not self.sampler or not timestamp:
             return False
         norm_prev_time = self.sampler._normalize(self.previous_time)
-        norm_new_time = self.sampler._normalize(datetime)
+        norm_new_time = self.sampler._normalize(timestamp)
         return norm_prev_time == norm_new_time
 
     def clean_cache(self) -> None:
         if self.cache_size:
-            print(self.__class__.__name__, f"({self.cache_size})", "clean_cache")
+            # print(self.__class__.__name__, f"({self.cache_size})", "clean_cache")
             purge_size = max(0, len(self.input_values) - self.cache_size)
             self.purge_oldest(purge_size)
 
@@ -79,7 +82,7 @@ class BaseIndicator(ABC):
         low: Iterable[RealNumber] | None = None,
         close: Iterable[RealNumber] | None = None,
         volume: Iterable[RealNumber] | None = None,
-        datetime: Iterable[DateOrDatetime] | None = None,
+        timestamp: Iterable[DateOrDatetime] | None = None,
     ) -> OHLCV:
         return OHLCVFactory.from_dict(
             {
@@ -88,57 +91,70 @@ class BaseIndicator(ABC):
                 "low": low or [],
                 "close": close or [],
                 "volume": volume or [],
-                "time": datetime or [],
+                "time": timestamp or [],
             }
         )
 
 
 class SingleInputMixin:
-    @multimethod
+    @multidispatch
     def ingest(
         self,
         close: RealNumber,
-        datetime: DateOrDatetime | None = None,
+        timestamp: DateOrDatetime | None = None,
         *args,
         **kwargs,
     ) -> None:
-        if self.is_same_period(datetime):
+        if self.is_same_period(timestamp):
             self.update(close)
         else:
             self.add(close)
 
-        if datetime:
-            self.previous_time = datetime
+        if timestamp:
+            self.previous_time = timestamp
 
         self.clean_cache()
 
     @ingest.register
-    def _(self, close: Iterable[RealNumber]):
+    def _(
+        self,
+        close: Iterable[RealNumber],
+        *args,
+        **kwargs,
+    ):
         self.add(close)
 
     @ingest.register
     def _(
         self,
         close: Iterable[RealNumber],
-        datetime: Iterable[DateOrDatetime],
+        timestamp: Iterable[DateOrDatetime],
+        *args,
+        **kwargs,
     ):
-        for c, d in zip(close, datetime):
+        for c, d in zip(close, timestamp):
             self.ingest(c, d)
 
 
 class MultipleInputMixin:
-    @multimethod
+    @multidispatch
     def ingest(
         self,
         open: Iterable[RealNumber] | None,
         high: Iterable[RealNumber] | None,
         low: Iterable[RealNumber] | None,
         close: Iterable[RealNumber] | None,
-        datetime: Iterable[DateOrDatetime] | None = None,
+        volume: Iterable[RealNumber] | None = None,
+        timestamp: Iterable[DateOrDatetime] | None = None,
     ) -> None:
         # OHLCV use talipp's input sampling
         ohlcv = self.make_ohlcv(
-            open=open, high=high, low=low, close=close, datetime=datetime
+            open=open,
+            high=high,
+            low=low,
+            close=close,
+            volume=volume,
+            timestamp=timestamp,
         )
         for value in ohlcv:
             self.add(value)
@@ -151,12 +167,14 @@ class MultipleInputMixin:
         high: RealNumber | None,
         low: RealNumber | None,
         close: RealNumber | None,
-        datetime: DateOrDatetime | None = None,
+        volume: RealNumber | None = None,
+        timestamp: DateOrDatetime | None = None,
     ) -> None:
         return self.ingest(
             [open] if open is not None else None,
             [high] if high is not None else None,
             [low] if low is not None else None,
             [close] if close is not None else None,
-            [datetime] if datetime is not None else None,
+            [volume] if volume is not None else None,
+            [timestamp] if timestamp is not None else None,
         )
