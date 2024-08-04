@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 from typing import TYPE_CHECKING
+from abc import ABC
 
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
@@ -14,11 +15,11 @@ from framework_trader.indicator.handler.base import BaseIndicatorHandler
 
 if TYPE_CHECKING:
     from framework_trader.logging.base import BaseLogger
-    from framework_trader.universe import AssetUniverse
+    # from framework_trader.universe import AssetUniverse
 
 
 @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="forbid", frozen=True))
-class FrameworkTrader:
+class BaseTrader(ABC):
     engine: BaseEngine
     framework: FrameworkCollection
     indicator: BaseIndicatorHandler | None = Field(default=None)

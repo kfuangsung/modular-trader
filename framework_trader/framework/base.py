@@ -1,7 +1,7 @@
-from abc import ABC
+# from abc import ABC
 
-class Context:
-    pass 
+# class Context:
+#     pass 
 
-class BaseFrameWork(ABC):
-    context = Context()
+# class BaseFrameWork(ABC):
+#     api = property(lambda self: )

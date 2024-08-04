@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 import enum
-from typing import TYPE_CHECKING, Generator
 import warnings
+from typing import TYPE_CHECKING, Generator, Mapping
 
-from typing import Mapping
 from benedict import benedict
+from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
-from pydantic import Field
-from pydantic import ConfigDict
-# from multimethod import multimethod
 
-from framework_trader.universe import AssetUniverse
 from framework_trader.indicator.technical.base import BaseIndicator
 
 from .base import BaseIndicatorHandler
@@ -20,8 +16,10 @@ if TYPE_CHECKING:
     import pandas as pd
     from alpaca.data.models.bars import Bar
 
+    from framework_trader.universe import AssetUniverse
 
-class TimePeriod(enum.Enum):
+
+class Frequency(enum.Enum):
     MINUTE = enum.auto()
     DAY = enum.auto()
 
@@ -29,11 +27,12 @@ class TimePeriod(enum.Enum):
 @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="forbid"))
 class AlpacaIndicatorHandler(BaseIndicatorHandler):
     indicators: list[BaseIndicator] = Field(default_factory=list)
-    timeperiod: TimePeriod = Field(default=TimePeriod.DAY)
+    frequency: Frequency = Field(default=Frequency.DAY)
     warmup_length: int | None = Field(default=None)
     _attached_indicators: benedict = Field(default_factory=lambda: benedict())
 
     attached_indicators = property(fget=lambda self: self._attached_indicators)
+    symbols = property(fget=lambda self: list(self._attached_indicators.keys()))
 
     # save to Context
     # dict[symbol, dict[name, indicator]]
@@ -99,13 +98,13 @@ class AlpacaIndicatorHandler(BaseIndicatorHandler):
     def update(self, bar: Bar) -> None:
         # if TimePeriod.MINUTE -> update in subscribe (minute) bars
         # if TimePeriod.DAY -> update in subscribe daily bars
-        indicators = self.attach_indicator.get(bar.symbol, None)
+        indicators = self.attached_indicators.get(bar.symbol, None)
         if indicators is None:
             warnings.warn(
                 f"Update indicator: indicators for {bar.symbol} is not available."
             )
             return
-        for indicator in indicators:
+        for indicator in indicators.values():
             indicator.ingest(
                 open=bar.open,
                 high=bar.high,

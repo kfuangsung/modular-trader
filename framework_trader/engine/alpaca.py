@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+import asyncio
 import os
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Awaitable, Callable
 
 from alpaca.common.exceptions import APIError
 from alpaca.data.enums import Adjustment, CryptoFeed, DataFeed, OptionsFeed
@@ -36,7 +37,7 @@ from alpaca.trading.models import (
     TradeAccount,
 )
 from alpaca.trading.requests import CancelOrderResponse, GetAssetsRequest, OrderRequest
-from pydantic import Field, field_validator, model_validator
+from pydantic import ConfigDict, Field, PrivateAttr, field_validator, model_validator
 from pydantic.dataclasses import dataclass
 from typing_extensions import override
 
@@ -44,9 +45,6 @@ from framework_trader.common.enums import TradingMode
 from framework_trader.logging import BaseLogger, TradingLogger
 
 from .base import BaseEngine
-
-from framework_trader.framework.collection import FrameworkCollection
-from framework_trader.indicator.handler.alpaca import AlpacaIndicatorHandler
 
 if TYPE_CHECKING:
     from datetime import datetime
@@ -63,7 +61,7 @@ def get_secret_key() -> str | None:
     return os.environ.get("ALPACA_SECRET_KEY", None)
 
 
-@dataclass
+@dataclass(config=ConfigDict(arbitrary_types_allowed=True))
 class AlpacaEngine(BaseEngine):
     api_key: str = Field(default_factory=get_api_key)
     secret_key: str = Field(default_factory=get_secret_key)
@@ -71,6 +69,16 @@ class AlpacaEngine(BaseEngine):
     asset_class: AssetClass = Field(default=AssetClass.US_EQUITY)
     feed: DataFeed | CryptoFeed | OptionsFeed | None = Field(default=None)
     logger: BaseLogger = Field(default_factory=TradingLogger)
+    _trading_client: TradingClient = PrivateAttr(default=None)
+    _trading_stream: TradingStream = PrivateAttr(default=None)
+    _data_client: (
+        StockHistoricalDataClient
+        | CryptoHistoricalDataClient
+        | OptionHistoricalDataClient
+    ) = PrivateAttr(default=None)
+    _data_stream: StockDataStream | CryptoDataStream | OptionDataStream = PrivateAttr(
+        default=None
+    )
 
     is_paper: bool = property(fget=lambda self: self.mode == TradingMode.PAPER)
 
@@ -573,6 +581,10 @@ class AlpacaEngine(BaseEngine):
         )
 
     @override
+    def get_orders(self) -> os.Any:
+        return self._trading_client.get_orders()
+
+    @override
     def cancel_all_orders(self) -> list[CancelOrderResponse]:
         """
         Cancel all pending orders for the account.
@@ -623,15 +635,27 @@ class AlpacaEngine(BaseEngine):
         - Order: The order object representing the closing of the position.
         """
         return self._trading_client.close_position(symbol)
-    
-    def attach_indicators(self): ...
 
-    def handle_trader_update(self): ...
+    def subscribe_trade_update(self, handler: Callable[[Any], None]) -> None:
+        self._trading_stream.subscribe_trade_updates(handler)
 
-    def handle_daily_bar(self): ...
+    def subscribe_minute_bar(
+        self, handler: Callable[[Bar], Awaitable[None]], symbols: list[str]
+    ) -> None:
+        self._data_stream.subscribe_bars(handler, *symbols)
 
-    def handle_minute_bar(self):...
+    def subscribe_daily_bars(
+        self, handler: Callable[[Bar], Awaitable[None]], symbols: list[str]
+    ) -> None:
+        self._data_stream.subscribe_daily_bars(handler, *symbols)
 
-    @override
-    def stream(self, context, framework: FrameworkCollection, indicator: AlpacaIndicatorHandler):
-        return NotImplemented
+    async def stream_trade(self) -> None:
+        await self._trading_stream._run_forever()
+
+    async def stream_data(self) -> None:
+        await self._data_stream._run_forever()
+
+    async def streaming(self) -> None:
+        async with asyncio.TaskGroup() as tg:
+            tg.create_task(self.stream_trade())
+            tg.create_task(self.stream_data())

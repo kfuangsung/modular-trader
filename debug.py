@@ -1,5 +1,5 @@
 from datetime import datetime
-from framework_trader.indicator.ta import STOCH
+from framework_trader.indicator.technical import STOCH
 import pandas as pd
 from talipp.input import SamplingPeriodType
 
