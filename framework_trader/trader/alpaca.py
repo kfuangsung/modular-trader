@@ -1,10 +1,12 @@
+import asyncio
 import math
-
 from typing import TYPE_CHECKING
+
 import pendulum
 from alpaca.common.exceptions import APIError
-from alpaca.data.timeframe import TimeFrameUnit
 from alpaca.data.enums import Adjustment
+from alpaca.data.timeframe import TimeFrameUnit
+from alpaca.trading.enums import AssetClass
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
 
@@ -12,7 +14,8 @@ from framework_trader.context import Context
 from framework_trader.engine.alpaca import AlpacaEngine
 from framework_trader.framework.collection import FrameworkCollection
 from framework_trader.indicator.handler.alpaca import AlpacaIndicatorHandler, Frequency
-from alpaca.trading.enums import AssetClass
+from framework_trader.record import Recorder
+# from framework_trader.universe import AssetUniverse
 
 from .base import BaseTrader
 
@@ -24,11 +27,43 @@ if TYPE_CHECKING:
 class AlpacaTrader(BaseTrader):
     engine: AlpacaEngine
     framework: FrameworkCollection
+    subscription_symbols: list[str]
     indicator: AlpacaIndicatorHandler | None = Field(default=None)
     context: Context = Field(default_factory=Context)
+    recorder: Recorder = Field(default_factory=Recorder)
+
+    def run(self):
+        self.init_subscription()
+        asyncio.run(self.engine.streaming())
+
+    def init_subscription(self):
+        self.engine.subscribe_trade_update(self.handle_trade_update)
+        self.engine.subscribe_minute_bars(
+            self.handle_minute_bars, self.subscription_symbols
+        )
+        self.engine.subscribe_daily_bars(
+            self.handle_daily_bars, self.subscription_symbols
+        )
+
+    # def manage_subscription(self, universe: AssetUniverse):
+    #     # sub/unsubscribe during runtime ?
+    #     if len(universe.added) > 0:
+    #         self.engine.subscribe_minute_bars(self.handle_minute_bars, universe.added)
+    #         self.engine.subscribe_daily_bars(self.handle_daily_bars, universe.added)
+
+    #     if len(universe.removed) > 0:
+    #         self.engine.unsubscribe_minute_bars(*universe.removed)
+    #         self.engine.unsubscribe_daily_bars(*universe.removed)
 
     async def handle_trade_update(self, data):
-        self.logger.log()
+        self.logger.info(
+            f"{data.event} {data.order.side}`{data.order.symbol}` @{data.price} x {data.qty} | position_qty: {data.position_qty}"
+        )
+
+        # record
+        self.recorder["positions"] = self.engine.get_positions()
+        self.recorder["indicators"] = self.indicator.attached_indicators
+        self.recorder.save_to_disk()
 
     async def handle_minute_bars(self, bar):
         if self.indicator.frequency == Frequency.MINUTE:
@@ -36,7 +71,7 @@ class AlpacaTrader(BaseTrader):
 
     async def handle_daily_bars(self, bar):
         self.framework.asset_selection(self.context)
-
+        # self.manage_subscription(self.context.universe)
         self.indicator.init_indicator(self.context.universe)
         if not self.indicator.is_warmup:
             self.logger.debug("Warming up indicator")

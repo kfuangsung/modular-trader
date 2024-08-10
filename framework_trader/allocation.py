@@ -33,6 +33,10 @@ class AllocationCollection:
     def __iter__(self):
         return (x for x in self.allocations)
 
+    @property
+    def symbols(self) -> set[str]:
+        return set([x.symbol for x in self.allocations])
+
     def add(self, allocations: Allocation | Iterable[Allocation]) -> None:
         if isinstance(allocations, Iterable):
             self.allocations.extend(allocations)

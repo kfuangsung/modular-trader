@@ -422,7 +422,10 @@ class AlpacaEngine(BaseEngine):
             time_in_force=time_in_force,
             **kwargs,
         )
-        return self._trading_client.submit_order(order_request)
+        try:
+            return self._trading_client.submit_order(order_request)
+        except Exception as e:
+            self.logger.error(f"Error sending order: {e}")
 
     @override
     def order_value(
@@ -581,7 +584,7 @@ class AlpacaEngine(BaseEngine):
         )
 
     @override
-    def get_orders(self) -> os.Any:
+    def get_orders(self) -> list[Order]:
         return self._trading_client.get_orders()
 
     @override
@@ -595,7 +598,10 @@ class AlpacaEngine(BaseEngine):
         Returns:
         - list[CancelOrderResponse]: A list of responses indicating the status of each order cancellation.
         """
-        return self._trading_client.cancel_orders()
+        try:
+            return self._trading_client.cancel_orders()
+        except Exception as e:
+            self.logger.error(f"Error canceling all orders: {e}")
 
     @override
     def close_all_positions(self, cancel_orders: bool = True) -> ClosePositionResponse:
@@ -639,7 +645,7 @@ class AlpacaEngine(BaseEngine):
     def subscribe_trade_update(self, handler: Callable[[Any], None]) -> None:
         self._trading_stream.subscribe_trade_updates(handler)
 
-    def subscribe_minute_bar(
+    def subscribe_minute_bars(
         self, handler: Callable[[Bar], Awaitable[None]], symbols: list[str]
     ) -> None:
         self._data_stream.subscribe_bars(handler, *symbols)
@@ -648,6 +654,12 @@ class AlpacaEngine(BaseEngine):
         self, handler: Callable[[Bar], Awaitable[None]], symbols: list[str]
     ) -> None:
         self._data_stream.subscribe_daily_bars(handler, *symbols)
+
+    def unsubscribe_minute_bars(self, symbols: list[str]) -> None:
+        self._data_stream.unsubscribe_bars(*symbols)
+
+    def unsubscribe_daily_bars(self, symbols: list[str]) -> None:
+        self._data_stream.unsubscribe_daily_bars(*symbols)
 
     async def stream_trade(self) -> None:
         await self._trading_stream._run_forever()

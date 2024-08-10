@@ -1,9 +1,12 @@
-from abc import ABC, abstractmethod
-from typing import Any, Iterable
+from __future__ import annotations
 
-from framework_trader.allocation import Allocation
-from framework_trader.context import Context
-from framework_trader.signal import SignalCollection
+from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING, Any, Iterable
+
+if TYPE_CHECKING:
+    from framework_trader.allocation import Allocation
+    from framework_trader.context import Context
+    from framework_trader.signal import SignalCollection
 
 
 class BasePortfolioBuilder(ABC):

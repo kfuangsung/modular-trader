@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import asyncio
 from typing import TYPE_CHECKING
-from abc import ABC
+from abc import ABC, abstractmethod
 
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
@@ -30,5 +29,7 @@ class BaseTrader(ABC):
     def __post_init__(self):
         self.context.engine = self.engine
 
+    @abstractmethod
     def run(self):
-        asyncio.run(self.engine.streaming())
+        ...
+        # asyncio.run(self.engine.streaming())

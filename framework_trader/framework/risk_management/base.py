@@ -1,6 +1,11 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
-from framework_trader.allocation import AllocationCollection
-from framework_trader.context import Context
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from framework_trader.allocation import AllocationCollection
+    from framework_trader.context import Context
 
 
 class BaseRiskManagement(ABC):
