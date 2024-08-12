@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import asyncio
 import math
 from typing import TYPE_CHECKING
@@ -5,38 +7,60 @@ from typing import TYPE_CHECKING
 import pendulum
 from alpaca.common.exceptions import APIError
 from alpaca.data.enums import Adjustment
-from alpaca.data.timeframe import TimeFrameUnit
+from alpaca.data.timeframe import TimeFrame
 from alpaca.trading.enums import AssetClass
-from pydantic import ConfigDict, Field
-from pydantic.dataclasses import dataclass
 
 from framework_trader.context import Context
 from framework_trader.engine.alpaca import AlpacaEngine
 from framework_trader.framework.collection import FrameworkCollection
 from framework_trader.indicator.handler.alpaca import AlpacaIndicatorHandler, Frequency
 from framework_trader.record import Recorder
-# from framework_trader.universe import AssetUniverse
 
 from .base import BaseTrader
+
+# from pydantic import ConfigDict, Field
+# from pydantic.dataclasses import dataclass
+
+
+# from framework_trader.universe import AssetUniverse
+
 
 if TYPE_CHECKING:
     import pandas as pd
 
 
-@dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="forbid", frozen=True))
 class AlpacaTrader(BaseTrader):
-    engine: AlpacaEngine
-    framework: FrameworkCollection
-    subscription_symbols: list[str]
-    indicator: AlpacaIndicatorHandler | None = Field(default=None)
-    context: Context = Field(default_factory=Context)
-    recorder: Recorder = Field(default_factory=Recorder)
+    # engine: AlpacaEngine
+    # framework: FrameworkCollection
+    # subscription_symbols: list[str]
+    # indicator: AlpacaIndicatorHandler | None = Field(default=None)
+    # context: Context = Field(default_factory=Context)
+    # recorder: Recorder = Field(default_factory=Recorder)
+
+    # def __post_init__(self):
+    #     super().__init__(
+    #         self.engine, self.framework, self.indicator, self.context, self.recorder
+    #     )
+
+    def __init__(
+        self,
+        engine: AlpacaEngine,
+        framework: FrameworkCollection,
+        subscription_symbols: list[str],
+        indicator: AlpacaIndicatorHandler | None = None,
+        context: Context | None = Context(),
+        recorder: Recorder | None = Recorder(),
+    ):
+        super().__init__(engine, framework, indicator, context, recorder)
+        self.subscription_symbols = subscription_symbols
 
     def run(self):
+        self.logger.debug("Starting")
         self.init_subscription()
         asyncio.run(self.engine.streaming())
 
     def init_subscription(self):
+        self.logger.debug("Setting up subscriptions")
         self.engine.subscribe_trade_update(self.handle_trade_update)
         self.engine.subscribe_minute_bars(
             self.handle_minute_bars, self.subscription_symbols
@@ -66,13 +90,14 @@ class AlpacaTrader(BaseTrader):
         self.recorder.save_to_disk()
 
     async def handle_minute_bars(self, bar):
-        if self.indicator.frequency == Frequency.MINUTE:
+        if self.indicator and self.indicator.frequency == Frequency.MINUTE:
             self.indicator.update(bar)
 
     async def handle_daily_bars(self, bar):
         self.framework.asset_selection(self.context)
         # self.manage_subscription(self.context.universe)
-        self.indicator.init_indicator(self.context.universe)
+        if self.indicator:
+            self.indicator.init_indicator(self.context.universe)
         if not self.indicator.is_warmup:
             self.logger.debug("Warming up indicator")
             data: pd.DataFrame = self.get_historical_data(
@@ -82,7 +107,7 @@ class AlpacaTrader(BaseTrader):
             )
             self.indicator.warmup(data)
 
-        if self.indicator.frequency == Frequency.DAY:
+        if self.indicator and self.indicator.frequency == Frequency.DAY:
             self.indicator.update(bar)
 
         self.framework.signal_generation(self.context, self.context.universe)
@@ -119,21 +144,21 @@ class AlpacaTrader(BaseTrader):
         if delay:
             end = end.subtract(minutes=15)
 
-        match Frequency:
+        match frequency:
             case Frequency.MINUTE:
                 n_min_per_day: int = self.get_n_trading_minutes_in_day(
                     self.engine.asset_class
                 )
                 n_days: int = math.ceil(length / n_min_per_day)
                 start: pendulum.DateTime = end.subtract(days=n_days)
-                timeframe: TimeFrameUnit = TimeFrameUnit.Minute
+                timeframe: TimeFrame = TimeFrame.Minute
             case Frequency.DAY:
                 n_day_per_year: int = self.get_n_trading_days_in_year(
                     self.engine.asset_class
                 )
                 n_years: int = math.ceil(length / n_day_per_year)
                 start = end.subtract(years=n_years)
-                timeframe: TimeFrameUnit = TimeFrameUnit.Day
+                timeframe: TimeFrame = TimeFrame.Day
             case _:
                 raise ValueError(f"Invalid frequency: {frequency}")
 
@@ -154,4 +179,4 @@ class AlpacaTrader(BaseTrader):
             else:
                 raise e
 
-        return data.df
+        return data

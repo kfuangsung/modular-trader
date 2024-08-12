@@ -1,6 +1,7 @@
 from typing import Iterable, Iterator
-from pydantic.dataclasses import dataclass, Field, ConfigDict
+
 from multimethod import multimethod
+from pydantic.dataclasses import ConfigDict, Field, dataclass
 
 
 @dataclass(config=ConfigDict(extra="forbid"))

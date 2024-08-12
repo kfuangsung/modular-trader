@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import gc
 import os
 from typing import TYPE_CHECKING, Any, Awaitable, Callable
 
@@ -37,8 +38,10 @@ from alpaca.trading.models import (
     TradeAccount,
 )
 from alpaca.trading.requests import CancelOrderResponse, GetAssetsRequest, OrderRequest
-from pydantic import ConfigDict, Field, PrivateAttr, field_validator, model_validator
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel  # field_validator,; PrivateAttr,; SecretStr,
+from pydantic import ConfigDict, Field, model_validator
+
+# from pydantic.dataclasses import dataclass
 from typing_extensions import override
 
 from framework_trader.common.enums import TradingMode
@@ -54,64 +57,101 @@ if TYPE_CHECKING:
 
 
 def get_api_key() -> str | None:
-    return os.environ.get("ALPACA_API_KEY", None)
+    key = os.environ.get("ALPACA_API_KEY", None)
+    if key is None:
+        raise ValueError("ALPACA_API_KEY environment variable not set")
+    return key
 
 
 def get_secret_key() -> str | None:
-    return os.environ.get("ALPACA_SECRET_KEY", None)
+    key = os.environ.get("ALPACA_SECRET_KEY")
+    if key is None:
+        raise ValueError("ALPACA_SECRET_KEY environment variable not set")
+    return key
 
 
-@dataclass(config=ConfigDict(arbitrary_types_allowed=True))
-class AlpacaEngine(BaseEngine):
-    api_key: str = Field(default_factory=get_api_key)
-    secret_key: str = Field(default_factory=get_secret_key)
+# @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="forbid"))
+class AlpacaEngine(BaseEngine, BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+    # api_key: str = Field(default_factory=get_api_key)
+    # secret_key: str = Field(default_factory=get_secret_key)
     mode: TradingMode = Field(default=TradingMode.PAPER)
     asset_class: AssetClass = Field(default=AssetClass.US_EQUITY)
     feed: DataFeed | CryptoFeed | OptionsFeed | None = Field(default=None)
     logger: BaseLogger = Field(default_factory=TradingLogger)
-    _trading_client: TradingClient = PrivateAttr(default=None)
-    _trading_stream: TradingStream = PrivateAttr(default=None)
-    _data_client: (
-        StockHistoricalDataClient
-        | CryptoHistoricalDataClient
-        | OptionHistoricalDataClient
-    ) = PrivateAttr(default=None)
-    _data_stream: StockDataStream | CryptoDataStream | OptionDataStream = PrivateAttr(
-        default=None
-    )
+    # api_key: SecretStr = Field(default_factory=get_api_key)
+    # secret_key: SecretStr = Field(default_factory=get_secret_key)
+    # _trading_client: TradingClient = PrivateAttr(default_factory=lambda: None)
+    # _trading_stream: TradingStream = PrivateAttr(default_factory=lambda: None)
+    # _data_client: (
+    #     StockHistoricalDataClient
+    #     | CryptoHistoricalDataClient
+    #     | OptionHistoricalDataClient
+    # ) = PrivateAttr(default_factory=lambda: None)
+    # _data_stream: StockDataStream | CryptoDataStream | OptionDataStream = PrivateAttr(
+    #     default_factory=lambda: None
+    # )
 
-    is_paper: bool = property(fget=lambda self: self.mode == TradingMode.PAPER)
+    # is_paper: bool = property(fget=lambda self: self.mode == TradingMode.PAPER)
 
-    @field_validator("api_key")
-    @classmethod
-    def _api_key(cls, v: str | None) -> str:
-        """validate api key"""
-        if v is None:
-            raise ValueError("API key not found")
-        return v
+    @property
+    def is_paper(self) -> bool:
+        return self.mode == TradingMode.PAPER
 
-    @field_validator("secret_key")
-    @classmethod
-    def _secret_key(cls, v: str | None) -> str:
-        """validate secret key"""
-        if v is None:
-            raise ValueError("SECRET key not found")
-        return v
+    # @field_validator("api_key", mode="before")
+    # @classmethod
+    # def _api_key(cls, v: str | None) -> str:
+    #     """validate api key"""
+    #     if v is None:
+    #         raise ValueError("API key not found")
+    #     return v
+
+    # @field_validator("secret_key", mode="before")
+    # @classmethod
+    # def _secret_key(cls, v: str | None) -> str:
+    #     """validate secret key"""
+    #     if v is None:
+    #         raise ValueError("SECRET key not found")
+    #     return v
 
     @model_validator(mode="after")
     def _initialize(self):
         """Initialize trading and data clients and streams"""
-        self._init_trading()
-        self._init_data()
+        _api_key = get_api_key()
+        _secret_key = get_secret_key()
+        self._init_trading(_api_key, _secret_key)
+        self._init_data(_api_key, _secret_key)
         self._init_assets()
 
-    def _init_trading(self):
+    # def __post_init__(self):
+    #     self._init_trading()
+    #     self._init_data()
+    #     self._init_assets()
+
+    async def _close_websocket(self):
+        self.logger.debug("Closing websocket")
+        self._trading_stream.close()
+        self._data_stream.close()
+
+    def __del__(self) -> None:
+        self.logger.debug("Destructor Called")
+        asyncio.run(self._close_websocket)
+        del (
+            self._data_client,
+            self._data_stream,
+            self._trading_client,
+            self._trading_stream,
+        )
+        gc.collect()
+
+    def _init_trading(self, _api_key: str, _secret_key: str) -> None:
         """Initialize trading client and stream"""
+        self.logger.debug("Initializing trading client")
         self._trading_client = TradingClient(
-            api_key=self.api_key, secret_key=self.secret_key, paper=self.is_paper
+            api_key=_api_key, secret_key=_secret_key, paper=self.is_paper
         )
         self._trading_stream = TradingStream(
-            api_key=self.api_key, secret_key=self.secret_key, paper=self.is_paper
+            api_key=_api_key, secret_key=_secret_key, paper=self.is_paper
         )
 
     def _init_assets(self) -> dict[str, Asset]:
@@ -122,37 +162,39 @@ class AlpacaEngine(BaseEngine):
         )
         self._assets = {x.symbol: x for x in assets}
 
-    def _init_data(self):
+    def _init_data(self, _api_key: str, _secret_key: str) -> None:
         """Initialize data clients and streams"""
         match self.asset_class:
             case AssetClass.US_EQUITY:
-                self._init_stock_data()
+                self._init_stock_data(_api_key, _secret_key)
             case AssetClass.CRYPTO:
-                self._init_crypto_data()
+                self._init_crypto_data(_api_key, _secret_key)
             case AssetClass.US_OPTION:
-                self._init_option_data()
+                self._init_option_data(_api_key, _secret_key)
             case _:
                 raise ValueError("Unsupported asset class")
 
-    def _init_stock_data(self):
+    def _init_stock_data(self, _api_key: str, _secret_key: str) -> None:
+        self.logger.debug("Initializing stock data")
         self.feed = self.feed or DataFeed.IEX
         self._data_client = StockHistoricalDataClient(
-            api_key=self.api_key, secret_key=self.secret_key
+            api_key=_api_key, secret_key=_secret_key
         )
         self._data_stream = StockDataStream(
-            api_key=self.api_key, secret_key=self.secret_key, feed=self.feed
+            api_key=_api_key, secret_key=_secret_key, feed=self.feed
         )
 
-    def _init_crypto_data(self):
+    def _init_crypto_data(self, _api_key: str, _secret_key: str) -> None:
+        self.logger.debug("Intializing crypto data")
         self.feed = self.feed or CryptoFeed.US
         self._data_client = CryptoHistoricalDataClient(
-            api_key=self.api_key, secret_key=self.secret_key
+            api_key=_api_key, secret_key=_secret_key
         )
         self._data_stream = CryptoDataStream(
-            api_key=self.api_key, secret_key=self.secret_key, feed=self.feed
+            api_key=_api_key, secret_key=_secret_key, feed=self.feed
         )
 
-    def _init_option_data(self) -> None:
+    def _init_option_data(self, _api_key: str, _secret_key: str) -> None:
         """
         Initialize data clients and streams for options trading.
 
@@ -164,12 +206,13 @@ class AlpacaEngine(BaseEngine):
         Returns:
         - None
         """
+        self.logger.debug("Initializing option data")
         self.feed = self.feed or OptionsFeed.INDICATIVE
         self._data_client = OptionHistoricalDataClient(
-            api_key=self.api_key, secret_key=self.secret_key
+            api_key=_api_key, secret_key=_secret_key
         )
         self._data_stream = OptionDataStream(
-            api_key=self.api_key, secret_key=self.secret_key, feed=self.feed
+            api_key=_api_key, secret_key=_secret_key, feed=self.feed
         )
 
     def is_tradeable(self, symbol: str) -> bool:
@@ -261,21 +304,11 @@ class AlpacaEngine(BaseEngine):
         timeframe: TimeFrame | None = TimeFrame.Day,
         adjustment: Adjustment | None = Adjustment.ALL,
         **kwargs,
-    ) -> dict[str, pd.DataFrame]:
+    ) -> pd.DataFrame:
         """
         Get historical data for the specified symbols within the given timeframe.
-
-        Parameters:
-        - symbols (str | list[str]): The symbols of the assets for which historical data is requested.
-        - start (datetime): The start date of the historical data request.
-        - end (datetime | None): The end date of the historical data request. If not provided, the current date and time will be used.
-        - timeframe (TimeFrame | None): The timeframe of the historical data request. If not provided, it defaults to daily (TimeFrame.Day).
-        - adjustment (Adjustment | None): The adjustment type of the historical data request. If not provided, it defaults to all (Adjustment.ALL).
-        - **kwargs: Additional keyword arguments for the historical data request.
-
-        Returns:
-        - dict[str, pd.DataFrame]: A dictionary containing the historical data for each symbol as a pandas DataFrame.
         """
+
         match self.asset_class:
             case AssetClass.US_EQUITY:
                 request_params = StockBarsRequest(
@@ -309,9 +342,11 @@ class AlpacaEngine(BaseEngine):
             case _:
                 raise ValueError("Unsupported asset class")
 
+        # MultiIndex DataFrame
         df = bars.df
-        symbols = df.index.droplevel(1).unique()
-        return {s: df.loc[s] for s in symbols}
+        return df
+        # symbols = df.index.droplevel(1).unique()
+        # return {s: df.loc[s] for s in symbols}
 
     @override
     def get_account(self) -> TradeAccount:
@@ -342,7 +377,7 @@ class AlpacaEngine(BaseEngine):
         - float: The current cash balance of the trading account.
         """
         account = self.get_account()
-        return account.cash
+        return float(account.cash)
 
     @override
     def get_equity(self) -> float:
@@ -358,7 +393,7 @@ class AlpacaEngine(BaseEngine):
         - float: The current equity of the trading account.
         """
         account = self.get_account()
-        return account.equity
+        return float(account.equity)
 
     @override
     def get_positions(self) -> list[Position]:
@@ -423,7 +458,12 @@ class AlpacaEngine(BaseEngine):
             **kwargs,
         )
         try:
-            return self._trading_client.submit_order(order_request)
+            order_response = self._trading_client.submit_order(order_request)
+            if order_response:
+                self.logger.info(
+                    f"{order_response.status} | {order_response.side.upper()} {order_request.symbol} x {order_request.qty}"
+                )
+            return order_response
         except Exception as e:
             self.logger.error(f"Error sending order: {e}")
 
@@ -446,18 +486,23 @@ class AlpacaEngine(BaseEngine):
         if self.is_fractionable(symbol):
             order_request = OrderRequest(
                 symbol=symbol,
-                notional=abs(value),
+                notional=round(abs(value), 2),  # limit to 2 decimal places
                 side=side,
                 type=order_type,
-                time_in_force=time_in_force,
+                # TODO: stock, crypto require different time_in_force
+                time_in_force=TimeInForce.DAY,  # fractional must be Day order
                 **kwargs,
             )
-            return self._trading_client.submit_order(order_request)
+            order_response = self._trading_client.submit_order(order_request)
+            self.logger.info(
+                f"{order_response.status} | {order_response.side.upper()} {order_request.symbol} x ${order_request.notional}"
+            )
+            return order_response
         else:
             self.logger.warning(
                 f"{symbol} is not fractionable, try placing order with the nearest quantity."
             )
-            quantity = value // self.get_latest_bar(symbol).close
+            quantity = value // float(self.get_latest_bar(symbol).close)
             return self.order_share(
                 symbol, quantity, order_type, time_in_force, **kwargs
             )
@@ -478,11 +523,11 @@ class AlpacaEngine(BaseEngine):
     @override
     def order_target_share(
         self,
-        symbol: str,  # The symbol of the asset.
-        target_share: int | float,  # The target number of shares for the position.
-        order_type: OrderType,  # The type of the order (e.g., MARKET, LIMIT, STOP).
-        time_in_force: TimeInForce,  # The time in force for the order (e.g., GTC, GTD, IOC).
-        **kwargs,  # Additional keyword arguments for the order request.
+        symbol: str,
+        target_share: int | float,
+        order_type: OrderType | None = OrderType.MARKET,
+        time_in_force: TimeInForce | None = TimeInForce.GTC,
+        **kwargs,
     ) -> Order:
         """
         Place an order to adjust the position's number of shares to a target number of shares.
@@ -507,7 +552,7 @@ class AlpacaEngine(BaseEngine):
                 symbol, target_share, order_type, time_in_force, **kwargs
             )
         else:
-            current_share = pos.qty
+            current_share = float(pos.qty)
             share_to_target = target_share - current_share
             return self.order_share(
                 symbol, share_to_target, order_type, time_in_force, **kwargs
@@ -518,8 +563,8 @@ class AlpacaEngine(BaseEngine):
         self,
         symbol,
         target_value: float,
-        order_type: OrderType,
-        time_in_force: TimeInForce,
+        order_type: OrderType | None = OrderType.MARKET,
+        time_in_force: TimeInForce | None = TimeInForce.GTC,
         **kwargs,
     ):
         """
@@ -545,20 +590,20 @@ class AlpacaEngine(BaseEngine):
                 symbol, target_value, order_type, time_in_force, **kwargs
             )
         else:
-            current_value = pos.market_value
+            current_value = float(pos.market_value)
             value_to_target = target_value - current_value
             return self.order_value(
                 symbol, value_to_target, order_type, time_in_force, **kwargs
             )
 
     @override
-    def order_target_percentage(
+    def order_target_percent(
         self,
-        symbol: str,  # The symbol of the asset.
-        target_percent: float,  # The target percentage for the position.
-        order_type: OrderType,  # The type of the order (e.g., MARKET, LIMIT, STOP).
-        time_in_force: TimeInForce,  # The time in force for the order (e.g., GTC, GTD, IOC).
-        **kwargs,  # Additional keyword arguments for the order request.
+        symbol: str,
+        target_percent: float,
+        order_type: OrderType | None = OrderType.MARKET,
+        time_in_force: TimeInForce | None = TimeInForce.GTC,
+        **kwargs,
     ) -> Order:
         """
         Place an order to adjust the position's value to a target value based on a percentage of the account's equity.
@@ -630,6 +675,10 @@ class AlpacaEngine(BaseEngine):
         return self._trading_client.cancel_order_by_id(order_id)
 
     @override
+    def cancel_orders(self, symbol: str):
+        return NotImplemented
+
+    @override
     def close_position(self, symbol: str) -> Order:
         """
         Close an open position for the specified symbol.
@@ -668,6 +717,7 @@ class AlpacaEngine(BaseEngine):
         await self._data_stream._run_forever()
 
     async def streaming(self) -> None:
+        self.logger.debug("Setting up streaming")
         async with asyncio.TaskGroup() as tg:
             tg.create_task(self.stream_trade())
             tg.create_task(self.stream_data())

@@ -11,7 +11,8 @@ if TYPE_CHECKING:
 
 class BaseSignalGeneration(ABC):
     def __call__(self, context: Context, universe: AssetUniverse):
-        signals: Iterable[Signal] = self.run(context, universe)
+        signals: Iterable[Signal] = self.run(context, universe) or []
+        context.signals.clear()  # clearing old before adding new
         context.signals.add(signals)
 
     @abstractmethod

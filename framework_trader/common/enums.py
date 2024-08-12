@@ -1,4 +1,5 @@
 import enum
+
 from typing_extensions import Self
 
 

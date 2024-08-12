@@ -1,7 +1,6 @@
 from talipp.indicators import RSI as BaseRSI
 from talipp.input import SamplingPeriodType
 
-
 from .base import BaseIndicator, SingleInputMixin
 
 

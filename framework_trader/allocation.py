@@ -1,4 +1,4 @@
-from typing import Iterable, TypeAlias
+from typing import Iterable, TypeAlias, Generator
 
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
@@ -30,8 +30,11 @@ Allocation: TypeAlias = AllocationTarget | AllocationAdjustment
 class AllocationCollection:
     allocations: list[Allocation] = Field(default_factory=list)
 
-    def __iter__(self):
+    def __iter__(self) -> Generator[Allocation, None, None]:
         return (x for x in self.allocations)
+
+    def __len__(self) -> int:
+        return len(self.allocations)
 
     @property
     def symbols(self) -> set[str]:

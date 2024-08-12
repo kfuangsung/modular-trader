@@ -11,7 +11,8 @@ if TYPE_CHECKING:
 
 class BasePortfolioBuilder(ABC):
     def __call__(self, context: Context, signals: SignalCollection) -> Any:
-        allocations: Iterable[Allocation] = self.run(context, signals)
+        allocations: Iterable[Allocation] = self.run(context, signals) or []
+        context.allocations.clear()  # clearing old before adding new
         context.allocations.add(allocations)
 
     @abstractmethod

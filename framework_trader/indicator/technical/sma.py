@@ -1,7 +1,6 @@
 from talipp.indicators import SMA as BaseSMA
 from talipp.input import SamplingPeriodType
 
-
 from .base import BaseIndicator, SingleInputMixin
 
 

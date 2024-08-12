@@ -24,6 +24,7 @@ class BaseIndicator(ABC):
         self._sampler = (
             Sampler(period_type=sampling_period) if sampling_period else None
         )
+        self._input_indicator = input_indicator
         self._previous_time = datetime.min
         self._name = name or self.__class__.__name__
         self.calibrate_cache_size(input_indicator)
@@ -32,6 +33,9 @@ class BaseIndicator(ABC):
     sampler = property(fget=lambda self: self._sampler)
     previous_time = property(fget=lambda self: self._previous_time)
     name = property(fget=lambda self: self._name)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}(name={self.name})"
 
     @property
     def is_ready(self) -> bool:
@@ -95,10 +99,38 @@ class BaseIndicator(ABC):
             }
         )
 
+    def ingest(
+        self,
+        open: RealNumber | Iterable[RealNumber] | None,
+        high: RealNumber | Iterable[RealNumber] | None,
+        low: RealNumber | Iterable[RealNumber] | None,
+        close: RealNumber | Iterable[RealNumber] | None,
+        volume: RealNumber | Iterable[RealNumber] | None = None,
+        timestamp: RealNumber | Iterable[DateOrDatetime] | None = None,
+    ):
+        if self._input_indicator is not None:
+            return self._input_indicator.ingest(
+                open=open,
+                high=high,
+                low=low,
+                close=close,
+                volume=volume,
+                timestamp=timestamp,
+            )
+        else:
+            return self._ingest(
+                open=open,
+                high=high,
+                low=low,
+                close=close,
+                volume=volume,
+                timestamp=timestamp,
+            )
+
 
 class SingleInputMixin:
     @multidispatch
-    def ingest(
+    def _ingest(
         self,
         close: RealNumber,
         timestamp: DateOrDatetime | None = None,
@@ -115,7 +147,7 @@ class SingleInputMixin:
 
         self.clean_cache()
 
-    @ingest.register
+    @_ingest.register
     def _(
         self,
         close: Iterable[RealNumber],
@@ -124,7 +156,7 @@ class SingleInputMixin:
     ):
         self.add(close)
 
-    @ingest.register
+    @_ingest.register
     def _(
         self,
         close: Iterable[RealNumber],
@@ -133,12 +165,12 @@ class SingleInputMixin:
         **kwargs,
     ):
         for c, d in zip(close, timestamp):
-            self.ingest(c, d)
+            self._ingest(c, d)
 
 
 class MultipleInputMixin:
     @multidispatch
-    def ingest(
+    def _ingest(
         self,
         open: Iterable[RealNumber] | None,
         high: Iterable[RealNumber] | None,
@@ -160,7 +192,7 @@ class MultipleInputMixin:
             self.add(value)
         self.clean_cache()
 
-    @ingest.register
+    @_ingest.register
     def _(
         self,
         open: RealNumber | None,
@@ -170,7 +202,7 @@ class MultipleInputMixin:
         volume: RealNumber | None = None,
         timestamp: DateOrDatetime | None = None,
     ) -> None:
-        return self.ingest(
+        return self._ingest(
             [open] if open is not None else None,
             [high] if high is not None else None,
             [low] if low is not None else None,

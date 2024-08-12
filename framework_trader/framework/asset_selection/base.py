@@ -1,11 +1,12 @@
 from abc import ABC, abstractmethod
 from typing import Iterable
+
 from framework_trader.context import Context
 
 
 class BaseAssetSelection(ABC):
     def __call__(self, context: Context):
-        symbols: Iterable[str] = self.run(self.context)
+        symbols: Iterable[str] = self.run(context) or []
         context.universe.update(symbols)
 
     @abstractmethod

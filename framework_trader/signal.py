@@ -1,9 +1,8 @@
 import enum
-from typing import Iterable
+from typing import Iterable, Generator
 
-from pydantic import ConfigDict
+from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
-from pydantic import Field
 
 
 class SignalDirection(enum.Enum):
@@ -22,8 +21,11 @@ class Signal:
 class SignalCollection:
     signals: list[Signal] = Field(default_factory=list)
 
-    def __iter__(self):
+    def __iter__(self) -> Generator[Signal, None, None]:
         return (x for x in self.signals)
+
+    def __len__(self) -> int:
+        return len(self.signals)
 
     def add(self, signals: Signal | Iterable[Signal]) -> None:
         if isinstance(signals, Iterable):

@@ -22,5 +22,12 @@ class EqualWeightPortfolioBuilder(BasePortfolioBuilder):
         if len(filtered_signals) == 0:
             return []
         w = 1 / len(filtered_signals)
+        targets = [AllocationTarget(s.symbol, w) for s in filtered_signals]
 
-        return [AllocationTarget(s.symbol, w) for s in filtered_signals]
+        # Liquidate holding symbols, no longer in targets
+        signal_symbols = [s.symbol for s in filtered_signals]
+        pos_symbols: list[str] = [p.symbol for p in context.engine.get_positions()]
+        liqudate_symbols = set(pos_symbols).difference(signal_symbols)
+        liquidates = [AllocationTarget(s, 0) for s in liqudate_symbols]
+
+        return [*liquidates, *targets]

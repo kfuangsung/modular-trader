@@ -23,4 +23,4 @@ class TradingLogger(BaseLogger):
     def __post_init__(self):
         rotation = f"{self.rotation_size_mb} MB" if self.rotation_size_mb else None
         retention = f"{self.retention_days} days" if self.retention_days else None
-        self.logger.add(self.log_file_path, rotation=rotation, retention=retention)
+        self.logger.add(self.file_path, rotation=rotation, retention=retention)

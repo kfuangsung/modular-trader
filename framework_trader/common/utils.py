@@ -1,6 +1,7 @@
 import json
 import os
 from typing import Any
+
 from .constants import DEFAULT_CONFIG_PATH
 from .enums import TradingMode
 
