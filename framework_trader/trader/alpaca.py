@@ -54,12 +54,12 @@ class AlpacaTrader(BaseTrader):
         super().__init__(engine, framework, indicator, context, recorder)
         self.subscription_symbols = subscription_symbols
 
-    def run(self):
+    def run(self) -> None:
         self.logger.debug("Starting")
         self.init_subscription()
         asyncio.run(self.engine.streaming())
 
-    def init_subscription(self):
+    def init_subscription(self) -> None:
         self.logger.debug("Setting up subscriptions")
         self.engine.subscribe_trade_update(self.handle_trade_update)
         self.engine.subscribe_minute_bars(
@@ -79,21 +79,24 @@ class AlpacaTrader(BaseTrader):
     #         self.engine.unsubscribe_minute_bars(*universe.removed)
     #         self.engine.unsubscribe_daily_bars(*universe.removed)
 
-    async def handle_trade_update(self, data):
+    def record_status(self) -> None:
+        self.recorder["positions"] = self.engine.get_positions_serialize()
+        if self.indicator and self.indicator.attached_indicators:
+            self.recorder["indicators"] = self.indicator.attached_indicators
+        self.recorder.save_to_disk()
+
+    async def handle_trade_update(self, data) -> None:
         self.logger.info(
             f"{data.event} {data.order.side}`{data.order.symbol}` @{data.price} x {data.qty} | position_qty: {data.position_qty}"
         )
+        self.record_status()
 
-        # record
-        self.recorder["positions"] = self.engine.get_positions()
-        self.recorder["indicators"] = self.indicator.attached_indicators
-        self.recorder.save_to_disk()
-
-    async def handle_minute_bars(self, bar):
+    async def handle_minute_bars(self, bar) -> None:
         if self.indicator and self.indicator.frequency == Frequency.MINUTE:
             self.indicator.update(bar)
+        self.record_status()
 
-    async def handle_daily_bars(self, bar):
+    async def handle_daily_bars(self, bar) -> None:
         self.framework.asset_selection(self.context)
         # self.manage_subscription(self.context.universe)
         if self.indicator:

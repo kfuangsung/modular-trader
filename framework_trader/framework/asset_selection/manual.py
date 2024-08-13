@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+# from copy import deepcopy
 from typing import TYPE_CHECKING, Iterable
-
 from pydantic.dataclasses import dataclass
 from typing_extensions import override
 
@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 @dataclass
 class ManualAssetSelection(BaseAssetSelection):
-    symbols: Iterable[str]
+    symbols: list[str]
 
     @override
     def run(self, context: Context) -> Iterable[str]:

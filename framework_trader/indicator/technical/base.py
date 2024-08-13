@@ -34,8 +34,11 @@ class BaseIndicator(ABC):
     previous_time = property(fget=lambda self: self._previous_time)
     name = property(fget=lambda self: self._name)
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}(name={self.name})"
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(name={self.name}, value={self.value})"
+
+    def __str__(self) -> str:
+        return self.__repr__()
 
     @property
     def is_ready(self) -> bool:

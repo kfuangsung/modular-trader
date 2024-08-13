@@ -129,12 +129,12 @@ class AlpacaEngine(BaseEngine, BaseModel):
     #     self._init_assets()
 
     async def _close_websocket(self):
-        self.logger.debug("Closing websocket")
+        self.logger.debug(f"{self.__class__.__name__} | Closing websocket")
         self._trading_stream.close()
         self._data_stream.close()
 
     def __del__(self) -> None:
-        self.logger.debug("Destructor Called")
+        self.logger.debug(f"{self.__class__.__name__} | Destructor Called")
         asyncio.run(self._close_websocket)
         del (
             self._data_client,
@@ -146,7 +146,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     def _init_trading(self, _api_key: str, _secret_key: str) -> None:
         """Initialize trading client and stream"""
-        self.logger.debug("Initializing trading client")
+        self.logger.debug(f"{self.__class__.__name__} | Initializing trading client")
         self._trading_client = TradingClient(
             api_key=_api_key, secret_key=_secret_key, paper=self.is_paper
         )
@@ -175,7 +175,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
                 raise ValueError("Unsupported asset class")
 
     def _init_stock_data(self, _api_key: str, _secret_key: str) -> None:
-        self.logger.debug("Initializing stock data")
+        self.logger.debug(f"{self.__class__.__name__} | Initializing stock data")
         self.feed = self.feed or DataFeed.IEX
         self._data_client = StockHistoricalDataClient(
             api_key=_api_key, secret_key=_secret_key
@@ -185,7 +185,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
         )
 
     def _init_crypto_data(self, _api_key: str, _secret_key: str) -> None:
-        self.logger.debug("Intializing crypto data")
+        self.logger.debug(f"{self.__class__.__name__} | Intializing crypto data")
         self.feed = self.feed or CryptoFeed.US
         self._data_client = CryptoHistoricalDataClient(
             api_key=_api_key, secret_key=_secret_key
@@ -251,7 +251,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
         else:
             return asset.fractionable
 
-    def get_latest_bar(self, symbol: str) -> Bar:
+    def get_latest_bar(self, symbol: str) -> dict[str, Bar]:
         """
         Get the latest bar for the specified symbol within the specified asset class.
 
@@ -399,6 +399,10 @@ class AlpacaEngine(BaseEngine, BaseModel):
     def get_positions(self) -> list[Position]:
         return self._trading_client.get_all_positions()
 
+    def get_positions_serialize(self) -> list[dict[str, Any]]:
+        pos = self.get_positions()
+        return [p.model_dump() for p in pos]
+
     def get_open_position(self, symbol: str) -> Position | None:
         """
         Retrieve the open position for the specified symbol.
@@ -461,11 +465,11 @@ class AlpacaEngine(BaseEngine, BaseModel):
             order_response = self._trading_client.submit_order(order_request)
             if order_response:
                 self.logger.info(
-                    f"{order_response.status} | {order_response.side.upper()} {order_request.symbol} x {order_request.qty}"
+                    f"{order_response.status} | {order_response.side.upper()} {order_response.symbol} x {order_response.qty}"
                 )
             return order_response
         except Exception as e:
-            self.logger.error(f"Error sending order: {e}")
+            self.logger.error(f"{symbol} | Error sending order: {e}")
 
     @override
     def order_value(
@@ -493,16 +497,26 @@ class AlpacaEngine(BaseEngine, BaseModel):
                 time_in_force=TimeInForce.DAY,  # fractional must be Day order
                 **kwargs,
             )
-            order_response = self._trading_client.submit_order(order_request)
-            self.logger.info(
-                f"{order_response.status} | {order_response.side.upper()} {order_request.symbol} x ${order_request.notional}"
-            )
-            return order_response
+            try:
+                order_response = self._trading_client.submit_order(order_request)
+                self.logger.info(
+                    f"{order_response.status} | {order_response.side.upper()} {order_response.symbol} x ${order_response.notional}"
+                )
+                return order_response
+            except Exception as e:
+                self.logger.error(f"{symbol} | Error sending order: {e}")
         else:
             self.logger.warning(
                 f"{symbol} is not fractionable, try placing order with the nearest quantity."
             )
-            quantity = value // float(self.get_latest_bar(symbol).close)
+            try:
+                latest_close = float(self.get_latest_bar(symbol)[symbol].close)
+            except Exception as e:
+                self.logger.error(
+                    f"{symbol} | Error while retreiving latest close: {e}"
+                )
+                return
+            quantity = value // latest_close
             return self.order_share(
                 symbol, quantity, order_type, time_in_force, **kwargs
             )
@@ -659,7 +673,11 @@ class AlpacaEngine(BaseEngine, BaseModel):
         Returns:
         - ClosePositionResponse: A response object containing information about the closing of the positions.
         """
-        return self._trading_client.close_all_positions(cancel_orders)
+        try:
+            return self._trading_client.close_all_positions(cancel_orders)
+        except Exception as e:
+            self.logger.error(f"Error closing all positions: {e}")
+            return
 
     @override
     def cancel_order(self, order_id: UUID | str) -> CancelOrderResponse:
@@ -672,7 +690,11 @@ class AlpacaEngine(BaseEngine, BaseModel):
         Returns:
         - CancelOrderResponse: A response object containing information about the cancellation status of the specified order.
         """
-        return self._trading_client.cancel_order_by_id(order_id)
+        try:
+            return self._trading_client.cancel_order_by_id(order_id)
+        except Exception as e:
+            self.logger.error(f"Error canceling order {order_id}: {e}")
+            return
 
     @override
     def cancel_orders(self, symbol: str):
@@ -689,7 +711,16 @@ class AlpacaEngine(BaseEngine, BaseModel):
         Returns:
         - Order: The order object representing the closing of the position.
         """
-        return self._trading_client.close_position(symbol)
+        try:
+            order_response = self._trading_client.close_position(symbol)
+            if order_response:
+                self.logger.info(
+                    f"{order_response.status} | {order_response.side.upper()} {order_response.symbol} x {order_response.qty}"
+                )
+            return order_response
+        except Exception as e:
+            self.logger.error(f"Error closing position {symbol}: {e}")
+            return
 
     def subscribe_trade_update(self, handler: Callable[[Any], None]) -> None:
         self._trading_stream.subscribe_trade_updates(handler)
@@ -717,7 +748,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
         await self._data_stream._run_forever()
 
     async def streaming(self) -> None:
-        self.logger.debug("Setting up streaming")
+        self.logger.debug(f"{self.__class__.__name__} | Setting up streaming")
         async with asyncio.TaskGroup() as tg:
             tg.create_task(self.stream_trade())
             tg.create_task(self.stream_data())

@@ -19,3 +19,5 @@ class Context(BaseModel):
     indicators: BaseIndicatorHandler | None = Field(default=None)
     engine: BaseEngine | None = Field(default=None)
     latest_prices: Mapping[str, float] = Field(default_factory=dict)
+
+    logger = property(fget=lambda self: self.engine.get_logger())

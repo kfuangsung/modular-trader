@@ -16,7 +16,7 @@ class AssetUniverse:
     @multimethod
     def add(self, symbol: str) -> None:
         if symbol not in self.universe:
-            print(f"Add: {symbol=} is new.")
+            # print(f"Add: {symbol=} is new.")
             self.universe.add(symbol)
             self.added.add(symbol)
             self.removed.discard(symbol)
@@ -29,7 +29,7 @@ class AssetUniverse:
     @multimethod
     def remove(self, symbol: str) -> None:
         if symbol in self.universe:
-            print(f"Remove: {symbol=} exists")
+            # print(f"Remove: {symbol=} exists")
             self.universe.remove(symbol)
             self.removed.add(symbol)
             self.added.discard(symbol)
