@@ -1,13 +1,14 @@
 from typing import Mapping
 
-from pydantic import ConfigDict, Field, BaseModel
-# from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, ConfigDict, Field
 
 from framework_trader.allocation import AllocationCollection
 from framework_trader.engine.base import BaseEngine
 from framework_trader.indicator.handler.base import BaseIndicatorHandler
 from framework_trader.signal import SignalCollection
 from framework_trader.universe import AssetUniverse
+
+# from pydantic.dataclasses import dataclass
 
 
 # @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="allow"))

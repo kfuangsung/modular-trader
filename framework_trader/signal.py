@@ -1,5 +1,5 @@
 import enum
-from typing import Iterable, Generator
+from typing import Generator, Iterable
 
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass

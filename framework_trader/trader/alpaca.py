@@ -80,6 +80,7 @@ class AlpacaTrader(BaseTrader):
     #         self.engine.unsubscribe_daily_bars(*universe.removed)
 
     def record_status(self) -> None:
+        self.recorder["timestamp"] = pendulum.now()
         self.recorder["positions"] = self.engine.get_positions_serialize()
         if self.indicator and self.indicator.attached_indicators:
             self.recorder["indicators"] = self.indicator.attached_indicators

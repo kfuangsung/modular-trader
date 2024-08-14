@@ -1,13 +1,15 @@
 # from __future__ import annotations
 
-from pydantic import ConfigDict, BaseModel
-# from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, ConfigDict
 
 from framework_trader.framework.asset_selection.base import BaseAssetSelection
 from framework_trader.framework.order_execution.base import BaseOrderExecution
 from framework_trader.framework.portfolio_builder.base import BasePortfolioBuilder
 from framework_trader.framework.risk_management.base import BaseRiskManagement
 from framework_trader.framework.signal_generation.base import BaseSignalGeneration
+
+# from pydantic.dataclasses import dataclass
+
 
 # from typing import TYPE_CHECKING
 

@@ -1,4 +1,4 @@
-from typing import Iterable, TypeAlias, Generator
+from typing import Generator, Iterable, TypeAlias
 
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
