@@ -18,30 +18,11 @@ from framework_trader.record import Recorder
 
 from .base import BaseTrader
 
-# from pydantic import ConfigDict, Field
-# from pydantic.dataclasses import dataclass
-
-
-# from framework_trader.universe import AssetUniverse
-
-
 if TYPE_CHECKING:
     import pandas as pd
 
 
 class AlpacaTrader(BaseTrader):
-    # engine: AlpacaEngine
-    # framework: FrameworkCollection
-    # subscription_symbols: list[str]
-    # indicator: AlpacaIndicatorHandler | None = Field(default=None)
-    # context: Context = Field(default_factory=Context)
-    # recorder: Recorder = Field(default_factory=Recorder)
-
-    # def __post_init__(self):
-    #     super().__init__(
-    #         self.engine, self.framework, self.indicator, self.context, self.recorder
-    #     )
-
     def __init__(
         self,
         engine: AlpacaEngine,
@@ -50,9 +31,17 @@ class AlpacaTrader(BaseTrader):
         indicator: AlpacaIndicatorHandler | None = None,
         context: Context | None = Context(),
         recorder: Recorder | None = Recorder(),
+        is_log_heartbeat: bool = True,
     ):
         super().__init__(engine, framework, indicator, context, recorder)
+        self.is_log_heartbeat = is_log_heartbeat
         self.subscription_symbols = subscription_symbols
+        self.daily_bar_heartbeat_timestamp = pendulum.now().set(
+            minute=0, second=0, microsecond=0
+        )
+        self.minute_bar_heartbeat_timestamp = pendulum.now().set(
+            minute=0, second=0, microsecond=0
+        )
 
     def run(self) -> None:
         self.logger.debug("Starting")
@@ -68,6 +57,7 @@ class AlpacaTrader(BaseTrader):
         self.engine.subscribe_daily_bars(
             self.handle_daily_bars, self.subscription_symbols
         )
+        self.logger.debug("Finised setting up subscriptions")
 
     # def manage_subscription(self, universe: AssetUniverse):
     #     # sub/unsubscribe during runtime ?
@@ -93,11 +83,28 @@ class AlpacaTrader(BaseTrader):
         self.record_status()
 
     async def handle_minute_bars(self, bar) -> None:
+        if pendulum.now() >= self.minute_bar_heartbeat_timestamp:
+            self.logger.debug(f"{bar.symbol} | minute bars | heartbeat")
+            self.minute_bar_heartbeat_timestamp = (
+                self.minute_bar_heartbeat_timestamp.add(hours=1)
+            )
+
         if self.indicator and self.indicator.frequency == Frequency.MINUTE:
             self.indicator.update(bar)
         self.record_status()
 
+        # for sym, ind in self.indicator.attached_indicators.items():
+        #     self.logger.debug(sym)
+        #     for x in ind.values():
+        #         self.logger.debug(x)
+
     async def handle_daily_bars(self, bar) -> None:
+        if pendulum.now() >= self.daily_bar_heartbeat_timestamp:
+            self.logger.debug(f"{bar.symbol} | daily bars | heartbeat")
+            self.daily_bar_heartbeat_timestamp = self.daily_bar_heartbeat_timestamp.add(
+                hours=1
+            )
+
         self.framework.asset_selection(self.context)
         # self.manage_subscription(self.context.universe)
         if self.indicator:
