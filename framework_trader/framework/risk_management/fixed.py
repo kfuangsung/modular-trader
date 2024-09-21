@@ -18,8 +18,9 @@ if TYPE_CHECKING:
 @dataclass
 class FixedStopLossRiskManagement(BaseRiskManagement):
     """
-    Fixed stop loss
-    Liquidate positions if unrealized loss percent >= percent_loss
+    Fixed stop loss.
+
+    Liquidate positions if unrealized loss percent >= `percent_loss`.
     """
 
     percent_loss: float = Field(default=0.10)
@@ -29,6 +30,16 @@ class FixedStopLossRiskManagement(BaseRiskManagement):
         self, context: Context, allocations: AllocationCollection
     ) -> AllocationCollection:
         # get PnL percent for each positions
+        """
+        Liquidate positions if unrealized loss percent >= `percent_loss`.
+
+        Args:
+            context: The context to get the current positions from.
+            allocations: The allocations to modify.
+
+        Returns:
+            The modified allocations.
+        """
         unreal_pnl_pcts = {
             p.symbol: float(p.unrealized_plpc) for p in context.engine.get_positions()
         }

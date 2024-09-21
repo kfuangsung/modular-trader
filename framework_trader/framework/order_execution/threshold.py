@@ -15,7 +15,13 @@ if TYPE_CHECKING:
 
 @dataclass
 class ThresholdDeviationOrderExecution(InstantOrderExecution):
-    """Execute orders when any current positions deviate from the allocation targets by certain threshold in percentage"""
+    """Execute orders when any current positions deviate from the allocation targets by certain threshold in percentage.
+
+    The threshold is in decimal format; e.g. 0.05 = 5%
+
+    Args:
+        threshold (float, optional): The threshold in decimal format. Defaults to 0.05.
+    """
 
     threshold: float = Field(default=0.05)
 

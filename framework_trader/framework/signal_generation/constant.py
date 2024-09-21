@@ -17,8 +17,21 @@ if TYPE_CHECKING:
 
 @dataclass
 class ConstantSignalGeneration(BaseSignalGeneration):
+    """Constant signal generator.
+
+    Generates a signal for each symbol in the universe with a constant direction.
+    """
     direction: SignalDirection = Field(default=SignalDirection.UP)
 
     @override
     def run(self, context: Context, universe: AssetUniverse) -> Iterable[Signal]:
+        """Returns an iterable of constant signals.
+
+        Args:
+            context: Context
+            universe: AssetUniverse
+
+        Returns:
+            An iterable of signals.
+        """
         return [Signal(symbol, self.direction) for symbol in universe]

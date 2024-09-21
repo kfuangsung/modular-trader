@@ -57,6 +57,13 @@ if TYPE_CHECKING:
 
 
 def get_api_key() -> str | None:
+    """
+    Retrieves the Alpaca API key from the "ALPACA_API_KEY" environment variable.
+
+    Returns:
+        str | None: The Alpaca API key, or None if not set.
+    """
+
     key = os.environ.get("ALPACA_API_KEY", None)
     if key is None:
         raise ValueError("ALPACA_API_KEY environment variable not set")
@@ -64,6 +71,12 @@ def get_api_key() -> str | None:
 
 
 def get_secret_key() -> str | None:
+    """
+    Retrieves the Alpaca API secret key from the "ALPACA_SECRET_KEY" environment variable.
+
+    Returns:
+        str | None: The Alpaca API secret key, or None if not set.
+    """
     key = os.environ.get("ALPACA_SECRET_KEY")
     if key is None:
         raise ValueError("ALPACA_SECRET_KEY environment variable not set")
@@ -96,6 +109,12 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     @property
     def is_paper(self) -> bool:
+        """
+        Checks if the engine is in paper trading mode.
+
+        Returns:
+            bool: True if in paper trading mode, False otherwise.
+        """
         return self.mode == TradingMode.PAPER
 
     # @field_validator("api_key", mode="before")
@@ -116,7 +135,13 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     @model_validator(mode="after")
     def _initialize(self):
-        """Initialize trading and data clients and streams"""
+        """
+        Initialize trading and data clients and streams.
+
+        This method is called after the model is validated and initialized.
+        It sets up the Alpaca trading and data clients and streams using the
+        API key and secret key stored in the environment variables.
+        """
         _api_key = get_api_key()
         _secret_key = get_secret_key()
         self._init_trading(_api_key, _secret_key)
@@ -129,11 +154,24 @@ class AlpacaEngine(BaseEngine, BaseModel):
     #     self._init_assets()
 
     async def _close_websocket(self):
+        """
+        Close the Alpaca trading and data streams.
+
+        This method is called by the destructor to ensure that the streams are
+        closed when the object is garbage collected.
+        """
         self.logger.debug(f"{self.__class__.__name__} | Closing websocket")
         self._trading_stream.close()
         self._data_stream.close()
 
     def __del__(self) -> None:
+        """
+        Destructor for the AlpacaEngine class.
+
+        This method is called when the object is garbage collected. It
+        closes the Alpaca trading and data streams, and deletes the
+        clients and streams to free up memory.
+        """
         self.logger.debug(f"{self.__class__.__name__} | Destructor Called")
         asyncio.run(self._close_websocket)
         del (
@@ -145,7 +183,19 @@ class AlpacaEngine(BaseEngine, BaseModel):
         gc.collect()
 
     def _init_trading(self, _api_key: str, _secret_key: str) -> None:
-        """Initialize trading client and stream"""
+        """Initializes the Alpaca trading client and stream.
+
+        This method takes in the API key and secret key as arguments and
+        initializes the Alpaca trading client and stream with the given
+        credentials. The `paper` argument is set to `True` if the engine is in
+        paper trading mode.
+
+        Args:
+            _api_key (str): The API key for the Alpaca trading client and
+                stream.
+            _secret_key (str): The secret key for the Alpaca trading client
+                and stream.
+        """
         self.logger.debug(f"{self.__class__.__name__} | Initializing trading client")
         self._trading_client = TradingClient(
             api_key=_api_key, secret_key=_secret_key, paper=self.is_paper
@@ -155,6 +205,16 @@ class AlpacaEngine(BaseEngine, BaseModel):
         )
 
     def _init_assets(self) -> dict[str, Asset]:
+        """Initialize the assets dictionary.
+
+        This method retrieves all active assets for the specified asset_class
+        using the Alpaca trading client and stores them in the _assets
+        dictionary. The keys are the symbol names and the values are the Asset
+        objects.
+
+        Returns:
+            dict[str, Asset]: The assets dictionary.
+        """
         assets: list = self._trading_client.get_all_assets(
             filter=GetAssetsRequest(
                 status=AssetStatus.ACTIVE, asset_class=self.asset_class
@@ -163,7 +223,21 @@ class AlpacaEngine(BaseEngine, BaseModel):
         self._assets = {x.symbol: x for x in assets}
 
     def _init_data(self, _api_key: str, _secret_key: str) -> None:
-        """Initialize data clients and streams"""
+        """Initializes the data clients for the specified asset class.
+
+        This method takes in the API key and secret key as arguments and
+        initializes the data clients for the specified asset class using the
+        Alpaca trading client.
+
+        Args:
+            _api_key (str): The API key for the Alpaca trading client and
+                stream.
+            _secret_key (str): The secret key for the Alpaca trading client
+                and stream.
+
+        Raises:
+            ValueError: If the asset class is not supported.
+        """
         match self.asset_class:
             case AssetClass.US_EQUITY:
                 self._init_stock_data(_api_key, _secret_key)
@@ -175,6 +249,18 @@ class AlpacaEngine(BaseEngine, BaseModel):
                 raise ValueError("Unsupported asset class")
 
     def _init_stock_data(self, _api_key: str, _secret_key: str) -> None:
+        """Initializes the stock data clients.
+
+        This method takes in the API key and secret key as arguments and
+        initializes the stock historical data client and stream using the
+        Alpaca trading client.
+
+        Args:
+            _api_key (str): The API key for the Alpaca trading client and
+                stream.
+            _secret_key (str): The secret key for the Alpaca trading client
+                and stream.
+        """
         self.logger.debug(f"{self.__class__.__name__} | Initializing stock data")
         self.feed = self.feed or DataFeed.IEX
         self._data_client = StockHistoricalDataClient(
@@ -185,6 +271,18 @@ class AlpacaEngine(BaseEngine, BaseModel):
         )
 
     def _init_crypto_data(self, _api_key: str, _secret_key: str) -> None:
+        """Initializes the crypto data clients.
+
+        This method takes in the API key and secret key as arguments and
+        initializes the crypto historical data client and stream using the
+        Alpaca trading client.
+
+        Args:
+            _api_key (str): The API key for the Alpaca trading client and
+                stream.
+            _secret_key (str): The secret key for the Alpaca trading client
+                and stream.
+        """
         self.logger.debug(f"{self.__class__.__name__} | Intializing crypto data")
         self.feed = self.feed or CryptoFeed.US
         self._data_client = CryptoHistoricalDataClient(
@@ -195,16 +293,17 @@ class AlpacaEngine(BaseEngine, BaseModel):
         )
 
     def _init_option_data(self, _api_key: str, _secret_key: str) -> None:
-        """
-        Initialize data clients and streams for options trading.
+        """Initializes the option data clients.
 
-        Parameters:
-        - None
+        This method takes in the API key and secret key as arguments and
+        initializes the option historical data client and stream using the
+        Alpaca trading client.
 
-        This function initializes the data clients and streams for options trading. It sets the data feed to 'INDICATIVE' if not provided, and then initializes the option historical data client and option data stream with the provided API key and secret key.
-
-        Returns:
-        - None
+        Args:
+            _api_key (str): The API key for the Alpaca trading client and
+                stream.
+            _secret_key (str): The secret key for the Alpaca trading client
+                and stream.
         """
         self.logger.debug("Initializing option data")
         self.feed = self.feed or OptionsFeed.INDICATIVE
@@ -217,13 +316,13 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     def is_tradeable(self, symbol: str) -> bool:
         """
-        Check if the specified symbol is tradable within the specified asset class.
+        Checks if a given asset is tradeable.
 
-        Parameters:
-        - symbol (str): The symbol of the asset for which the tradability should be checked.
+        Args:
+            symbol (str): The symbol of the asset.
 
         Returns:
-        - bool: True if the specified symbol is tradable, False otherwise.
+            bool: True if the asset is tradeable, False otherwise.
         """
         asset = self._assets.get(symbol, None)
         if asset is None:
@@ -236,13 +335,13 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     def is_fractionable(self, symbol: str) -> bool:
         """
-        Check if the specified symbol is fractionable within the specified asset class.
+        Checks if a given asset is fractionable.
 
-        Parameters:
-        - symbol (str): The symbol of the asset for which the tradability should be checked.
+        Args:
+            symbol (str): The symbol of the asset.
 
         Returns:
-        - bool: True if the specified symbol is fractionable, False otherwise.
+            bool: True if the asset is fractionable, False otherwise.
         """
         asset = self._assets.get(symbol, None)
         if asset is None:
@@ -253,17 +352,17 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     def get_latest_bar(self, symbol: str) -> dict[str, Bar]:
         """
-        Get the latest bar for the specified symbol within the specified asset class.
+        Gets the latest bar for the given symbol.
 
-        Parameters:
-        - symbol (str): The symbol of the asset for which the latest bar is requested.
+        Args:
+            symbol (str): The symbol of the asset.
 
         Returns:
-        - Bar: A pandas DataFrame containing the latest bar data for the specified symbol.
+            dict[str, Bar]: A dictionary containing the latest bar.
 
         Raises:
-        - ValueError: If the asset class is not supported.
-        - NotImplementedError: If option trading is not supported for the specified asset class.
+            NotImplementedError: If the asset class is US_OPTION.
+            ValueError: If the asset class is not supported.
         """
         match self.asset_class:
             case AssetClass.US_EQUITY:
@@ -283,16 +382,18 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     @override
     def get_name(self) -> str:
-        """
-        Get the name of the trading engine.
+        """Returns the name of the engine, which is "Alpaca"."""
 
-        Returns:
-        - str: The name of the trading engine, which is "Alpaca" for this implementation.
-        """
         return "Alpaca"
 
     @override
     def get_logger(self):
+        """
+        Returns the logger of the engine.
+
+        Returns:
+            BaseLogger: The logger of the engine.
+        """
         return self.logger
 
     @override
@@ -306,9 +407,22 @@ class AlpacaEngine(BaseEngine, BaseModel):
         **kwargs,
     ) -> pd.DataFrame:
         """
-        Get historical data for the specified symbols within the given timeframe.
-        """
+        Gets the historical data for the given symbols, start date, end date,
+        timeframe, and adjustment.
 
+        Args:
+            symbols (str | list[str]): The symbols to get the historical data for.
+            start (datetime): The start date of the historical data.
+            end (datetime | None): The end date of the historical data.
+                If None, the data will be fetched until the current date.
+            timeframe (TimeFrame | None): The timeframe of the historical data.
+                If None, the data will be fetched in the Day timeframe.
+            adjustment (Adjustment | None): The adjustment of the historical data.
+                If None, the data will be fetched with the ALL adjustment.
+
+        Returns:
+            pd.DataFrame: The historical data in a MultiIndex DataFrame.
+        """
         match self.asset_class:
             case AssetClass.US_EQUITY:
                 request_params = StockBarsRequest(
@@ -351,30 +465,20 @@ class AlpacaEngine(BaseEngine, BaseModel):
     @override
     def get_account(self) -> TradeAccount:
         """
-        Retrieve the current trading account information.
-
-        This function retrieves the current trading account information from the Alpaca Trading API. The returned TradeAccount object contains information such as the account's ID, cash balance, and equity value.
-
-        Parameters:
-        - None
+        Gets the account information for the Alpaca trading client.
 
         Returns:
-        - TradeAccount: A TradeAccount object containing information about the current trading account.
+            TradeAccount: The account information.
         """
         return self._trading_client.get_account()
 
     @override
     def get_cash(self) -> float:
         """
-        Retrieve the current cash balance of the trading account.
-
-        The cash balance is the total amount of cash available in the account, which can be used to place orders or close positions.
-
-        Parameters:
-        - None
+        Gets the current cash balance in the Alpaca account.
 
         Returns:
-        - float: The current cash balance of the trading account.
+            float: The current cash balance.
         """
         account = self.get_account()
         return float(account.cash)
@@ -382,39 +486,43 @@ class AlpacaEngine(BaseEngine, BaseModel):
     @override
     def get_equity(self) -> float:
         """
-        Retrieve the current equity of the trading account.
-
-        The equity is the total value of all open positions and cash in the account.
-
-        Parameters:
-        - None
+        Gets the current equity in the Alpaca account.
 
         Returns:
-        - float: The current equity of the trading account.
+            float: The current equity.
         """
         account = self.get_account()
         return float(account.equity)
 
     @override
     def get_positions(self) -> list[Position]:
+        """
+        Gets all positions held by the Alpaca account.
+
+        Returns:
+            list[Position]: The list of positions.
+        """
         return self._trading_client.get_all_positions()
 
     def get_positions_serialize(self) -> list[dict[str, Any]]:
+        """
+        Gets all positions held by the Alpaca account as a list of serialized dictionaries.
+
+        Returns:
+            list[dict[str, Any]]: The list of serialized positions.
+        """
         pos = self.get_positions()
         return [p.model_dump() for p in pos]
 
     def get_open_position(self, symbol: str) -> Position | None:
         """
-        Retrieve the open position for the specified symbol.
+        Gets the open position for the given symbol.
 
-        Parameters:
-        - symbol (str): The symbol of the asset for which the open position should be retrieved.
+        Args:
+            symbol (str): The symbol of the asset.
 
         Returns:
-        - Position | None: The open position object for the specified symbol, or None if no position is found for the symbol.
-
-        Raises:
-        - APIError: If an error occurs while retrieving the open position from the trading client.
+            Position | None: The open position if it exists, otherwise None.
         """
         try:
             return self._trading_client.get_open_position(symbol)
@@ -431,17 +539,16 @@ class AlpacaEngine(BaseEngine, BaseModel):
         **kwargs,
     ) -> Order:
         """
-        Place an order to buy or sell a specified number of shares of a given asset.
+        Places an order for a fixed number of shares of the given symbol.
 
-        Parameters:
-        - symbol (str): The symbol of the asset.
-        - share (int | float): The number of shares to be bought or sold.
-        - order_type (OrderType | None): The type of the order (e.g., MARKET, LIMIT, STOP). Defaults to MARKET.
-        - time_in_force (TimeInForce | None): The time in force for the order (e.g., GTC, GTD, IOC). Defaults to GTC.
-        - kwargs: Additional keyword arguments for the order request.
+        Args:
+            symbol (str): The symbol of the asset to order.
+            share (int | float): The number of shares to order. If the asset is not fractionable, the value will be rounded down to the nearest integer.
+            order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+            time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
 
         Returns:
-        - Order: The order object if the order is successfully placed.
+            Order: The order response from Alpaca.
         """
         if isinstance(share, float) and not self.is_fractionable(symbol):
             share = int(share)
@@ -480,6 +587,18 @@ class AlpacaEngine(BaseEngine, BaseModel):
         time_in_force: TimeInForce | None = TimeInForce.GTC,
         **kwargs,
     ):
+        """
+        Places an order for a fixed amount of money of the given symbol.
+
+        Args:
+            symbol (str): The symbol of the asset to order.
+            value (float): The amount of money to order. If the asset is not fractionable, the value will be rounded down to the nearest integer.
+            order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+            time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
+
+        Returns:
+            Order: The order response from Alpaca.
+        """
         if value == 0:
             return
 
@@ -530,6 +649,10 @@ class AlpacaEngine(BaseEngine, BaseModel):
         time_in_force: TimeInForce | None = TimeInForce.GTC,
         **kwargs,
     ):
+        """
+        Places an order in the specified asset corresponding to the given percent of the current portfolio value.
+        percent is in decimal format; 0.5 = 50%
+        """
         equity = self.get_equity()
         value = equity * percent
         return self.order_value(symbol, value, order_type, time_in_force, **kwargs)
@@ -544,21 +667,19 @@ class AlpacaEngine(BaseEngine, BaseModel):
         **kwargs,
     ) -> Order:
         """
-        Place an order to adjust the position's number of shares to a target number of shares.
+        Places an order to adjust the current position in the given symbol to the target number of shares.
 
-        If the symbol has an open position, the function calculates the difference between the target number of shares and the current position's number of shares.
-        Then, it places an order to adjust the position to the target number of shares.
-        If the symbol does not have an open position, it places an order to buy or sell shares to reach the target number of shares.
+        If no position exists, the order will be placed as a regular order for the target number of shares.
+        If a position exists, the order will be placed as a regular order for the difference between the target number of shares and the current number of shares.
 
-        Parameters:
-        - symbol (str): The symbol of the asset.
-        - target_share (int | float): The target number of shares for the position.
-        - order_type (OrderType): The type of the order (e.g., MARKET, LIMIT, STOP).
-        - time_in_force (TimeInForce): The time in force for the order (e.g., GTC, GTD, IOC).
-        - kwargs: Additional keyword arguments for the order request.
+        Args:
+            symbol (str): The symbol of the asset to order.
+            target_share (int | float): The target number of shares.
+            order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+            time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
 
         Returns:
-        - Order: The order object if the order is successfully placed.
+            Order: The order response from Alpaca.
         """
         pos = self.get_open_position(symbol)
         if pos is None:
@@ -582,21 +703,19 @@ class AlpacaEngine(BaseEngine, BaseModel):
         **kwargs,
     ):
         """
-        Place an order to adjust the position's value to a target value.
+        Places an order to adjust the current position in the given symbol to the target value.
 
-        If the symbol has an open position, the function calculates the difference between the target value and the current position's value.
-        Then, it places an order to adjust the position to the target value.
-        If the symbol does not have an open position, it places an order to buy or sell shares to reach the target value.
+        If no position exists, the order will be placed as a regular order for the target value.
+        If a position exists, the order will be placed as a regular order for the difference between the target value and the current value.
 
-        Parameters:
-        - symbol (str): The symbol of the asset.
-        - target_value (float): The target value for the position.
-        - order_type (OrderType): The type of the order (e.g., MARKET, LIMIT, STOP).
-        - time_in_force (TimeInForce): The time in force for the order (e.g., GTC, GTD, IOC).
-        - kwargs: Additional keyword arguments for the order request.
+        Args:
+            symbol (str): The symbol of the asset to order.
+            target_value (float): The target value.
+            order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+            time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
 
         Returns:
-        - Order: The order object if the order is successfully placed.
+            Order: The order response from Alpaca.
         """
         pos = self.get_open_position(symbol)
         if pos is None:
@@ -620,21 +739,17 @@ class AlpacaEngine(BaseEngine, BaseModel):
         **kwargs,
     ) -> Order:
         """
-        Place an order to adjust the position's value to a target value based on a percentage of the account's equity.
+        Places an order to adjust the current position in the given symbol to the target percent of the current portfolio value.
+        percent is in decimal format; 0.5 = 50%
 
-        If the symbol has an open position, the function calculates the difference between the target value and the current position's value.
-        Then, it places an order to adjust the position to the target value.
-        If the symbol does not have an open position, it places an order to buy or sell shares to reach the target value.
-
-        Parameters:
-        - symbol (str): The symbol of the asset.
-        - target_percent (float): The target percentage for the position.
-        - order_type (OrderType): The type of the order (e.g., MARKET, LIMIT, STOP).
-        - time_in_force (TimeInForce): The time in force for the order (e.g., GTC, GTD, IOC).
-        - kwargs: Additional keyword arguments for the order request.
+        Args:
+            symbol (str): The symbol of the asset to order.
+            target_percent (float): The target percent of the portfolio value.
+            order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+            time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
 
         Returns:
-        - Order: The order object if the order is successfully placed.
+            Order: The order response from Alpaca.
         """
         equity = self.get_equity()
         target_value = equity * target_percent
@@ -644,18 +759,21 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     @override
     def get_orders(self) -> list[Order]:
+        """
+        Get all active orders.
+
+        Returns:
+            list[Order]: A list of Order objects for all active orders.
+        """
         return self._trading_client.get_orders()
 
     @override
     def cancel_all_orders(self) -> list[CancelOrderResponse]:
         """
-        Cancel all pending orders for the account.
-
-        Parameters:
-        - None
+        Cancel all active orders.
 
         Returns:
-        - list[CancelOrderResponse]: A list of responses indicating the status of each order cancellation.
+            list[CancelOrderResponse]: A list of CancelOrderResponse objects for all canceled orders.
         """
         try:
             return self._trading_client.cancel_orders()
@@ -665,13 +783,13 @@ class AlpacaEngine(BaseEngine, BaseModel):
     @override
     def close_all_positions(self, cancel_orders: bool = True) -> ClosePositionResponse:
         """
-        Close all open positions for the account.
+        Close all open positions.
 
-        Parameters:
-        - cancel_orders (bool): A boolean flag indicating whether to cancel any pending orders for the closed positions. Defaults to True.
+        Args:
+            cancel_orders (bool, optional): If true, all open orders will also be canceled. Defaults to True.
 
         Returns:
-        - ClosePositionResponse: A response object containing information about the closing of the positions.
+            ClosePositionResponse: The response from Alpaca.
         """
         try:
             return self._trading_client.close_all_positions(cancel_orders)
@@ -682,13 +800,13 @@ class AlpacaEngine(BaseEngine, BaseModel):
     @override
     def cancel_order(self, order_id: UUID | str) -> CancelOrderResponse:
         """
-        Cancel an existing order by its unique identifier.
+        Cancel an order by ID.
 
-        Parameters:
-        - order_id (UUID | str): The unique identifier of the order to be cancelled. It can be either a UUID string or a string representation of the order ID.
+        Args:
+            order_id (UUID | str): The order ID to cancel.
 
         Returns:
-        - CancelOrderResponse: A response object containing information about the cancellation status of the specified order.
+            CancelOrderResponse: The response from Alpaca.
         """
         try:
             return self._trading_client.cancel_order_by_id(order_id)
@@ -698,18 +816,27 @@ class AlpacaEngine(BaseEngine, BaseModel):
 
     @override
     def cancel_orders(self, symbol: str):
+        """
+        Cancel all active orders for the given symbol.
+
+        Args:
+            symbol (str): The symbol for which to cancel all orders.
+
+        Returns:
+            NotImplemented: This method is not implemented.
+        """
         return NotImplemented
 
     @override
     def close_position(self, symbol: str) -> Order:
         """
-        Close an open position for the specified symbol.
+        Close a position for a given symbol.
 
-        Parameters:
-        - symbol (str): The symbol of the asset for which the position should be closed.
+        Args:
+            symbol (str): The symbol of the asset to close.
 
         Returns:
-        - Order: The order object representing the closing of the position.
+            Order: The order response from Alpaca.
         """
         try:
             order_response = self._trading_client.close_position(symbol)
@@ -723,31 +850,135 @@ class AlpacaEngine(BaseEngine, BaseModel):
             return
 
     def subscribe_trade_update(self, handler: Callable[[Any], None]) -> None:
+        """
+        Subscribe to trade updates.
+
+        Args:
+            handler (Callable[[Any], None]): The callback to be called when a trade update occurs.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            The callback will be passed the Bar object as an argument.
+        """
         self._trading_stream.subscribe_trade_updates(handler)
 
     def subscribe_minute_bars(
         self, handler: Callable[[Bar], Awaitable[None]], symbols: list[str]
     ) -> None:
+        """
+        Subscribe to minute bars.
+
+        Args:
+            handler (Callable[[Bar], Awaitable[None]]): The callback to be called when a minute bar occurs.
+            symbols (list[str]): The symbols for which to subscribe to minute bars.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            The callback will be passed the Bar object as an argument.
+        """
+        
         self._data_stream.subscribe_bars(handler, *symbols)
 
     def subscribe_daily_bars(
         self, handler: Callable[[Bar], Awaitable[None]], symbols: list[str]
     ) -> None:
+        """
+        Subscribe to daily bars.
+
+        Args:
+            handler (Callable[[Bar], Awaitable[None]]): The callback to be called when a daily bar occurs.
+            symbols (list[str]): The symbols for which to subscribe to daily bars.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            The callback will be passed the Bar object as an argument.
+        """
         self._data_stream.subscribe_daily_bars(handler, *symbols)
 
     def unsubscribe_minute_bars(self, symbols: list[str]) -> None:
+        """
+        Unsubscribe from minute bars.
+
+        Args:
+            symbols (list[str]): The symbols for which to unsubscribe from minute bars.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            This will stop the callback from being called on minute bars.
+        """
         self._data_stream.unsubscribe_bars(*symbols)
 
     def unsubscribe_daily_bars(self, symbols: list[str]) -> None:
+        """
+        Unsubscribe from daily bars.
+
+        Args:
+            symbols (list[str]): The symbols for which to unsubscribe from daily bars.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            This will stop the callback from being called on daily bars.
+        """
         self._data_stream.unsubscribe_daily_bars(*symbols)
 
     async def stream_trade(self) -> None:
+        """
+        Run the trading stream.
+
+        This method will block until the program is stopped and will run the trading stream
+        in an infinite loop. The trading stream will call the callback function passed to
+        `subscribe_trade_update` with the trade update data.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            This will block the current task, so you should run this in an asyncio task.
+        """
         await self._trading_stream._run_forever()
 
     async def stream_data(self) -> None:
+        """
+        Run the data stream.
+
+        This method will block until the program is stopped and will run the data stream
+        in an infinite loop. The data stream will call the callback function passed to
+        `subscribe_minute_bars` and `subscribe_daily_bars` with the respective data.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            This will block the current task, so you should run this in an asyncio task.
+        """
         await self._data_stream._run_forever()
 
     async def streaming(self) -> None:
+        """
+        Run the trading and data streams in an infinite loop.
+
+        This method will block until the program is stopped and will run the trading
+        and data streams in an infinite loop. The trading stream will call the callback
+        function passed to `subscribe_trade_update` with the trade update data.
+        The data stream will call the callback function passed to `subscribe_minute_bars`
+        and `subscribe_daily_bars` with the respective data.
+
+        Returns:
+            None: This function does not return a value.
+
+        Notes:
+            This will block the current task, so you should run this in an asyncio task.
+        """
         self.logger.debug(f"{self.__class__.__name__} | Setting up streaming")
         async with asyncio.TaskGroup() as tg:
             tg.create_task(self.stream_trade())

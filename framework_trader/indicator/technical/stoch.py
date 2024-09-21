@@ -5,6 +5,22 @@ from .base import BaseIndicator, MultipleInputMixin
 
 
 class STOCH(BaseIndicator, BaseSTOCH, MultipleInputMixin):
+    """
+    Stochastic Oscillator (STOCH)
+
+    The Stochastic Oscillator is a momentum indicator that compares the closing
+    price of a security to its price range over a given period of time. The
+    Stochastic Oscillator is used to generate overbought and oversold signals.
+
+    Args:
+        period (int): The period of the Stochastic Oscillator.
+        smoothing_period (int): The smoothing period of the Stochastic Oscillator.
+        input_indicator (BaseIndicator | None): The input indicator.
+        sampling_period (SamplingPeriodType | None): The sampling period.
+        cache_size (int | None): The cache size.
+        name (str | None): The name of the indicator.
+    """
+
     def __init__(
         self,
         period: int,

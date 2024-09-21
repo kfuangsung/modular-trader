@@ -14,6 +14,12 @@ if TYPE_CHECKING:
 
 @dataclass
 class NullSignalGeneration(BaseSignalGeneration):
+    """Signal generation strategy that doesn't generate any signals.
+
+    This signal generation strategy is useful for testing or debugging purposes.
+    """
+
     @override
     def run(self, context: Context, universe: AssetUniverse) -> Iterable[None]:
+        """Returns an empty iterable of signals."""
         return []

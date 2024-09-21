@@ -8,11 +8,20 @@ from framework_trader.indicator.handler.base import BaseIndicatorHandler
 from framework_trader.signal import SignalCollection
 from framework_trader.universe import AssetUniverse
 
-# from pydantic.dataclasses import dataclass
 
-
-# @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="allow"))
 class Context(BaseModel):
+    """
+    The framework context.
+
+    Attributes:
+        universe (AssetUniverse): The asset universe.
+        signals (SignalCollection): The collection of signals.
+        allocations (AllocationCollection): The collection of allocations.
+        indicators (BaseIndicatorHandler | None): The indicator handler, if any.
+        engine (BaseEngine | None): The engine, if any.
+        latest_prices (Mapping[str, float]): The latest prices of all assets.
+    """
+
     model_config = ConfigDict(arbitrary_types_allowed=True, extra="allow")
     universe: AssetUniverse = Field(default_factory=AssetUniverse)
     signals: SignalCollection = Field(default_factory=SignalCollection)

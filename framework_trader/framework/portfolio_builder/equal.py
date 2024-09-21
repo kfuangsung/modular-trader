@@ -16,6 +16,9 @@ if TYPE_CHECKING:
 
 
 class EqualWeightPortfolioBuilder(BasePortfolioBuilder):
+    """
+    Assigns equal weight to all signals. Liquidates positions no longer in signals.
+    """
     @override
     def run(self, context: Context, signals: SignalCollection) -> Iterable[Allocation]:
         filtered_signals = [s for s in signals if s.direction == SignalDirection.UP]

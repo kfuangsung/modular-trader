@@ -19,7 +19,15 @@ if TYPE_CHECKING:
 
 @dataclass
 class InstantOrderExecution(BaseOrderExecution):
-    """Instantly execute orders from allocations"""
+    """Instantly execute orders from allocations
+
+    Iterate through all allocations and place the corresponding orders.
+    If an order is already pending, skip it.
+    If the allocation is an AllocationTarget, close the position if weight is 0,
+    otherwise place an order to set the weight to the target value.
+    If the allocation is an AllocationAdjustment, place an order to adjust the
+    weight by the target value.
+    """
 
     @override
     def run(self, context: Context, allocations: AllocationCollection) -> None:

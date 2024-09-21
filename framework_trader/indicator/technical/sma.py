@@ -5,6 +5,22 @@ from .base import BaseIndicator, SingleInputMixin
 
 
 class SMA(BaseIndicator, BaseSMA, SingleInputMixin):
+    """
+    Simple Moving Average (SMA)
+
+    The Simple Moving Average (SMA) is a technical indicator that calculates the
+    average of a security's price over a specified number of periods. It is used
+    to identify trends and patterns in the price movement of a security. The
+    indicator is a moving average of the price over a specified number of
+    periods.
+
+    Args:
+        period (int): The number of periods to calculate the average over.
+        input_indicator (BaseIndicator | None): The input indicator.
+        sampling_period (SamplingPeriodType | None): The sampling period.
+        cache_size (int | None): The cache size.
+        name (str | None): The name of the indicator.
+    """
     def __init__(
         self,
         period: int,

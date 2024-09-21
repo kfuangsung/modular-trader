@@ -12,6 +12,10 @@ if TYPE_CHECKING:
 
 
 class NullRiskManagement(BaseRiskManagement):
+    """No-op risk management strategy.
+
+    Leaves allocations unchanged.
+    """
     @override
     def run(
         self, context: Context, allocations: AllocationCollection

@@ -1,5 +1,3 @@
-# from __future__ import annotations
-
 from pydantic import BaseModel, ConfigDict
 
 from framework_trader.framework.asset_selection.base import BaseAssetSelection
@@ -8,53 +6,28 @@ from framework_trader.framework.portfolio_builder.base import BasePortfolioBuild
 from framework_trader.framework.risk_management.base import BaseRiskManagement
 from framework_trader.framework.signal_generation.base import BaseSignalGeneration
 
-# from pydantic.dataclasses import dataclass
-
-
-# from typing import TYPE_CHECKING
-
-
-# if TYPE_CHECKING:
-#     from framework_trader.context import Context
-
-
-# @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="forbid", frozen=True))
-
 
 class FrameworkCollection(BaseModel):
+    """Collection of all the components of a framework.
+
+    Contains:
+        - asset_selection: Instance of BaseAssetSelection
+        - signal_generation: Instance of BaseSignalGeneration
+        - portfolio_builder: Instance of BasePortfolioBuilder
+        - order_execution: Instance of BaseOrderExecution
+        - risk_management: Instance of BaseRiskManagement
+
+    Attributes:
+        asset_selection: Instance of BaseAssetSelection
+        signal_generation: Instance of BaseSignalGeneration
+        portfolio_builder: Instance of BasePortfolioBuilder
+        order_execution: Instance of BaseOrderExecution
+        risk_management: Instance of BaseRiskManagement
+    """
+
     model_config = ConfigDict(arbitrary_types_allowed=True, extra="forbid", frozen=True)
     asset_selection: BaseAssetSelection
     signal_generation: BaseSignalGeneration
     portfolio_builder: BasePortfolioBuilder
     order_execution: BaseOrderExecution
     risk_management: BaseRiskManagement
-
-    # def run(self, context: Context):
-    #     self.asset_selection(context)
-    #     self.signal_generation(context, context.universe)
-    #     self.portfolio_builder(context, context.signals)
-    #     self.risk_management(context, context.allocations)
-    #     self.order_execution(context, context.allocations)
-
-    # symbols: Iterable[str] = self.asset_selection.run(self.context)
-    # self.universe.update(symbols)
-
-    # signals: Iterable[Signal] = self.signal_generation.run(
-    #     self.context, self.universe
-    # )
-    # self.context.signals.add(signals)
-
-    # # create portfolio allocations
-    # allocations: Iterable[Allocation] = self.portfolio_builder.run(
-    #     self.context, signals
-    # )
-    # # option to modify allocations
-    # allocations: Iterable[Allocation] = self.risk_management.run(
-    #     self.context, allocations
-    # )
-    # self.context.allocations.add(allocations)
-
-    # # submit orders
-    # self.order_execution.run(self.context, self.context.allocations)
-    # self.context.signals.clear()
-    # self.context.allocations.clear()

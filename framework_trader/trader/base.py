@@ -3,29 +3,34 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-# from benedict import benedict
 from framework_trader.context import Context
 from framework_trader.engine.base import BaseEngine
 from framework_trader.framework.collection import FrameworkCollection
 from framework_trader.indicator.handler.base import BaseIndicatorHandler
 from framework_trader.record import Recorder
 
-# from pydantic import ConfigDict, Field
-# from pydantic.dataclasses import dataclass
-
-
 if TYPE_CHECKING:
     from framework_trader.logging.base import BaseLogger
 
-    # from framework_trader.universe import AssetUniverse
 
-
-# @dataclass(config=ConfigDict(arbitrary_types_allowed=True, extra="forbid", frozen=True))
 class BaseTrader(ABC):
-    # engine: BaseEngine
-    # framework: FrameworkCollection
-    # indicator: BaseIndicatorHandler | None
-    # context: Context
+    """
+    Abstract base class for traders.
+
+    Attributes:
+        engine (BaseEngine): The engine to use for running the backtest.
+        framework (FrameworkCollection): The framework to use for running the backtest.
+        indicator (BaseIndicatorHandler | None): The indicator to use for running the backtest.
+        context (Context): The context to use for running the backtest.
+        recorder (Recorder): The recorder to use for running the backtest.
+
+    Properties:
+        logger (BaseLogger): The logger to use for logging.
+
+    Methods:
+        run ():
+            Runs the backtest.
+    """
 
     def __init__(
         self,
@@ -44,9 +49,6 @@ class BaseTrader(ABC):
         self.context.engine = engine
 
     logger: BaseLogger = property(fget=lambda self: self.engine.get_logger())
-
-    # def __post_init__(self):
-    #     self.context.engine = self.engine
 
     @abstractmethod
     def run(self):
