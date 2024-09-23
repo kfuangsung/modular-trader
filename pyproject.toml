@@ -3,9 +3,9 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "framework-trader"
+name = "modular-trader"
 authors = [{ name = "Kachain Fuangsung" }, { email = "kachain.f@outlook.com" }]
-description = "Algorithmic Trading Framework"
+description = "Modular Algorithmic Trading Framework"
 readme = "README.md"
 requires-python = ">=3.10"
 # license = { text = "BSD-3-Clause" }
@@ -24,4 +24,4 @@ dependencies = [
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = { attr = "framework_trader.__version__" }
+version = { attr = "modular_trader.__version__" }
