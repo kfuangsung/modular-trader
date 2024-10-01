@@ -9,7 +9,11 @@ description = "Python Algorithmic Trading Framework"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-classifiers = ["Programming Language :: Python :: 3"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "License :: OSI Approved :: MIT License",
+]
 dependencies = [
     "typing-extensions>=4.12.0",
     "alpaca-py>=0.28.0",
@@ -25,3 +29,7 @@ dynamic = ["version"]
 
 [tool.setuptools.dynamic]
 version = { attr = "modular_trader.__version__" }
+
+[project.urls]
+Homepage = "https://github.com/kfuangsung/modular-trader"
+Repository = "https://github.com/kfuangsung/modular-trader"
