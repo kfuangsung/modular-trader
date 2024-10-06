@@ -36,6 +36,8 @@ Modular-trader is a algorithmic trading framework written in Python, designed wi
 #### Risk Management
 - FixedStopLoss
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Supported Brokerages
 
 - [Alpaca](https://alpaca.markets/)
