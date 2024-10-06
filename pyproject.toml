@@ -32,4 +32,6 @@ version = { attr = "modular_trader.__version__" }
 
 [project.urls]
 Homepage = "https://github.com/kfuangsung/modular-trader"
+Documentation = "https://kfuangsung.github.io/modular-trader"
 Repository = "https://github.com/kfuangsung/modular-trader"
+Changelog = "https://github.com/kfuangsung/modular-trader/blob/main/CHANGELOG.md"
