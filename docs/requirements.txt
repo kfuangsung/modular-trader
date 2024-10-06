@@ -1,1 +1,9 @@
 pydata-sphinx-theme
+typing-extensions>=4.12.0
+alpaca-py>=0.28.0
+pydantic>=2.8.0
+python-benedict>=0.33.0
+multimethod>=1.12
+talipp>=2.4.0
+loguru>=0.7.2
+pendulum>=3.0.0
