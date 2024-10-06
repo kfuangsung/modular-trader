@@ -390,14 +390,72 @@ document.write(`
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="modular-trader-framework-portfolio-builder-base-module">
-<h2>modular_trader.framework.portfolio_builder.base module<a class="headerlink" href="#modular-trader-framework-portfolio-builder-base-module" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.framework.portfolio_builder.base">
+<span id="modular-trader-framework-portfolio-builder-base-module"></span><h2>modular_trader.framework.portfolio_builder.base module<a class="headerlink" href="#module-modular_trader.framework.portfolio_builder.base" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.portfolio_builder.base.</span></span><span class="sig-name descname"><span class="pre">BasePortfolioBuilder</span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/base.html#BasePortfolioBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for portfolio builders.</p>
+<p>This class defines the interface for all portfolio builders.</p>
+<p>The <cite>__call__</cite> method is called by the framework to build the portfolio.
+It is expected to clear the current allocations and add the new allocations.</p>
+<p>The <cite>run</cite> method is called by <cite>__call__</cite> to build the portfolio.
+It is expected to return an iterable of <cite>Allocation</cite> objects.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Allocation</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/base.html#BasePortfolioBuilder.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="modular-trader-framework-portfolio-builder-equal-module">
-<h2>modular_trader.framework.portfolio_builder.equal module<a class="headerlink" href="#modular-trader-framework-portfolio-builder-equal-module" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.framework.portfolio_builder.equal">
+<span id="modular-trader-framework-portfolio-builder-equal-module"></span><h2>modular_trader.framework.portfolio_builder.equal module<a class="headerlink" href="#module-modular_trader.framework.portfolio_builder.equal" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.portfolio_builder.equal.</span></span><span class="sig-name descname"><span class="pre">EqualWeightPortfolioBuilder</span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/equal.html#EqualWeightPortfolioBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" title="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePortfolioBuilder</span></code></a></p>
+<p>Assigns equal weight to all signals. Liquidates positions no longer in signals.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Allocation</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/equal.html#EqualWeightPortfolioBuilder.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.framework.portfolio_builder">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modular_trader.framework.portfolio_builder" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.BasePortfolioBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.portfolio_builder.</span></span><span class="sig-name descname"><span class="pre">BasePortfolioBuilder</span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/base.html#BasePortfolioBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.BasePortfolioBuilder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for portfolio builders.</p>
+<p>This class defines the interface for all portfolio builders.</p>
+<p>The <cite>__call__</cite> method is called by the framework to build the portfolio.
+It is expected to clear the current allocations and add the new allocations.</p>
+<p>The <cite>run</cite> method is called by <cite>__call__</cite> to build the portfolio.
+It is expected to return an iterable of <cite>Allocation</cite> objects.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.BasePortfolioBuilder.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Allocation</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/base.html#BasePortfolioBuilder.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.BasePortfolioBuilder.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.EqualWeightPortfolioBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.portfolio_builder.</span></span><span class="sig-name descname"><span class="pre">EqualWeightPortfolioBuilder</span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/equal.html#EqualWeightPortfolioBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.EqualWeightPortfolioBuilder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" title="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePortfolioBuilder</span></code></a></p>
+<p>Assigns equal weight to all signals. Liquidates positions no longer in signals.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.portfolio_builder.EqualWeightPortfolioBuilder.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Allocation</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/modular_trader/framework/portfolio_builder/equal.html#EqualWeightPortfolioBuilder.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.framework.portfolio_builder.EqualWeightPortfolioBuilder.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -448,9 +506,31 @@ document.write(`
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-trader-framework-portfolio-builder-base-module">modular_trader.framework.portfolio_builder.base module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-trader-framework-portfolio-builder-equal-module">modular_trader.framework.portfolio_builder.equal module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.framework.portfolio_builder.base">modular_trader.framework.portfolio_builder.base module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder"><code class="docutils literal notranslate"><span class="pre">BasePortfolioBuilder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder.run"><code class="docutils literal notranslate"><span class="pre">BasePortfolioBuilder.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.framework.portfolio_builder.equal">modular_trader.framework.portfolio_builder.equal module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder"><code class="docutils literal notranslate"><span class="pre">EqualWeightPortfolioBuilder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder.run"><code class="docutils literal notranslate"><span class="pre">EqualWeightPortfolioBuilder.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.framework.portfolio_builder">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.BasePortfolioBuilder"><code class="docutils literal notranslate"><span class="pre">BasePortfolioBuilder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.BasePortfolioBuilder.run"><code class="docutils literal notranslate"><span class="pre">BasePortfolioBuilder.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.EqualWeightPortfolioBuilder"><code class="docutils literal notranslate"><span class="pre">EqualWeightPortfolioBuilder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.portfolio_builder.EqualWeightPortfolioBuilder.run"><code class="docutils literal notranslate"><span class="pre">EqualWeightPortfolioBuilder.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

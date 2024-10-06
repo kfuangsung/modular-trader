@@ -384,14 +384,298 @@ document.write(`
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="modular-trader-trader-alpaca-module">
-<h2>modular_trader.trader.alpaca module<a class="headerlink" href="#modular-trader-trader-alpaca-module" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.trader.alpaca">
+<span id="modular-trader-trader-alpaca-module"></span><h2>modular_trader.trader.alpaca module<a class="headerlink" href="#module-modular_trader.trader.alpaca" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.trader.alpaca.</span></span><span class="sig-name descname"><span class="pre">AlpacaTrader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine" title="modular_trader.engine.alpaca.AlpacaEngine"><span class="pre">AlpacaEngine</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">framework</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection" title="modular_trader.framework.collection.FrameworkCollection"><span class="pre">FrameworkCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subscription_symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AlpacaIndicatorHandler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Context(universe=AssetUniverse(universe=set(),</span> <span class="pre">added=set(),</span> <span class="pre">removed=set()),</span> <span class="pre">signals=SignalCollection(signals=[]),</span> <span class="pre">allocations=AllocationCollection(allocations=[]),</span> <span class="pre">indicators=None,</span> <span class="pre">engine=None,</span> <span class="pre">latest_prices={})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.record.Recorder" title="modular_trader.record.Recorder"><span class="pre">Recorder</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Recorder(record={},</span> <span class="pre">save_path=PosixPath('/github/home/.framework_trader/record.json'))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_log_heartbeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#modular_trader.trader.base.BaseTrader" title="modular_trader.trader.base.BaseTrader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrader</span></code></a></p>
+<p>A trader class that uses Alpaca as the engine.</p>
+<p>This class is responsible for setting up the subscriptions, and handling the
+trade updates, minute bars, and daily bars.</p>
+<dl>
+<dt>Attributes:</dt><dd><p>engine (AlpacaEngine): The Alpaca engine instance.
+framework (FrameworkCollection): The framework instance.
+subscription_symbols (list[str]): The symbols to subscribe to.
+indicator (AlpacaIndicatorHandler | None): The indicator handler instance.
+context (Context | None): The context instance.
+recorder (Recorder | None): The recorder instance.
+is_log_heartbeat (bool): Whether to log heartbeats.
+daily_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the</p>
+<blockquote>
+<div><p>daily bar heartbeat.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>minute_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the</dt><dd><p>minute bar heartbeat.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.get_historical_data">
+<span class="sig-name descname"><span class="pre">get_historical_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.get_historical_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.get_historical_data" title="Link to this definition">#</a></dt>
+<dd><p>Get the historical data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>symbols (list[str]): The symbols for which to get the historical data.
+length (int): The length of the historical data.
+frequency (Frequency): The frequency of the historical data.
+delay (bool): Whether to delay the request if it fails.</p>
+</dd>
+<dt>Returns:</dt><dd><p>pd.DataFrame: The historical data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_days_in_year">
+<span class="sig-name descname"><span class="pre">get_n_trading_days_in_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AssetClass</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.get_n_trading_days_in_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_days_in_year" title="Link to this definition">#</a></dt>
+<dd><p>Get the number of trading days in a year for the given asset class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asset_class (AssetClass): The asset class.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int | float: The number of trading days in a year.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_minutes_in_day">
+<span class="sig-name descname"><span class="pre">get_n_trading_minutes_in_day</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AssetClass</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.get_n_trading_minutes_in_day"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_minutes_in_day" title="Link to this definition">#</a></dt>
+<dd><p>Get the number of trading minutes in a day for the given asset class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asset_class (AssetClass): The asset class.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int | float: The number of trading minutes in a day.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.handle_daily_bars">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_daily_bars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.handle_daily_bars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.handle_daily_bars" title="Link to this definition">#</a></dt>
+<dd><p>Handle daily bars.</p>
+<p>This method will log the daily bar and record the status of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.handle_minute_bars">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_minute_bars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.handle_minute_bars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.handle_minute_bars" title="Link to this definition">#</a></dt>
+<dd><p>Handle minute bars.</p>
+<p>This method will log the minute bar and record the status of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.handle_trade_update">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_trade_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.handle_trade_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.handle_trade_update" title="Link to this definition">#</a></dt>
+<dd><p>Handle trade updates.</p>
+<p>This method will log the trade update and record the status of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.init_subscription">
+<span class="sig-name descname"><span class="pre">init_subscription</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.init_subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.init_subscription" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the subscriptions.</p>
+<p>This method will set up the subscriptions for the symbols in the
+<cite>subscription_symbols</cite> attribute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.record_status">
+<span class="sig-name descname"><span class="pre">record_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.record_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.record_status" title="Link to this definition">#</a></dt>
+<dd><p>Record the status of the trader.</p>
+<p>This method will record the positions, indicators, and other relevant
+information of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.alpaca.AlpacaTrader.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.alpaca.AlpacaTrader.run" title="Link to this definition">#</a></dt>
+<dd><p>Run the trader.</p>
+<p>This method will start the engine and set up the subscriptions.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="modular-trader-trader-base-module">
-<h2>modular_trader.trader.base module<a class="headerlink" href="#modular-trader-trader-base-module" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.trader.base">
+<span id="modular-trader-trader-base-module"></span><h2>modular_trader.trader.base module<a class="headerlink" href="#module-modular_trader.trader.base" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.trader.base.</span></span><span class="sig-name descname"><span class="pre">BaseTrader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.base.BaseEngine" title="modular_trader.engine.base.BaseEngine"><span class="pre">BaseEngine</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">framework</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection" title="modular_trader.framework.collection.FrameworkCollection"><span class="pre">FrameworkCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseIndicatorHandler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.record.Recorder" title="modular_trader.record.Recorder"><span class="pre">Recorder</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/trader/base.html#BaseTrader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.base.BaseTrader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for traders.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>engine (BaseEngine): The engine to use for running the backtest.
+framework (FrameworkCollection): The framework to use for running the backtest.
+indicator (BaseIndicatorHandler | None): The indicator to use for running the backtest.
+context (Context): The context to use for running the backtest.
+recorder (Recorder): The recorder to use for running the backtest.</p>
+</dd>
+<dt>Properties:</dt><dd><p>logger (BaseLogger): The logger to use for logging.</p>
+</dd>
+<dt>Methods:</dt><dd><dl class="simple">
+<dt>run ():</dt><dd><p>Runs the backtest.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.logger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.logger" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/trader/base.html#BaseTrader.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.trader">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modular_trader.trader" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.trader.</span></span><span class="sig-name descname"><span class="pre">AlpacaTrader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine" title="modular_trader.engine.alpaca.AlpacaEngine"><span class="pre">AlpacaEngine</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">framework</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection" title="modular_trader.framework.collection.FrameworkCollection"><span class="pre">FrameworkCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subscription_symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AlpacaIndicatorHandler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Context(universe=AssetUniverse(universe=set(),</span> <span class="pre">added=set(),</span> <span class="pre">removed=set()),</span> <span class="pre">signals=SignalCollection(signals=[]),</span> <span class="pre">allocations=AllocationCollection(allocations=[]),</span> <span class="pre">indicators=None,</span> <span class="pre">engine=None,</span> <span class="pre">latest_prices={})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.record.Recorder" title="modular_trader.record.Recorder"><span class="pre">Recorder</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Recorder(record={},</span> <span class="pre">save_path=PosixPath('/github/home/.framework_trader/record.json'))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_log_heartbeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#modular_trader.trader.base.BaseTrader" title="modular_trader.trader.base.BaseTrader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrader</span></code></a></p>
+<p>A trader class that uses Alpaca as the engine.</p>
+<p>This class is responsible for setting up the subscriptions, and handling the
+trade updates, minute bars, and daily bars.</p>
+<dl>
+<dt>Attributes:</dt><dd><p>engine (AlpacaEngine): The Alpaca engine instance.
+framework (FrameworkCollection): The framework instance.
+subscription_symbols (list[str]): The symbols to subscribe to.
+indicator (AlpacaIndicatorHandler | None): The indicator handler instance.
+context (Context | None): The context instance.
+recorder (Recorder | None): The recorder instance.
+is_log_heartbeat (bool): Whether to log heartbeats.
+daily_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the</p>
+<blockquote>
+<div><p>daily bar heartbeat.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>minute_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the</dt><dd><p>minute bar heartbeat.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.get_historical_data">
+<span class="sig-name descname"><span class="pre">get_historical_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.get_historical_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.get_historical_data" title="Link to this definition">#</a></dt>
+<dd><p>Get the historical data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>symbols (list[str]): The symbols for which to get the historical data.
+length (int): The length of the historical data.
+frequency (Frequency): The frequency of the historical data.
+delay (bool): Whether to delay the request if it fails.</p>
+</dd>
+<dt>Returns:</dt><dd><p>pd.DataFrame: The historical data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.get_n_trading_days_in_year">
+<span class="sig-name descname"><span class="pre">get_n_trading_days_in_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AssetClass</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.get_n_trading_days_in_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.get_n_trading_days_in_year" title="Link to this definition">#</a></dt>
+<dd><p>Get the number of trading days in a year for the given asset class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asset_class (AssetClass): The asset class.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int | float: The number of trading days in a year.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.get_n_trading_minutes_in_day">
+<span class="sig-name descname"><span class="pre">get_n_trading_minutes_in_day</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AssetClass</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.get_n_trading_minutes_in_day"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.get_n_trading_minutes_in_day" title="Link to this definition">#</a></dt>
+<dd><p>Get the number of trading minutes in a day for the given asset class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asset_class (AssetClass): The asset class.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int | float: The number of trading minutes in a day.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.handle_daily_bars">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_daily_bars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.handle_daily_bars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.handle_daily_bars" title="Link to this definition">#</a></dt>
+<dd><p>Handle daily bars.</p>
+<p>This method will log the daily bar and record the status of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.handle_minute_bars">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_minute_bars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.handle_minute_bars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.handle_minute_bars" title="Link to this definition">#</a></dt>
+<dd><p>Handle minute bars.</p>
+<p>This method will log the minute bar and record the status of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.handle_trade_update">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_trade_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.handle_trade_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.handle_trade_update" title="Link to this definition">#</a></dt>
+<dd><p>Handle trade updates.</p>
+<p>This method will log the trade update and record the status of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.init_subscription">
+<span class="sig-name descname"><span class="pre">init_subscription</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.init_subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.init_subscription" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the subscriptions.</p>
+<p>This method will set up the subscriptions for the symbols in the
+<cite>subscription_symbols</cite> attribute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.record_status">
+<span class="sig-name descname"><span class="pre">record_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.record_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.record_status" title="Link to this definition">#</a></dt>
+<dd><p>Record the status of the trader.</p>
+<p>This method will record the positions, indicators, and other relevant
+information of the trader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.AlpacaTrader.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/trader/alpaca.html#AlpacaTrader.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.AlpacaTrader.run" title="Link to this definition">#</a></dt>
+<dd><p>Run the trader.</p>
+<p>This method will start the engine and set up the subscriptions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.trader.BaseTrader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.trader.</span></span><span class="sig-name descname"><span class="pre">BaseTrader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.base.BaseEngine" title="modular_trader.engine.base.BaseEngine"><span class="pre">BaseEngine</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">framework</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection" title="modular_trader.framework.collection.FrameworkCollection"><span class="pre">FrameworkCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseIndicatorHandler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.html#modular_trader.record.Recorder" title="modular_trader.record.Recorder"><span class="pre">Recorder</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/trader/base.html#BaseTrader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.BaseTrader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for traders.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>engine (BaseEngine): The engine to use for running the backtest.
+framework (FrameworkCollection): The framework to use for running the backtest.
+indicator (BaseIndicatorHandler | None): The indicator to use for running the backtest.
+context (Context): The context to use for running the backtest.
+recorder (Recorder): The recorder to use for running the backtest.</p>
+</dd>
+<dt>Properties:</dt><dd><p>logger (BaseLogger): The logger to use for logging.</p>
+</dd>
+<dt>Methods:</dt><dd><dl class="simple">
+<dt>run ():</dt><dd><p>Runs the backtest.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="modular_trader.trader.BaseTrader.logger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#modular_trader.trader.BaseTrader.logger" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.BaseTrader.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/trader/base.html#BaseTrader.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.trader.BaseTrader.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -433,9 +717,49 @@ document.write(`
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-trader-trader-alpaca-module">modular_trader.trader.alpaca module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-trader-trader-base-module">modular_trader.trader.base module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.trader.alpaca">modular_trader.trader.alpaca module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.get_historical_data"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.get_historical_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_days_in_year"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.get_n_trading_days_in_year()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_minutes_in_day"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.get_n_trading_minutes_in_day()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.handle_daily_bars"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.handle_daily_bars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.handle_minute_bars"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.handle_minute_bars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.handle_trade_update"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.handle_trade_update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.init_subscription"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.init_subscription()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.record_status"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.record_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.alpaca.AlpacaTrader.run"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.trader.base">modular_trader.trader.base module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader"><code class="docutils literal notranslate"><span class="pre">BaseTrader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.logger"><code class="docutils literal notranslate"><span class="pre">BaseTrader.logger</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.run"><code class="docutils literal notranslate"><span class="pre">BaseTrader.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.trader">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.get_historical_data"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.get_historical_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.get_n_trading_days_in_year"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.get_n_trading_days_in_year()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.get_n_trading_minutes_in_day"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.get_n_trading_minutes_in_day()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.handle_daily_bars"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.handle_daily_bars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.handle_minute_bars"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.handle_minute_bars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.handle_trade_update"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.handle_trade_update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.init_subscription"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.init_subscription()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.record_status"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.record_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.AlpacaTrader.run"><code class="docutils literal notranslate"><span class="pre">AlpacaTrader.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.BaseTrader"><code class="docutils literal notranslate"><span class="pre">BaseTrader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.BaseTrader.logger"><code class="docutils literal notranslate"><span class="pre">BaseTrader.logger</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.BaseTrader.run"><code class="docutils literal notranslate"><span class="pre">BaseTrader.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

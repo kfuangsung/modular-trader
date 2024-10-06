@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>modular_trader.trader.alpaca &#8212; modular-trader 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/modular_trader/trader/alpaca';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">modular-trader 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/kfuangsung/modular-trader" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/kfuangsung/modular-trader" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">modular_trad...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for modular_trader.trader.alpaca</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">pendulum</span>
+<span class="kn">from</span> <span class="nn">alpaca.common.exceptions</span> <span class="kn">import</span> <span class="n">APIError</span>
+<span class="kn">from</span> <span class="nn">alpaca.data.enums</span> <span class="kn">import</span> <span class="n">Adjustment</span>
+<span class="kn">from</span> <span class="nn">alpaca.data.timeframe</span> <span class="kn">import</span> <span class="n">TimeFrame</span>
+<span class="kn">from</span> <span class="nn">alpaca.trading.enums</span> <span class="kn">import</span> <span class="n">AssetClass</span>
+
+<span class="kn">from</span> <span class="nn">modular_trader.context</span> <span class="kn">import</span> <span class="n">Context</span>
+<span class="kn">from</span> <span class="nn">modular_trader.engine.alpaca</span> <span class="kn">import</span> <span class="n">AlpacaEngine</span>
+<span class="kn">from</span> <span class="nn">modular_trader.framework.collection</span> <span class="kn">import</span> <span class="n">FrameworkCollection</span>
+<span class="kn">from</span> <span class="nn">modular_trader.indicator.handler.alpaca</span> <span class="kn">import</span> <span class="n">AlpacaIndicatorHandler</span><span class="p">,</span> <span class="n">Frequency</span>
+<span class="kn">from</span> <span class="nn">modular_trader.record</span> <span class="kn">import</span> <span class="n">Recorder</span>
+
+<span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">BaseTrader</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<div class="viewcode-block" id="AlpacaTrader">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader">[docs]</a>
+<span class="k">class</span> <span class="nc">AlpacaTrader</span><span class="p">(</span><span class="n">BaseTrader</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A trader class that uses Alpaca as the engine.</span>
+
+<span class="sd">    This class is responsible for setting up the subscriptions, and handling the</span>
+<span class="sd">    trade updates, minute bars, and daily bars.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        engine (AlpacaEngine): The Alpaca engine instance.</span>
+<span class="sd">        framework (FrameworkCollection): The framework instance.</span>
+<span class="sd">        subscription_symbols (list[str]): The symbols to subscribe to.</span>
+<span class="sd">        indicator (AlpacaIndicatorHandler | None): The indicator handler instance.</span>
+<span class="sd">        context (Context | None): The context instance.</span>
+<span class="sd">        recorder (Recorder | None): The recorder instance.</span>
+<span class="sd">        is_log_heartbeat (bool): Whether to log heartbeats.</span>
+<span class="sd">        daily_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the</span>
+<span class="sd">            daily bar heartbeat.</span>
+<span class="sd">        minute_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the</span>
+<span class="sd">            minute bar heartbeat.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">engine</span><span class="p">:</span> <span class="n">AlpacaEngine</span><span class="p">,</span>
+        <span class="n">framework</span><span class="p">:</span> <span class="n">FrameworkCollection</span><span class="p">,</span>
+        <span class="n">subscription_symbols</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">indicator</span><span class="p">:</span> <span class="n">AlpacaIndicatorHandler</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">Context</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(),</span>
+        <span class="n">recorder</span><span class="p">:</span> <span class="n">Recorder</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Recorder</span><span class="p">(),</span>
+        <span class="n">is_log_heartbeat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">framework</span><span class="p">,</span> <span class="n">indicator</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">recorder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_log_heartbeat</span> <span class="o">=</span> <span class="n">is_log_heartbeat</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscription_symbols</span> <span class="o">=</span> <span class="n">subscription_symbols</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daily_bar_heartbeat_timestamp</span> <span class="o">=</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+            <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minute_bar_heartbeat_timestamp</span> <span class="o">=</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+            <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="AlpacaTrader.run">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Run the trader.</span>
+
+<span class="sd">        This method will start the engine and set up the subscriptions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_subscription</span><span class="p">()</span>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">streaming</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="AlpacaTrader.init_subscription">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.init_subscription">[docs]</a>
+    <span class="k">def</span> <span class="nf">init_subscription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the subscriptions.</span>
+
+<span class="sd">        This method will set up the subscriptions for the symbols in the</span>
+<span class="sd">        `subscription_symbols` attribute.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Setting up subscriptions&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">subscribe_trade_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_trade_update</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">subscribe_minute_bars</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle_minute_bars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subscription_symbols</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">subscribe_daily_bars</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle_daily_bars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subscription_symbols</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Finised setting up subscriptions&quot;</span><span class="p">)</span></div>
+
+
+    <span class="c1"># def manage_subscription(self, universe: AssetUniverse):</span>
+    <span class="c1">#     # sub/unsubscribe during runtime ?</span>
+    <span class="c1">#     if len(universe.added) &gt; 0:</span>
+    <span class="c1">#         self.engine.subscribe_minute_bars(self.handle_minute_bars, universe.added)</span>
+    <span class="c1">#         self.engine.subscribe_daily_bars(self.handle_daily_bars, universe.added)</span>
+
+    <span class="c1">#     if len(universe.removed) &gt; 0:</span>
+    <span class="c1">#         self.engine.unsubscribe_minute_bars(*universe.removed)</span>
+    <span class="c1">#         self.engine.unsubscribe_daily_bars(*universe.removed)</span>
+
+<div class="viewcode-block" id="AlpacaTrader.record_status">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.record_status">[docs]</a>
+    <span class="k">def</span> <span class="nf">record_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Record the status of the trader.</span>
+
+<span class="sd">        This method will record the positions, indicators, and other relevant</span>
+<span class="sd">        information of the trader.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="p">[</span><span class="s2">&quot;positions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">get_positions_serialize</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">attached_indicators</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="p">[</span><span class="s2">&quot;indicators&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">attached_indicators</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recorder</span><span class="o">.</span><span class="n">save_to_disk</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AlpacaTrader.handle_trade_update">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.handle_trade_update">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_trade_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle trade updates.</span>
+
+<span class="sd">        This method will log the trade update and record the status of the trader.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">event</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">side</span><span class="si">}</span><span class="s2">`</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">symbol</span><span class="si">}</span><span class="s2">` @</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">qty</span><span class="si">}</span><span class="s2"> | position_qty: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">position_qty</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">record_status</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AlpacaTrader.handle_minute_bars">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.handle_minute_bars">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_minute_bars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bar</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle minute bars.</span>
+
+<span class="sd">        This method will log the minute bar and record the status of the trader.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute_bar_heartbeat_timestamp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bar</span><span class="o">.</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> | minute bars | heartbeat&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">minute_bar_heartbeat_timestamp</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">minute_bar_heartbeat_timestamp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">frequency</span> <span class="o">==</span> <span class="n">Frequency</span><span class="o">.</span><span class="n">MINUTE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">record_status</span><span class="p">()</span></div>
+
+
+        <span class="c1"># for sym, ind in self.indicator.attached_indicators.items():</span>
+        <span class="c1">#     self.logger.debug(sym)</span>
+        <span class="c1">#     for x in ind.values():</span>
+        <span class="c1">#         self.logger.debug(x)</span>
+
+<div class="viewcode-block" id="AlpacaTrader.handle_daily_bars">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.handle_daily_bars">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_daily_bars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bar</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle daily bars.</span>
+
+<span class="sd">        This method will log the daily bar and record the status of the trader.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">daily_bar_heartbeat_timestamp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bar</span><span class="o">.</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> | daily bars | heartbeat&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">daily_bar_heartbeat_timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">daily_bar_heartbeat_timestamp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+                <span class="n">hours</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">framework</span><span class="o">.</span><span class="n">asset_selection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+        <span class="c1"># self.manage_subscription(self.context.universe)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">init_indicator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">universe</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">is_warmup</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Warming up indicator&quot;</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_historical_data</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">warmup_length</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">warmup</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">frequency</span> <span class="o">==</span> <span class="n">Frequency</span><span class="o">.</span><span class="n">DAY</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indicator</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">framework</span><span class="o">.</span><span class="n">signal_generation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">universe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framework</span><span class="o">.</span><span class="n">portfolio_builder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">signals</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framework</span><span class="o">.</span><span class="n">risk_management</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">allocations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framework</span><span class="o">.</span><span class="n">order_execution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">allocations</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AlpacaTrader.get_n_trading_days_in_year">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_days_in_year">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_n_trading_days_in_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">asset_class</span><span class="p">:</span> <span class="n">AssetClass</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the number of trading days in a year for the given asset class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            asset_class (AssetClass): The asset class.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int | float: The number of trading days in a year.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">match</span> <span class="n">asset_class</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">AssetClass</span><span class="o">.</span><span class="n">US_EQUITY</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">252</span>
+            <span class="k">case</span> <span class="n">AssetClass</span><span class="o">.</span><span class="n">CRYPTO</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mf">365.25</span>
+            <span class="k">case</span> <span class="n">AssetClass</span><span class="o">.</span><span class="n">US_OPTION</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">252</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid asset class: </span><span class="si">{</span><span class="n">asset_class</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AlpacaTrader.get_n_trading_minutes_in_day">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.get_n_trading_minutes_in_day">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_n_trading_minutes_in_day</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">asset_class</span><span class="p">:</span> <span class="n">AssetClass</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the number of trading minutes in a day for the given asset class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            asset_class (AssetClass): The asset class.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int | float: The number of trading minutes in a day.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">match</span> <span class="n">asset_class</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">AssetClass</span><span class="o">.</span><span class="n">US_EQUITY</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mf">6.5</span> <span class="o">*</span> <span class="mi">60</span>
+            <span class="k">case</span> <span class="n">AssetClass</span><span class="o">.</span><span class="n">CRYPTO</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span>
+            <span class="k">case</span> <span class="n">AssetClass</span><span class="o">.</span><span class="n">US_OPTION</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mf">6.5</span> <span class="o">*</span> <span class="mi">60</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid asset class: </span><span class="si">{</span><span class="n">asset_class</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AlpacaTrader.get_historical_data">
+<a class="viewcode-back" href="../../../modular_trader.trader.html#modular_trader.trader.alpaca.AlpacaTrader.get_historical_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_historical_data</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="n">Frequency</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the historical data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            symbols (list[str]): The symbols for which to get the historical data.</span>
+<span class="sd">            length (int): The length of the historical data.</span>
+<span class="sd">            frequency (Frequency): The frequency of the historical data.</span>
+<span class="sd">            delay (bool): Whether to delay the request if it fails.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: The historical data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">end</span><span class="p">:</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">DateTime</span> <span class="o">=</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">delay</span><span class="p">:</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+        <span class="k">match</span> <span class="n">frequency</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">Frequency</span><span class="o">.</span><span class="n">MINUTE</span><span class="p">:</span>
+                <span class="n">n_min_per_day</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_n_trading_minutes_in_day</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">asset_class</span>
+                <span class="p">)</span>
+                <span class="n">n_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">length</span> <span class="o">/</span> <span class="n">n_min_per_day</span><span class="p">)</span>
+                <span class="n">start</span><span class="p">:</span> <span class="n">pendulum</span><span class="o">.</span><span class="n">DateTime</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">n_days</span><span class="p">)</span>
+                <span class="n">timeframe</span><span class="p">:</span> <span class="n">TimeFrame</span> <span class="o">=</span> <span class="n">TimeFrame</span><span class="o">.</span><span class="n">Minute</span>
+            <span class="k">case</span> <span class="n">Frequency</span><span class="o">.</span><span class="n">DAY</span><span class="p">:</span>
+                <span class="n">n_day_per_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_n_trading_days_in_year</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">asset_class</span>
+                <span class="p">)</span>
+                <span class="n">n_years</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">length</span> <span class="o">/</span> <span class="n">n_day_per_year</span><span class="p">)</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">n_years</span><span class="p">)</span>
+                <span class="n">timeframe</span><span class="p">:</span> <span class="n">TimeFrame</span> <span class="o">=</span> <span class="n">TimeFrame</span><span class="o">.</span><span class="n">Day</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid frequency: </span><span class="si">{</span><span class="n">frequency</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">get_historical_data</span><span class="p">(</span>
+                <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span>
+                <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+                <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+                <span class="n">timeframe</span><span class="o">=</span><span class="n">timeframe</span><span class="p">,</span>
+                <span class="n">adjustment</span><span class="o">=</span><span class="n">Adjustment</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">APIError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">delay</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">_error</span><span class="si">}</span><span class="s2"> Try again with delay...&quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_historical_data</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, kfuangsung.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
