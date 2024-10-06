@@ -6,13 +6,13 @@
 
 
 <!-- ![logo](docs/source/modular-trader-logo.svg) -->
-![logo](https://raw.githubusercontent.com/kfuangsung/modular-trader/d39757b4481ff50e450e698683ac629b46267ef1/docs/source/modular-trader-logo.svg?token=AOCJEO3ZPL54P5DONG2RDXTHAH2UO)
+![logo](https://raw.githubusercontent.com/kfuangsung/modular-trader/refs/heads/main/docs/source/_static/modular-trader-logo.svg)
 
 
 
 ## About The Project
 <!-- ![flow](docs/source/modular-trader-flow.svg) -->
-![flow](https://raw.githubusercontent.com/kfuangsung/modular-trader/d39757b4481ff50e450e698683ac629b46267ef1/docs/source/modular-trader-flow.svg?token=AOCJEO2SPIUIUKAEIYBTXCLHAH2TU)
+![flow](https://raw.githubusercontent.com/kfuangsung/modular-trader/refs/heads/main/docs/source/_static/modular-trader-flow.svg)
 
 
 
