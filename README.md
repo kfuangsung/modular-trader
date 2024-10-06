@@ -5,10 +5,16 @@
 ![Pydantic Badge](https://img.shields.io/badge/Pydantic-E92063?logo=pydantic&logoColor=fff&style=for-the-badge)
 
 
-![logo](docs/source/modular-trader-logo.svg)
+<!-- ![logo](docs/source/modular-trader-logo.svg) -->
+![logo](https://raw.githubusercontent.com/kfuangsung/modular-trader/d39757b4481ff50e450e698683ac629b46267ef1/docs/source/modular-trader-logo.svg?token=AOCJEO3ZPL54P5DONG2RDXTHAH2UO)
+
+
 
 ## About The Project
-![flow](docs/source/modular-trader-flow.svg)
+<!-- ![flow](docs/source/modular-trader-flow.svg) -->
+![flow](https://raw.githubusercontent.com/kfuangsung/modular-trader/d39757b4481ff50e450e698683ac629b46267ef1/docs/source/modular-trader-flow.svg?token=AOCJEO2SPIUIUKAEIYBTXCLHAH2TU)
+
+
 
 Modular-trader is a algorithmic trading framework written in Python, designed with focus on modularity and flexibility. The framework provides solution as building blocks for live deployment of algorithmic trading, consists of five modules; Asset Selection, Signal Generation, Portfolio Builder, Order Execution and, Risk Management.
 
@@ -39,28 +45,60 @@ Modular-trader is a algorithmic trading framework written in Python, designed wi
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Documentation
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ## Getting Started
 
-### Prerequisites
-
 ### Installation
+```bash
+pip install modular-trader
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## Usage 
+```python
+from dotenv import load_dotenv
+from modular_trader.common.enums import TradingMode
+from modular_trader.engine import AlpacaEngine
+from modular_trader.framework import FrameworkCollection
+from modular_trader.framework.asset_selection import ManualAssetSelection
+from modular_trader.framework.order_execution import InstantOrderExecution
+from modular_trader.framework.portfolio_builder import EqualWeightPortfolioBuilder
+from modular_trader.framework.risk_management import NullRiskManagement
+from modular_trader.framework.signal_generation import ConstantSignalGeneration
+from modular_trader.trader import AlpacaTrader
+
+# set Alpaca Token  as environment variable
+# create `.env` file then add
+# ALPACA_API_KEY=xxxxxxxx
+# ALPACA_SECRET_KEY=xxxxxxx
+load_dotenv()
+
+# Equally weighted portfolio
+# with Instant rebalancing
+symbols = ["SPY", "QQQ", "GLD"]
+framework = FrameworkCollection(
+    asset_selection=ManualAssetSelection(symbols=symbols),
+    signal_generation=ConstantSignalGeneration(),
+    portfolio_builder=EqualWeightPortfolioBuilder(),
+    order_execution=InstantOrderExecution(),
+    risk_management=NullRiskManagement(),
+)
+
+# using Paper portfolio
+engine = AlpacaEngine(mode=TradingMode.PAPER)
+
+trader = AlpacaTrader(
+    engine=engine,
+    framework=framework,
+    subscription_symbols=symbols,
+)
+
+trader.run()
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Roadmap
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License 
 Distributed under the MIT License. See [`LICENSE`](https://github.com/kfuangsung/modular-trader/blob/main/LICENSE) for more information.
@@ -76,7 +114,7 @@ Modular-Trader is currently maintained by [kfuangsung](https://github.com/kfuang
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Acknowledgments
-
+- [alpaca-py](https://github.com/alpacahq/alpaca-py): An official Python SDK for Alpaca APIs.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
