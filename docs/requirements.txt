@@ -1,4 +1,4 @@
-sphinx-press-theme
+furo
 typing-extensions>=4.12.0
 alpaca-py>=0.28.0
 pydantic>=2.8.0
