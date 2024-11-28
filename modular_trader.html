@@ -16,24 +16,27 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=d45e8c67"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -45,6 +48,7 @@
     <link rel="prev" title="API" href="modules.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -60,19 +64,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -80,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -88,8 +80,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -156,29 +148,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -203,15 +187,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -230,7 +210,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -270,15 +251,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -347,8 +324,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -360,7 +335,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="modules.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">modular_trad...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">modular_trader package</span></li>
   </ul>
 </nav>
 </div>
@@ -410,9 +385,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.is_tradeable"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.is_tradeable()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.logger"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.logger</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.mode"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.mode</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.model_computed_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.model_config"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.model_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.model_fields"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.model_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.order_percent"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.order_percent()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.order_share"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.order_share()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.alpaca.AlpacaEngine.order_target_percent"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.order_target_percent()</span></code></a></li>
@@ -482,9 +455,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.is_tradeable"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.is_tradeable()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.logger"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.logger</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.mode"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.mode</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.model_computed_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.model_config"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.model_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.model_fields"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.model_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.order_percent"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.order_percent()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.order_share"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.order_share()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.AlpacaEngine.order_target_percent"><code class="docutils literal notranslate"><span class="pre">AlpacaEngine.order_target_percent()</span></code></a></li>
@@ -572,9 +543,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.html#module-modular_trader.framework.collection">modular_trader.framework.collection module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.asset_selection"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.asset_selection</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_computed_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.model_config"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.model_fields"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.order_execution"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.order_execution</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.portfolio_builder"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.portfolio_builder</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.collection.FrameworkCollection.risk_management"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.risk_management</span></code></a></li>
@@ -586,9 +555,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.html#module-modular_trader.framework">Module contents</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.asset_selection"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.asset_selection</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_computed_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.model_config"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.model_fields"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_fields</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.order_execution"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.order_execution</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.portfolio_builder"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.portfolio_builder</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection.risk_management"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.risk_management</span></code></a></li>
@@ -802,7 +769,7 @@ weight: The target weight of the asset in the portfolio.</p>
 <span id="modular-trader-context-module"></span><h2>modular_trader.context module<a class="headerlink" href="#module-modular_trader.context" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.context.Context">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.context.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseIndicatorHandler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.base.BaseEngine" title="modular_trader.engine.base.BaseEngine"><span class="pre">BaseEngine</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest_prices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/context.html#Context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.context.Context" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.context.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe:</span> <span class="pre">~modular_trader.universe.AssetUniverse</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals:</span> <span class="pre">~modular_trader.signal.SignalCollection</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations:</span> <span class="pre">~modular_trader.allocation.AllocationCollection</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators:</span> <span class="pre">~modular_trader.indicator.handler.base.BaseIndicatorHandler</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine:</span> <span class="pre">~modular_trader.engine.base.BaseEngine</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest_prices:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**extra_data:</span> <span class="pre">~typing.Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/context.html#Context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.context.Context" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
 <p>The framework context.</p>
 <dl class="simple">
@@ -840,23 +807,9 @@ latest_prices (Mapping[str, float]): The latest prices of all assets.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="modular_trader.context.Context.model_computed_fields">
-<span class="sig-name descname"><span class="pre">model_computed_fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ComputedFieldInfo</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#modular_trader.context.Context.model_computed_fields" title="Link to this definition">#</a></dt>
-<dd><p>A dictionary of computed field names and their corresponding <cite>ComputedFieldInfo</cite> objects.</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.model_config">
 <span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True,</span> <span class="pre">'extra':</span> <span class="pre">'allow'}</span></em><a class="headerlink" href="#modular_trader.context.Context.model_config" title="Link to this definition">#</a></dt>
 <dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="modular_trader.context.Context.model_fields">
-<span class="sig-name descname"><span class="pre">model_fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FieldInfo</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'allocations':</span> <span class="pre">FieldInfo(annotation=AllocationCollection,</span> <span class="pre">required=False,</span> <span class="pre">default_factory=AllocationCollection),</span> <span class="pre">'engine':</span> <span class="pre">FieldInfo(annotation=Union[BaseEngine,</span> <span class="pre">NoneType],</span> <span class="pre">required=False,</span> <span class="pre">default=None),</span> <span class="pre">'indicators':</span> <span class="pre">FieldInfo(annotation=Union[BaseIndicatorHandler,</span> <span class="pre">NoneType],</span> <span class="pre">required=False,</span> <span class="pre">default=None),</span> <span class="pre">'latest_prices':</span> <span class="pre">FieldInfo(annotation=Mapping[str,</span> <span class="pre">float],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=dict),</span> <span class="pre">'signals':</span> <span class="pre">FieldInfo(annotation=SignalCollection,</span> <span class="pre">required=False,</span> <span class="pre">default_factory=SignalCollection),</span> <span class="pre">'universe':</span> <span class="pre">FieldInfo(annotation=AssetUniverse,</span> <span class="pre">required=False,</span> <span class="pre">default_factory=AssetUniverse)}</span></em><a class="headerlink" href="#modular_trader.context.Context.model_fields" title="Link to this definition">#</a></dt>
-<dd><p>Metadata about the fields defined on the model,
-mapping of field names to [<cite>FieldInfo</cite>][pydantic.fields.FieldInfo] objects.</p>
-<p>This replaces <cite>Model.__fields__</cite> from Pydantic V1.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1189,7 +1142,8 @@ updated.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1230,9 +1184,7 @@ updated.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.indicators"><code class="docutils literal notranslate"><span class="pre">Context.indicators</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.latest_prices"><code class="docutils literal notranslate"><span class="pre">Context.latest_prices</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.logger"><code class="docutils literal notranslate"><span class="pre">Context.logger</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Context.model_computed_fields</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.model_config"><code class="docutils literal notranslate"><span class="pre">Context.model_config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.model_fields"><code class="docutils literal notranslate"><span class="pre">Context.model_fields</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.signals"><code class="docutils literal notranslate"><span class="pre">Context.signals</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.universe"><code class="docutils literal notranslate"><span class="pre">Context.universe</span></code></a></li>
 </ul>
@@ -1312,8 +1264,8 @@ updated.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1346,7 +1298,7 @@ updated.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
 </p></div>
       
     </div>
