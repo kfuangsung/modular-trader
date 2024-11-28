@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import enum
 import warnings
+
+# from datetime import datetime
 from typing import TYPE_CHECKING, Generator, Mapping
 
+import pendulum
 from benedict import benedict
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
@@ -17,6 +20,8 @@ if TYPE_CHECKING:
     from alpaca.data.models.bars import Bar
 
     from modular_trader.universe import AssetUniverse
+
+STALE_DURATION = pendulum.duration(hours=1)
 
 
 class Frequency(enum.Enum):
@@ -82,6 +87,15 @@ class AlpacaIndicatorHandler(BaseIndicatorHandler):
             BaseIndicator: The next indicator.
         """
         return (x for x in self.indicators)
+
+    # def is_stale(self, curr_time: datetime) -> bool:
+    #     return all(
+    #         (
+    #             (pendulum.instance(curr_time) - pendulum.instance(indicator.time))
+    #             >= STALE_DURATION
+    #         )
+    #         for indicator in self._attached_indicators.flatten().values()
+    #     )
 
     @property
     def is_warmup(self) -> bool:

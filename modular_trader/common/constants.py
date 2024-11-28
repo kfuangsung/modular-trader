@@ -2,7 +2,7 @@ import os
 import pathlib
 
 HOME: os.PathLike = pathlib.Path.home()
-DEFAULT_DIR_NAME: str = ".framework_trader"
+DEFAULT_DIR_NAME: str = ".modular_trader_log"
 DEFAULT_DIR_PATH: os.PathLike = HOME.joinpath(DEFAULT_DIR_NAME)
 DEFAULT_CONFIG_FILE: str = "config.json"
 DEFAULT_LOG_FILE: str = "trader.log"

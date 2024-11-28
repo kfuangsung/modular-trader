@@ -21,6 +21,8 @@ from .base import BaseTrader
 if TYPE_CHECKING:
     import pandas as pd
 
+MAXIMUM_DELAY = pendulum.duration(days=1)
+
 
 class AlpacaTrader(BaseTrader):
     """
@@ -161,7 +163,7 @@ class AlpacaTrader(BaseTrader):
         # self.manage_subscription(self.context.universe)
         if self.indicator:
             self.indicator.init_indicator(self.context.universe)
-        if not self.indicator.is_warmup:
+        if not self.indicator.is_warmup:  # or self.indicator.is_stale(pendulum.now()):
             self.logger.debug("Warming up indicator")
             data: pd.DataFrame = self.get_historical_data(
                 self.indicator.symbols,
@@ -219,7 +221,11 @@ class AlpacaTrader(BaseTrader):
                 raise ValueError(f"Invalid asset class: {asset_class}")
 
     def get_historical_data(
-        self, symbols: list[str], length: int, frequency: Frequency, delay: bool = False
+        self,
+        symbols: list[str],
+        length: int,
+        frequency: Frequency,
+        delay: pendulum.Duration = pendulum.duration(minutes=0),
     ) -> pd.DataFrame:
         """
         Get the historical data.
@@ -235,7 +241,7 @@ class AlpacaTrader(BaseTrader):
         """
         end: pendulum.DateTime = pendulum.now()
         if delay:
-            end = end.subtract(minutes=15)
+            end -= delay
 
         match frequency:
             case Frequency.MINUTE:
@@ -264,11 +270,18 @@ class AlpacaTrader(BaseTrader):
                 adjustment=Adjustment.ALL,
             )
         except APIError as e:
-            if not delay:
+            if delay <= MAXIMUM_DELAY:
+                if delay is not None and delay > pendulum.duration(minutes=0):
+                    # twice delay time
+                    delay *= 2
+                else:
+                    # begin with 15-minute delay
+                    delay = pendulum.duration(minutes=15)
+
                 self.logger.error(
-                    f"{e.__class__.__name__}: {e._error} Try again with delay..."
+                    f"{e.__class__.__name__}: {e._error} Try again with delay({delay})..."
                 )
-                return self.get_historical_data(symbols, length, frequency, True)
+                return self.get_historical_data(symbols, length, frequency, delay)
             else:
                 raise e
 

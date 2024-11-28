@@ -110,6 +110,12 @@ class BaseIndicator(ABC):
             return
         return self.output_values[-1]
 
+    @property
+    def time(self) -> datetime:
+        return (
+            self.input_values[-1].time if len(self.input_values) > 0 else datetime.min
+        )
+
     @cache_size.setter
     def cache_size(self, value):
         """

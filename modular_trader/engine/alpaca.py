@@ -367,12 +367,12 @@ class AlpacaEngine(BaseEngine, BaseModel):
         match self.asset_class:
             case AssetClass.US_EQUITY:
                 request_params = StockLatestBarRequest(
-                    symbol_or_symbols=symbol, feed=self.feed
+                    symbol_or_symbols=symbol,  # feed=self.feed
                 )
                 return self._data_client.get_stock_latest_bar(request_params)
             case AssetClass.CRYPTO:
                 request_params = CryptoLatestBarRequest(
-                    symbol_or_symbols=symbol, feed=self.feed
+                    symbol_or_symbols=symbol,  # feed=self.feed
                 )
                 return self._data_client.get_crypto_latest_bar(request_params)
             case AssetClass.US_OPTION:
@@ -431,7 +431,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
                     end=end,
                     timeframe=timeframe,
                     adjustment=adjustment,
-                    feed=self.feed,
+                    # feed=self.feed,
                     **kwargs,
                 )
                 bars = self._data_client.get_stock_bars(request_params)
@@ -880,7 +880,7 @@ class AlpacaEngine(BaseEngine, BaseModel):
         Notes:
             The callback will be passed the Bar object as an argument.
         """
-        
+
         self._data_stream.subscribe_bars(handler, *symbols)
 
     def subscribe_daily_bars(
