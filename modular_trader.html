@@ -1,361 +1,133 @@
-
 <!DOCTYPE html>
-
-
-<html lang="en" data-content_root="./" >
-
+<html  lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>modular_trader package &#8212; modular-trader 0.0.1 documentation</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
+      <title>modular_trader package</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=e3a6060d"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 
-    </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
-
-    <script src="_static/documentation_options.js?v=d45e8c67"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'modular_trader';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="modular_trader.engine package" href="modular_trader.engine.html" />
-    <link rel="prev" title="API" href="modules.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="modular_trader.engine package" href="modular_trader.engine.html" />
+  <link rel="prev" title="API" href="modules.html" /> 
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
     
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-<div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
-    <span class="fa-solid fa-bars"></span>
-  </button>
-  
-  
-  <div class="col-lg-3 navbar-header-items__start">
+      <span class="site-name">modular-trader</span>
     
-      <div class="navbar-item">
+  </router-link>
 
-  
-    
-  
+  <div class="links">
+    <navlinks class="can-hide">
 
-<a class="navbar-brand logo" href="index.html">
-  
-  
-  
-  
-  
-  
-    <p class="title logo__title">modular-trader 0.0.1 documentation</p>
-  
-</a></div>
-    
+
+
+    </navlinks>
   </div>
-  
-  <div class="col-lg-9 navbar-header-items">
-    
-    <div class="me-auto navbar-header-items__center">
+</navbar>
+
       
-        <div class="navbar-item">
-<nav>
-  <ul class="bd-navbar-elements navbar-nav">
-    
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="usage.html">
-    Usage
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    API
-  </a>
-</li>
-
-  </ul>
-</nav></div>
-      
-    </div>
-    
-    
-    <div class="navbar-header-items__end">
-      
-        <div class="navbar-item navbar-persistent--container">
-          
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button>
-        </div>
-      
-      
-        <div class="navbar-item">
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
-      
-        <div class="navbar-item"><ul class="navbar-icon-links"
-    aria-label="Icon Links">
-        <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://github.com/kfuangsung/modular-trader" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
-        </li>
-</ul></div>
-      
-    </div>
-    
-  </div>
-  
-  
-    <div class="navbar-persistent--mobile">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button>
-    </div>
-  
-
-  
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
-      <span class="fa-solid fa-outdent"></span>
-    </button>
-  
-</div>
-
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-      <div class="sidebar-header-items__center">
-        
-          
-          
-            <div class="navbar-item">
-<nav>
-  <ul class="bd-navbar-elements navbar-nav">
-    
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="usage.html">
-    Usage
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    API
-  </a>
-</li>
-
-  </ul>
-</nav></div>
-          
-        
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
       </div>
-    
-    
-    
-      <div class="sidebar-header-items__end">
-        
-          <div class="navbar-item">
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
-        
-          <div class="navbar-item"><ul class="navbar-icon-links"
-    aria-label="Icon Links">
-        <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://github.com/kfuangsung/modular-trader" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
-        </li>
-</ul></div>
-        
-      </div>
-    
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
   </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">modular_trader package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="modular_trader.engine.html">modular_trader.engine package</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="modular_trader.framework.html">modular_trader.framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.asset_selection.html">modular_trader.framework.asset_selection package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.order_execution.html">modular_trader.framework.order_execution package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.portfolio_builder.html">modular_trader.framework.portfolio_builder package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.risk_management.html">modular_trader.framework.risk_management package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.html">modular_trader.framework.signal_generation package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2"><a class="reference internal" href="modular_trader.logging.html">modular_trader.logging package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modular_trader.trader.html">modular_trader.trader package</a></li>
-</ul>
-</details></li>
-</ul>
-</div>
-</nav></div>
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#modular-trader-documentation">Contents:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="usage.html" class="reference internal ">Usage</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="modules.html" class="reference internal ">API</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
     </div>
   
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+</div>
+        </sidebar>
 
-
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
   
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item">
-
-<nav aria-label="Breadcrumb" class="d-print-none">
-  <ul class="bd-breadcrumbs">
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
     
-    <li class="breadcrumb-item breadcrumb-home">
-      <a href="index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
-      </a>
-    </li>
+      <li><a href="modules.html">API</a> &raquo;</li>
     
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">API</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">modular_trader package</span></li>
+    <li>modular_trader package</li>
   </ul>
-</nav>
-</div>
-      
-    </div>
   
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="modules.html"
+       title="previous chapter">← API</a>
+  </li>
+  <li class="next">
+    <a href="modular_trader.engine.html"
+       title="next chapter">modular_trader.engine package →</a>
+  </li>
+</ul>
   
 </div>
-</div>
-              
-              
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+<hr>
+          <div class="content" role="main" v-pre>
+            
   <section id="modular-trader-package">
-<h1>modular_trader package<a class="headerlink" href="#modular-trader-package" title="Link to this heading">#</a></h1>
+<h1>modular_trader package<a class="headerlink" href="#modular-trader-package" title="Link to this heading">¶</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modular_trader.engine.html">modular_trader.engine package</a><ul>
@@ -666,13 +438,13 @@
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-modular_trader.allocation">
-<span id="modular-trader-allocation-module"></span><h2>modular_trader.allocation module<a class="headerlink" href="#module-modular_trader.allocation" title="Link to this heading">#</a></h2>
+<span id="modular-trader-allocation-module"></span><h2>modular_trader.allocation module<a class="headerlink" href="#module-modular_trader.allocation" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationAdjustment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.allocation.</span></span><span class="sig-name descname"><span class="pre">AllocationAdjustment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationAdjustment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationAdjustment" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.allocation.</span></span><span class="sig-name descname"><span class="pre">AllocationAdjustment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationAdjustment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationAdjustment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Adjust allocation by a given weight.</p>
 <p>For example, 5% will increase allocation by 5%, while -2% will decrease
@@ -684,19 +456,19 @@ weight: The amount to increase or decrease the allocation by.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationAdjustment.symbol">
-<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationAdjustment.symbol" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationAdjustment.symbol" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationAdjustment.weight">
-<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationAdjustment.weight" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationAdjustment.weight" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationCollection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.allocation.</span></span><span class="sig-name descname"><span class="pre">AllocationCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allocations:</span> <span class="pre">list[~modular_trader.allocation.AllocationTarget</span> <span class="pre">|</span> <span class="pre">~modular_trader.allocation.AllocationAdjustment]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.allocation.</span></span><span class="sig-name descname"><span class="pre">AllocationCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allocations:</span> <span class="pre">list[~modular_trader.allocation.AllocationTarget</span> <span class="pre">|</span> <span class="pre">~modular_trader.allocation.AllocationAdjustment]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A collection of allocations.</p>
 <dl class="simple">
@@ -705,7 +477,7 @@ weight: The amount to increase or decrease the allocation by.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationCollection.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.allocation.AllocationTarget" title="modular_trader.allocation.AllocationTarget"><span class="pre">AllocationTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationAdjustment" title="modular_trader.allocation.AllocationAdjustment"><span class="pre">AllocationAdjustment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.allocation.AllocationTarget" title="modular_trader.allocation.AllocationTarget"><span class="pre">AllocationTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationAdjustment" title="modular_trader.allocation.AllocationAdjustment"><span class="pre">AllocationAdjustment</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.add" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.allocation.AllocationTarget" title="modular_trader.allocation.AllocationTarget"><span class="pre">AllocationTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationAdjustment" title="modular_trader.allocation.AllocationAdjustment"><span class="pre">AllocationAdjustment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.allocation.AllocationTarget" title="modular_trader.allocation.AllocationTarget"><span class="pre">AllocationTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationAdjustment" title="modular_trader.allocation.AllocationAdjustment"><span class="pre">AllocationAdjustment</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.add" title="Link to this definition">¶</a></dt>
 <dd><p>Add one or more allocations to the collection.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>allocations: The allocation(s) to add.</p>
@@ -715,18 +487,18 @@ weight: The amount to increase or decrease the allocation by.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationCollection.allocations">
-<span class="sig-name descname"><span class="pre">allocations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.allocation.AllocationTarget" title="modular_trader.allocation.AllocationTarget"><span class="pre">AllocationTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationAdjustment" title="modular_trader.allocation.AllocationAdjustment"><span class="pre">AllocationAdjustment</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=list[Union[AllocationTarget,</span> <span class="pre">AllocationAdjustment]],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=list)</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.allocations" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">allocations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.allocation.AllocationTarget" title="modular_trader.allocation.AllocationTarget"><span class="pre">AllocationTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationAdjustment" title="modular_trader.allocation.AllocationAdjustment"><span class="pre">AllocationAdjustment</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=list[Union[AllocationTarget,</span> <span class="pre">AllocationAdjustment]],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=list)</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.allocations" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationCollection.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.clear" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.clear" title="Link to this definition">¶</a></dt>
 <dd><p>Clear all allocations.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationCollection.remove_symbol">
-<span class="sig-name descname"><span class="pre">remove_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection.remove_symbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.remove_symbol" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remove_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationCollection.remove_symbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.remove_symbol" title="Link to this definition">¶</a></dt>
 <dd><p>Remove all allocations with the given symbol.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>symbol: The symbol to remove.</p>
@@ -736,7 +508,7 @@ weight: The amount to increase or decrease the allocation by.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationCollection.symbols">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">symbols</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.symbols" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">symbols</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#modular_trader.allocation.AllocationCollection.symbols" title="Link to this definition">¶</a></dt>
 <dd><p>Return all symbols in the collection.</p>
 </dd></dl>
 
@@ -744,7 +516,7 @@ weight: The amount to increase or decrease the allocation by.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationTarget">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.allocation.</span></span><span class="sig-name descname"><span class="pre">AllocationTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationTarget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationTarget" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.allocation.</span></span><span class="sig-name descname"><span class="pre">AllocationTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/allocation.html#AllocationTarget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.allocation.AllocationTarget" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A target allocation of a single asset.</p>
 <dl class="simple">
@@ -754,22 +526,22 @@ weight: The target weight of the asset in the portfolio.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationTarget.symbol">
-<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationTarget.symbol" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationTarget.symbol" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.allocation.AllocationTarget.weight">
-<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationTarget.weight" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#modular_trader.allocation.AllocationTarget.weight" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-modular_trader.context">
-<span id="modular-trader-context-module"></span><h2>modular_trader.context module<a class="headerlink" href="#module-modular_trader.context" title="Link to this heading">#</a></h2>
+<span id="modular-trader-context-module"></span><h2>modular_trader.context module<a class="headerlink" href="#module-modular_trader.context" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.context.Context">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.context.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe:</span> <span class="pre">~modular_trader.universe.AssetUniverse</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals:</span> <span class="pre">~modular_trader.signal.SignalCollection</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations:</span> <span class="pre">~modular_trader.allocation.AllocationCollection</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators:</span> <span class="pre">~modular_trader.indicator.handler.base.BaseIndicatorHandler</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine:</span> <span class="pre">~modular_trader.engine.base.BaseEngine</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest_prices:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**extra_data:</span> <span class="pre">~typing.Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/context.html#Context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.context.Context" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.context.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe:</span> <span class="pre">~modular_trader.universe.AssetUniverse</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals:</span> <span class="pre">~modular_trader.signal.SignalCollection</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations:</span> <span class="pre">~modular_trader.allocation.AllocationCollection</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators:</span> <span class="pre">~modular_trader.indicator.handler.base.BaseIndicatorHandler</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine:</span> <span class="pre">~modular_trader.engine.base.BaseEngine</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest_prices:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**extra_data:</span> <span class="pre">~typing.Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/context.html#Context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.context.Context" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
 <p>The framework context.</p>
 <dl class="simple">
@@ -783,53 +555,53 @@ latest_prices (Mapping[str, float]): The latest prices of all assets.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.allocations">
-<span class="sig-name descname"><span class="pre">allocations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></em><a class="headerlink" href="#modular_trader.context.Context.allocations" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">allocations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></em><a class="headerlink" href="#modular_trader.context.Context.allocations" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.engine">
-<span class="sig-name descname"><span class="pre">engine</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.base.BaseEngine" title="modular_trader.engine.base.BaseEngine"><span class="pre">BaseEngine</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#modular_trader.context.Context.engine" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">engine</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.base.BaseEngine" title="modular_trader.engine.base.BaseEngine"><span class="pre">BaseEngine</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#modular_trader.context.Context.engine" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.indicators">
-<span class="sig-name descname"><span class="pre">indicators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">BaseIndicatorHandler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#modular_trader.context.Context.indicators" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">indicators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">BaseIndicatorHandler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#modular_trader.context.Context.indicators" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.latest_prices">
-<span class="sig-name descname"><span class="pre">latest_prices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#modular_trader.context.Context.latest_prices" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">latest_prices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#modular_trader.context.Context.latest_prices" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="modular_trader.context.Context.logger">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#modular_trader.context.Context.logger" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#modular_trader.context.Context.logger" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True,</span> <span class="pre">'extra':</span> <span class="pre">'allow'}</span></em><a class="headerlink" href="#modular_trader.context.Context.model_config" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True,</span> <span class="pre">'extra':</span> <span class="pre">'allow'}</span></em><a class="headerlink" href="#modular_trader.context.Context.model_config" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.signals">
-<span class="sig-name descname"><span class="pre">signals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></em><a class="headerlink" href="#modular_trader.context.Context.signals" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">signals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.signal.SignalCollection" title="modular_trader.signal.SignalCollection"><span class="pre">SignalCollection</span></a></em><a class="headerlink" href="#modular_trader.context.Context.signals" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.context.Context.universe">
-<span class="sig-name descname"><span class="pre">universe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></em><a class="headerlink" href="#modular_trader.context.Context.universe" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">universe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></em><a class="headerlink" href="#modular_trader.context.Context.universe" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-modular_trader.record">
-<span id="modular-trader-record-module"></span><h2>modular_trader.record module<a class="headerlink" href="#module-modular_trader.record" title="Link to this heading">#</a></h2>
+<span id="modular-trader-record-module"></span><h2>modular_trader.record module<a class="headerlink" href="#module-modular_trader.record" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.record.Recorder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.record.</span></span><span class="sig-name descname"><span class="pre">Recorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record:</span> <span class="pre">~typing.Mapping[~typing.Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path:</span> <span class="pre">~os.PathLike</span> <span class="pre">=</span> <span class="pre">PosixPath('/github/home/.framework_trader/record.json')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/record.html#Recorder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.record.Recorder" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.record.</span></span><span class="sig-name descname"><span class="pre">Recorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record:</span> <span class="pre">~typing.Mapping[~typing.Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path:</span> <span class="pre">~os.PathLike</span> <span class="pre">=</span> <span class="pre">PosixPath('/github/home/.modular_trader_log/record.json')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/record.html#Recorder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.record.Recorder" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Recorder to store and save data to disk.</p>
 <dl class="simple">
@@ -839,17 +611,17 @@ save_path: Path to save the data to.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.record.Recorder.record">
-<span class="sig-name descname"><span class="pre">record</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=Mapping[Any,</span> <span class="pre">Any],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=benedict)</span></em><a class="headerlink" href="#modular_trader.record.Recorder.record" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">record</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=Mapping[Any,</span> <span class="pre">Any],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=benedict)</span></em><a class="headerlink" href="#modular_trader.record.Recorder.record" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.record.Recorder.save_path">
-<span class="sig-name descname"><span class="pre">save_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PathLike</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/github/home/.framework_trader/record.json')</span></em><a class="headerlink" href="#modular_trader.record.Recorder.save_path" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PathLike</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/github/home/.modular_trader_log/record.json')</span></em><a class="headerlink" href="#modular_trader.record.Recorder.save_path" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.record.Recorder.save_to_disk">
-<span class="sig-name descname"><span class="pre">save_to_disk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/record.html#Recorder.save_to_disk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.record.Recorder.save_to_disk" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_to_disk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/record.html#Recorder.save_to_disk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.record.Recorder.save_to_disk" title="Link to this definition">¶</a></dt>
 <dd><p>Save the record to disk.</p>
 </dd></dl>
 
@@ -857,10 +629,10 @@ save_path: Path to save the data to.</p>
 
 </section>
 <section id="module-modular_trader.signal">
-<span id="modular-trader-signal-module"></span><h2>modular_trader.signal module<a class="headerlink" href="#module-modular_trader.signal" title="Link to this heading">#</a></h2>
+<span id="modular-trader-signal-module"></span><h2>modular_trader.signal module<a class="headerlink" href="#module-modular_trader.signal" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.signal.Signal">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">Signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/signal.html#Signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.Signal" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">Signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/signal.html#Signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.Signal" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A signal.</p>
 <p>A signal is an object that contains information about a trading signal.
@@ -869,19 +641,19 @@ The signal is defined by the following attributes:
 - <cite>direction</cite>: The direction of the signal.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.signal.Signal.direction">
-<span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></em><a class="headerlink" href="#modular_trader.signal.Signal.direction" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></em><a class="headerlink" href="#modular_trader.signal.Signal.direction" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.signal.Signal.symbol">
-<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.signal.Signal.symbol" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.signal.Signal.symbol" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalCollection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">SignalCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals:</span> <span class="pre">list[~modular_trader.signal.Signal]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalCollection" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">SignalCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals:</span> <span class="pre">list[~modular_trader.signal.Signal]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalCollection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A collection of signals.</p>
 <p>This class represents a collection of trading signals.
@@ -889,7 +661,7 @@ It contains the following attributes:
 - <cite>signals</cite>: A list of Signal objects.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalCollection.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalCollection.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalCollection.add" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalCollection.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalCollection.add" title="Link to this definition">¶</a></dt>
 <dd><p>Add a signal or signals to the collection.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>signals: A signal or an iterable of signals.</p>
@@ -899,20 +671,20 @@ It contains the following attributes:
 
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalCollection.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalCollection.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalCollection.clear" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalCollection.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalCollection.clear" title="Link to this definition">¶</a></dt>
 <dd><p>Clear the collection of signals.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalCollection.signals">
-<span class="sig-name descname"><span class="pre">signals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=list[Signal],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=list)</span></em><a class="headerlink" href="#modular_trader.signal.SignalCollection.signals" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">signals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=list[Signal],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=list)</span></em><a class="headerlink" href="#modular_trader.signal.SignalCollection.signals" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalDirection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">SignalDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalDirection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalDirection" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">SignalDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/signal.html#SignalDirection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.signal.SignalDirection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>The direction of a signal.</p>
 <p>This enum defines the possible directions of a signal.
@@ -922,27 +694,27 @@ The direction can be one of the following values:
 - <cite>FLAT</cite>: The signal is indicating no position.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalDirection.DOWN">
-<span class="sig-name descname"><span class="pre">DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.DOWN" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.DOWN" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalDirection.FLAT">
-<span class="sig-name descname"><span class="pre">FLAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.FLAT" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">FLAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.FLAT" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.signal.SignalDirection.UP">
-<span class="sig-name descname"><span class="pre">UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.UP" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.UP" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-modular_trader.time">
-<span id="modular-trader-time-module"></span><h2>modular_trader.time module<a class="headerlink" href="#module-modular_trader.time" title="Link to this heading">#</a></h2>
+<span id="modular-trader-time-module"></span><h2>modular_trader.time module<a class="headerlink" href="#module-modular_trader.time" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="modular_trader.time.future">
-<span class="sig-prename descclassname"><span class="pre">modular_trader.time.</span></span><span class="sig-name descname"><span class="pre">future</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">months</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weeks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timezone</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DateTime</span></span></span><a class="reference internal" href="_modules/modular_trader/time.html#future"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.time.future" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">modular_trader.time.</span></span><span class="sig-name descname"><span class="pre">future</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">months</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weeks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timezone</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DateTime</span></span></span><a class="reference internal" href="_modules/modular_trader/time.html#future"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.time.future" title="Link to this definition">¶</a></dt>
 <dd><p>Return a datetime in the future.</p>
 <p>The returned datetime is the result of adding the given duration to the current
 datetime. The duration can be specified in years, months, weeks, days, hours,
@@ -970,12 +742,12 @@ current datetime.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="modular_trader.time.now">
-<span class="sig-prename descclassname"><span class="pre">modular_trader.time.</span></span><span class="sig-name descname"><span class="pre">now</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Timezone</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DateTime</span></span></span><a class="reference internal" href="_modules/modular_trader/time.html#now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.time.now" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">modular_trader.time.</span></span><span class="sig-name descname"><span class="pre">now</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Timezone</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DateTime</span></span></span><a class="reference internal" href="_modules/modular_trader/time.html#now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.time.now" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="modular_trader.time.past">
-<span class="sig-prename descclassname"><span class="pre">modular_trader.time.</span></span><span class="sig-name descname"><span class="pre">past</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">months</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weeks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timezone</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DateTime</span></span></span><a class="reference internal" href="_modules/modular_trader/time.html#past"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.time.past" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">modular_trader.time.</span></span><span class="sig-name descname"><span class="pre">past</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">months</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weeks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microseconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timezone</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DateTime</span></span></span><a class="reference internal" href="_modules/modular_trader/time.html#past"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.time.past" title="Link to this definition">¶</a></dt>
 <dd><p>Return a datetime in the past.</p>
 <p>The returned datetime is the result of subtracting the given duration from the
 current datetime. The duration can be specified in years, months, weeks, days,
@@ -1003,10 +775,10 @@ the current datetime.</p>
 
 </section>
 <section id="module-modular_trader.universe">
-<span id="modular-trader-universe-module"></span><h2>modular_trader.universe module<a class="headerlink" href="#module-modular_trader.universe" title="Link to this heading">#</a></h2>
+<span id="modular-trader-universe-module"></span><h2>modular_trader.universe module<a class="headerlink" href="#module-modular_trader.universe" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.universe.</span></span><span class="sig-name descname"><span class="pre">AssetUniverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">universe:</span> <span class="pre">set[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">added:</span> <span class="pre">set[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removed:</span> <span class="pre">set[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.universe.</span></span><span class="sig-name descname"><span class="pre">AssetUniverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">universe:</span> <span class="pre">set[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">added:</span> <span class="pre">set[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removed:</span> <span class="pre">set[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Manage the dynamic list of assets in the strategy universe.</p>
 <dl class="simple">
@@ -1022,7 +794,7 @@ the current datetime.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse.add" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse.add" title="Link to this definition">¶</a></dt>
 <dd><p>Add a single asset to the universe.</p>
 <blockquote>
 <div><p>If the asset is not already in the universe, it is added and the added
@@ -1047,12 +819,12 @@ is not updated.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse.added">
-<span class="sig-name descname"><span class="pre">added</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=set[str],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=set)</span></em><a class="headerlink" href="#modular_trader.universe.AssetUniverse.added" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">added</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=set[str],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=set)</span></em><a class="headerlink" href="#modular_trader.universe.AssetUniverse.added" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse.remove" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse.remove" title="Link to this definition">¶</a></dt>
 <dd><p>Remove a single asset from the universe.</p>
 <blockquote>
 <div><p>If the asset is in the universe, it is removed and the removed set is
@@ -1077,17 +849,17 @@ updated.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse.removed">
-<span class="sig-name descname"><span class="pre">removed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=set[str],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=set)</span></em><a class="headerlink" href="#modular_trader.universe.AssetUniverse.removed" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">removed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=set[str],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=set)</span></em><a class="headerlink" href="#modular_trader.universe.AssetUniverse.removed" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse.universe">
-<span class="sig-name descname"><span class="pre">universe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=set[str],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=set)</span></em><a class="headerlink" href="#modular_trader.universe.AssetUniverse.universe" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">universe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=set[str],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=set)</span></em><a class="headerlink" href="#modular_trader.universe.AssetUniverse.universe" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="modular_trader.universe.AssetUniverse.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse.update" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/modular_trader/universe.html#AssetUniverse.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modular_trader.universe.AssetUniverse.update" title="Link to this definition">¶</a></dt>
 <dd><p>Update the universe by adding and removing assets.</p>
 <p>The added and removed sets are cleared before updating the universe.</p>
 <dl class="simple">
@@ -1103,208 +875,32 @@ updated.</p>
 
 </section>
 <section id="module-modular_trader">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modular_trader" title="Link to this heading">#</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modular_trader" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
 
-                </article>
-              
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="modules.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="modular_trader.engine.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">modular_trader.engine package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.allocation">modular_trader.allocation module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationAdjustment"><code class="docutils literal notranslate"><span class="pre">AllocationAdjustment</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationAdjustment.symbol"><code class="docutils literal notranslate"><span class="pre">AllocationAdjustment.symbol</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationAdjustment.weight"><code class="docutils literal notranslate"><span class="pre">AllocationAdjustment.weight</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationCollection"><code class="docutils literal notranslate"><span class="pre">AllocationCollection</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationCollection.add"><code class="docutils literal notranslate"><span class="pre">AllocationCollection.add()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationCollection.allocations"><code class="docutils literal notranslate"><span class="pre">AllocationCollection.allocations</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationCollection.clear"><code class="docutils literal notranslate"><span class="pre">AllocationCollection.clear()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationCollection.remove_symbol"><code class="docutils literal notranslate"><span class="pre">AllocationCollection.remove_symbol()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationCollection.symbols"><code class="docutils literal notranslate"><span class="pre">AllocationCollection.symbols</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationTarget"><code class="docutils literal notranslate"><span class="pre">AllocationTarget</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationTarget.symbol"><code class="docutils literal notranslate"><span class="pre">AllocationTarget.symbol</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.allocation.AllocationTarget.weight"><code class="docutils literal notranslate"><span class="pre">AllocationTarget.weight</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.context">modular_trader.context module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.allocations"><code class="docutils literal notranslate"><span class="pre">Context.allocations</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.engine"><code class="docutils literal notranslate"><span class="pre">Context.engine</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.indicators"><code class="docutils literal notranslate"><span class="pre">Context.indicators</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.latest_prices"><code class="docutils literal notranslate"><span class="pre">Context.latest_prices</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.logger"><code class="docutils literal notranslate"><span class="pre">Context.logger</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.model_config"><code class="docutils literal notranslate"><span class="pre">Context.model_config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.signals"><code class="docutils literal notranslate"><span class="pre">Context.signals</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.context.Context.universe"><code class="docutils literal notranslate"><span class="pre">Context.universe</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.record">modular_trader.record module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder"><code class="docutils literal notranslate"><span class="pre">Recorder</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder.record"><code class="docutils literal notranslate"><span class="pre">Recorder.record</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder.save_path"><code class="docutils literal notranslate"><span class="pre">Recorder.save_path</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder.save_to_disk"><code class="docutils literal notranslate"><span class="pre">Recorder.save_to_disk()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.signal">modular_trader.signal module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.Signal"><code class="docutils literal notranslate"><span class="pre">Signal</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.Signal.direction"><code class="docutils literal notranslate"><span class="pre">Signal.direction</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.Signal.symbol"><code class="docutils literal notranslate"><span class="pre">Signal.symbol</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection"><code class="docutils literal notranslate"><span class="pre">SignalCollection</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection.add"><code class="docutils literal notranslate"><span class="pre">SignalCollection.add()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection.clear"><code class="docutils literal notranslate"><span class="pre">SignalCollection.clear()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection.signals"><code class="docutils literal notranslate"><span class="pre">SignalCollection.signals</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection"><code class="docutils literal notranslate"><span class="pre">SignalDirection</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection.DOWN"><code class="docutils literal notranslate"><span class="pre">SignalDirection.DOWN</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection.FLAT"><code class="docutils literal notranslate"><span class="pre">SignalDirection.FLAT</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection.UP"><code class="docutils literal notranslate"><span class="pre">SignalDirection.UP</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.time">modular_trader.time module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.time.future"><code class="docutils literal notranslate"><span class="pre">future()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.time.now"><code class="docutils literal notranslate"><span class="pre">now()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.time.past"><code class="docutils literal notranslate"><span class="pre">past()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.universe">modular_trader.universe module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse"><code class="docutils literal notranslate"><span class="pre">AssetUniverse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse.add"><code class="docutils literal notranslate"><span class="pre">AssetUniverse.add()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse.added"><code class="docutils literal notranslate"><span class="pre">AssetUniverse.added</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse.remove"><code class="docutils literal notranslate"><span class="pre">AssetUniverse.remove()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse.removed"><code class="docutils literal notranslate"><span class="pre">AssetUniverse.removed</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse.universe"><code class="docutils literal notranslate"><span class="pre">AssetUniverse.universe</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.universe.AssetUniverse.update"><code class="docutils literal notranslate"><span class="pre">AssetUniverse.update()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader">Module contents</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="_sources/modular_trader.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
-</div></div>
-              
-            
           </div>
-          <footer class="bd-footer-content">
-            
-          </footer>
-        
-      </main>
-    </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
-
-  <footer class="bd-footer">
-<div class="bd-footer__inner bd-page-width">
-  
-    <div class="footer-items__start">
-      
-        <div class="footer-item">
-
-  <p class="copyright">
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="modules.html"
+       title="previous chapter">← API</a>
+  </li>
+  <li class="next">
+    <a href="modular_trader.engine.html"
+       title="next chapter">modular_trader.engine package →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, kfuangsung.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
     
-      © Copyright 2024, kfuangsung.
-      <br/>
     
-  </p>
-</div>
-      
-        <div class="footer-item">
-
-  <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
-    <br/>
-  </p>
-</div>
-      
-    </div>
-  
-  
-  
-    <div class="footer-items__end">
-      
-        <div class="footer-item">
-<p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
-</p></div>
-      
-    </div>
-  
-</div>
-
-  </footer>
   </body>
 </html>
