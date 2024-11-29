@@ -389,8 +389,89 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-logging-trade-module">
-<h1>modular_trader.logging.trade module<a class="headerlink" href="#modular-trader-logging-trade-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.logging.trade">
+<span id="modular-trader-logging-trade-module"></span><h1>modular_trader.logging.trade module<a class="headerlink" href="#module-modular_trader.logging.trade" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.logging.trade.TradingLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.logging.trade.</span></span><span class="sig-name descname"><span class="pre">TradingLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger:</span> <span class="pre">~loguru._logger.Logger</span> <span class="pre">=</span> <span class="pre">&lt;loguru.logger</span> <span class="pre">handlers=[(id=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink=&lt;stderr&gt;)]&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">~os.PathLike</span> <span class="pre">=</span> <span class="pre">PosixPath('/home/runner/.modular_trader_log/trader.log')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation_size_mb:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retention_days:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.logging.trade.TradingLogger" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="modular_trader.logging.base.html#modular_trader.logging.base.BaseLogger" title="modular_trader.logging.base.BaseLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseLogger</span></code></a></p>
+<p>A logger that logs messages to a file.</p>
+<p>This logger logs messages to a file. The file will be rotated when it reaches a
+certain size, and old files will be deleted after a certain number of days.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.logging.trade.TradingLogger.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#modular_trader.logging.trade.TradingLogger.logger" title="Link to this definition">#</a></dt>
+<dd><p>The underlying logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.logging.trade.TradingLogger.file_path">
+<span class="sig-name descname"><span class="pre">file_path</span></span><a class="headerlink" href="#modular_trader.logging.trade.TradingLogger.file_path" title="Link to this definition">#</a></dt>
+<dd><p>The path to the log file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>os.PathLike</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.logging.trade.TradingLogger.rotation_size_mb">
+<span class="sig-name descname"><span class="pre">rotation_size_mb</span></span><a class="headerlink" href="#modular_trader.logging.trade.TradingLogger.rotation_size_mb" title="Link to this definition">#</a></dt>
+<dd><p>The maximum size of the log file before it is
+rotated. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the file will not be rotated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.logging.trade.TradingLogger.retention_days">
+<span class="sig-name descname"><span class="pre">retention_days</span></span><a class="headerlink" href="#modular_trader.logging.trade.TradingLogger.retention_days" title="Link to this definition">#</a></dt>
+<dd><p>The number of days to keep old log files. If
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, old files will not be deleted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initializes the logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logger</strong> (<em>loguru.Logger</em><em>, </em><em>optional</em>) – The logger to use. Defaults to loguru.logger.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">file_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PathLike</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/home/runner/.modular_trader_log/trader.log')</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Logger</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;loguru.logger</span> <span class="pre">handlers=[(id=0,</span> <span class="pre">level=10,</span> <span class="pre">sink=&lt;stderr&gt;)]&gt;</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">retention_days</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">rotation_size_mb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -431,6 +512,28 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.logging.trade.TradingLogger"><code class="docutils literal notranslate"><span class="pre">TradingLogger</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.logging.trade.TradingLogger.logger"><code class="docutils literal notranslate"><span class="pre">TradingLogger.logger</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.logging.trade.TradingLogger.file_path"><code class="docutils literal notranslate"><span class="pre">TradingLogger.file_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.logging.trade.TradingLogger.rotation_size_mb"><code class="docutils literal notranslate"><span class="pre">TradingLogger.rotation_size_mb</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.logging.trade.TradingLogger.retention_days"><code class="docutils literal notranslate"><span class="pre">TradingLogger.retention_days</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">TradingLogger.file_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">TradingLogger.logger</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">TradingLogger.retention_days</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">TradingLogger.rotation_size_mb</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

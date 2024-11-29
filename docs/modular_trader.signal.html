@@ -386,8 +386,88 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-signal-module">
-<h1>modular_trader.signal module<a class="headerlink" href="#modular-trader-signal-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.signal">
+<span id="modular-trader-signal-module"></span><h1>modular_trader.signal module<a class="headerlink" href="#module-modular_trader.signal" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.signal.Signal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">Signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.signal.Signal" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A signal.</p>
+<p>A signal is an object that contains information about a trading signal.
+The signal is defined by the following attributes:
+- <cite>symbol</cite>: The symbol of the asset.
+- <cite>direction</cite>: The direction of the signal.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.signal.Signal.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></em><a class="headerlink" href="#modular_trader.signal.Signal.direction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.signal.Signal.symbol">
+<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#modular_trader.signal.Signal.symbol" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">SignalCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals:</span> <span class="pre">list[~modular_trader.signal.Signal]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.signal.SignalCollection" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A collection of signals.</p>
+<p>This class represents a collection of trading signals.
+It contains the following attributes:
+- <cite>signals</cite>: A list of Signal objects.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalCollection.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#modular_trader.signal.SignalCollection.add" title="Link to this definition">#</a></dt>
+<dd><p>Add a signal or signals to the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>signals</strong> – A signal or an iterable of signals.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalCollection.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#modular_trader.signal.SignalCollection.clear" title="Link to this definition">#</a></dt>
+<dd><p>Clear the collection of signals.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalCollection.signals">
+<span class="sig-name descname"><span class="pre">signals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=list[Signal],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=list)</span></em><a class="headerlink" href="#modular_trader.signal.SignalCollection.signals" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalDirection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.signal.</span></span><span class="sig-name descname"><span class="pre">SignalDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.signal.SignalDirection" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>The direction of a signal.</p>
+<p>This enum defines the possible directions of a signal.
+The direction can be one of the following values:
+- <cite>UP</cite>: The signal is indicating a long position.
+- <cite>DOWN</cite>: The signal is indicating a short position.
+- <cite>FLAT</cite>: The signal is indicating no position.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalDirection.DOWN">
+<span class="sig-name descname"><span class="pre">DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.DOWN" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalDirection.FLAT">
+<span class="sig-name descname"><span class="pre">FLAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.FLAT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.signal.SignalDirection.UP">
+<span class="sig-name descname"><span class="pre">UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#modular_trader.signal.SignalDirection.UP" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -428,6 +508,34 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.Signal"><code class="docutils literal notranslate"><span class="pre">Signal</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.Signal.direction"><code class="docutils literal notranslate"><span class="pre">Signal.direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.Signal.symbol"><code class="docutils literal notranslate"><span class="pre">Signal.symbol</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection"><code class="docutils literal notranslate"><span class="pre">SignalCollection</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection.add"><code class="docutils literal notranslate"><span class="pre">SignalCollection.add()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection.clear"><code class="docutils literal notranslate"><span class="pre">SignalCollection.clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalCollection.signals"><code class="docutils literal notranslate"><span class="pre">SignalCollection.signals</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection"><code class="docutils literal notranslate"><span class="pre">SignalDirection</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection.DOWN"><code class="docutils literal notranslate"><span class="pre">SignalDirection.DOWN</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection.FLAT"><code class="docutils literal notranslate"><span class="pre">SignalDirection.FLAT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.signal.SignalDirection.UP"><code class="docutils literal notranslate"><span class="pre">SignalDirection.UP</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

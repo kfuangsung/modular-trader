@@ -392,8 +392,38 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-framework-signal-generation-constant-module">
-<h1>modular_trader.framework.signal_generation.constant module<a class="headerlink" href="#modular-trader-framework-signal-generation-constant-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.framework.signal_generation.constant">
+<span id="modular-trader-framework-signal-generation-constant-module"></span><h1>modular_trader.framework.signal_generation.constant module<a class="headerlink" href="#module-modular_trader.framework.signal_generation.constant" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.constant.ConstantSignalGeneration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.signal_generation.constant.</span></span><span class="sig-name descname"><span class="pre">ConstantSignalGeneration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SignalDirection.UP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" title="modular_trader.framework.signal_generation.base.BaseSignalGeneration"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSignalGeneration</span></code></a></p>
+<p>Constant signal generator.</p>
+<p>Generates a signal for each symbol in the universe with a constant direction.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.direction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.universe.html#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.run" title="Link to this definition">#</a></dt>
+<dd><p>Returns an iterable of constant signals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – Context</p></li>
+<li><p><strong>universe</strong> – AssetUniverse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An iterable of signals.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -434,6 +464,22 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.direction"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration.direction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

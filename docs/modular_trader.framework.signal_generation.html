@@ -395,14 +395,115 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html">modular_trader.framework.signal_generation.base module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.signal_generation.constant.html">modular_trader.framework.signal_generation.constant module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.signal_generation.null.html">modular_trader.framework.signal_generation.null module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html">modular_trader.framework.signal_generation.base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration.context"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration.context</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration.universe"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration.universe</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.signal_generation.constant.html">modular_trader.framework.signal_generation.constant module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.signal_generation.constant.html#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.constant.html#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.direction"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration.direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.constant.html#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.signal_generation.null.html">modular_trader.framework.signal_generation.null module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.signal_generation.null.html#modular_trader.framework.signal_generation.null.NullSignalGeneration"><code class="docutils literal notranslate"><span class="pre">NullSignalGeneration</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.signal_generation.null.html#modular_trader.framework.signal_generation.null.NullSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">NullSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.framework.signal_generation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modular_trader.framework.signal_generation" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.BaseSignalGeneration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.signal_generation.</span></span><span class="sig-name descname"><span class="pre">BaseSignalGeneration</span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.BaseSignalGeneration" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for signal generation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.BaseSignalGeneration.context">
+<span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.BaseSignalGeneration.context" title="Link to this definition">#</a></dt>
+<dd><p>Context
+The framework context.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.BaseSignalGeneration.universe">
+<span class="sig-name descname"><span class="pre">universe</span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.BaseSignalGeneration.universe" title="Link to this definition">#</a></dt>
+<dd><p>AssetUniverse
+The asset universe to generate signals for.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">run(context</span></span></dt>
+<dd><p>Context, universe: AssetUniverse) -&gt; Iterable[Signal]:
+Must be implemented by subclasses.
+Called by __call__() to generate signals.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.BaseSignalGeneration.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.universe.html#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.BaseSignalGeneration.run" title="Link to this definition">#</a></dt>
+<dd><p>Must be implemented by subclasses.</p>
+<p>Called by __call__() to generate signals.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.ConstantSignalGeneration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.signal_generation.</span></span><span class="sig-name descname"><span class="pre">ConstantSignalGeneration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SignalDirection.UP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.framework.signal_generation.ConstantSignalGeneration" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" title="modular_trader.framework.signal_generation.base.BaseSignalGeneration"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSignalGeneration</span></code></a></p>
+<p>Constant signal generator.</p>
+<p>Generates a signal for each symbol in the universe with a constant direction.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.ConstantSignalGeneration.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.SignalDirection" title="modular_trader.signal.SignalDirection"><span class="pre">SignalDirection</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#modular_trader.framework.signal_generation.ConstantSignalGeneration.direction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.ConstantSignalGeneration.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.universe.html#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="modular_trader.signal.html#modular_trader.signal.Signal" title="modular_trader.signal.Signal"><span class="pre">Signal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.ConstantSignalGeneration.run" title="Link to this definition">#</a></dt>
+<dd><p>Returns an iterable of constant signals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – Context</p></li>
+<li><p><strong>universe</strong> – AssetUniverse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An iterable of signals.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.NullSignalGeneration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.signal_generation.</span></span><span class="sig-name descname"><span class="pre">NullSignalGeneration</span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.NullSignalGeneration" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" title="modular_trader.framework.signal_generation.base.BaseSignalGeneration"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSignalGeneration</span></code></a></p>
+<p>Signal generation strategy that doesn’t generate any signals.</p>
+<p>This signal generation strategy is useful for testing or debugging purposes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.signal_generation.NullSignalGeneration.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">universe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.universe.html#modular_trader.universe.AssetUniverse" title="modular_trader.universe.AssetUniverse"><span class="pre">AssetUniverse</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#modular_trader.framework.signal_generation.NullSignalGeneration.run" title="Link to this definition">#</a></dt>
+<dd><p>Returns an empty iterable of signals.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -454,7 +555,24 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.framework.signal_generation">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.BaseSignalGeneration"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.BaseSignalGeneration.context"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration.context</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.BaseSignalGeneration.universe"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration.universe</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.BaseSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">BaseSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.ConstantSignalGeneration"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.ConstantSignalGeneration.direction"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration.direction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.ConstantSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">ConstantSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.NullSignalGeneration"><code class="docutils literal notranslate"><span class="pre">NullSignalGeneration</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.signal_generation.NullSignalGeneration.run"><code class="docutils literal notranslate"><span class="pre">NullSignalGeneration.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

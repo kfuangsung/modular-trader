@@ -389,8 +389,90 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-trader-base-module">
-<h1>modular_trader.trader.base module<a class="headerlink" href="#modular-trader-trader-base-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.trader.base">
+<span id="modular-trader-trader-base-module"></span><h1>modular_trader.trader.base module<a class="headerlink" href="#module-modular_trader.trader.base" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.trader.base.</span></span><span class="sig-name descname"><span class="pre">BaseTrader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.engine.base.html#modular_trader.engine.base.BaseEngine" title="modular_trader.engine.base.BaseEngine"><span class="pre">BaseEngine</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">framework</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.collection.html#modular_trader.framework.collection.FrameworkCollection" title="modular_trader.framework.collection.FrameworkCollection"><span class="pre">FrameworkCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseIndicatorHandler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.record.html#modular_trader.record.Recorder" title="modular_trader.record.Recorder"><span class="pre">Recorder</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for traders.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.engine" title="Link to this definition">#</a></dt>
+<dd><p>The engine to use for running the backtest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.engine.html#modular_trader.engine.BaseEngine" title="modular_trader.engine.BaseEngine">BaseEngine</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.framework">
+<span class="sig-name descname"><span class="pre">framework</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.framework" title="Link to this definition">#</a></dt>
+<dd><p>The framework to use for running the backtest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.framework.html#modular_trader.framework.FrameworkCollection" title="modular_trader.framework.FrameworkCollection">FrameworkCollection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.indicator">
+<span class="sig-name descname"><span class="pre">indicator</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.indicator" title="Link to this definition">#</a></dt>
+<dd><p>The indicator to use for running the backtest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BaseIndicatorHandler | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.context">
+<span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.context" title="Link to this definition">#</a></dt>
+<dd><p>The context to use for running the backtest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context">Context</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.recorder">
+<span class="sig-name descname"><span class="pre">recorder</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.recorder" title="Link to this definition">#</a></dt>
+<dd><p>The recorder to use for running the backtest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.record.html#modular_trader.record.Recorder" title="modular_trader.record.Recorder">Recorder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="simple">
+<dt>Properties:</dt><dd><p>logger (BaseLogger): The logger to use for logging.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.run" title="Link to this definition">#</a></dt>
+<dd><p>Runs the backtest.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="modular_trader.trader.base.BaseTrader.logger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#modular_trader.trader.base.BaseTrader.logger" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -431,6 +513,28 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader"><code class="docutils literal notranslate"><span class="pre">BaseTrader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.engine"><code class="docutils literal notranslate"><span class="pre">BaseTrader.engine</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.framework"><code class="docutils literal notranslate"><span class="pre">BaseTrader.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.indicator"><code class="docutils literal notranslate"><span class="pre">BaseTrader.indicator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.context"><code class="docutils literal notranslate"><span class="pre">BaseTrader.context</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.recorder"><code class="docutils literal notranslate"><span class="pre">BaseTrader.recorder</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.run"><code class="docutils literal notranslate"><span class="pre">BaseTrader.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.trader.base.BaseTrader.logger"><code class="docutils literal notranslate"><span class="pre">BaseTrader.logger</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">BaseTrader.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

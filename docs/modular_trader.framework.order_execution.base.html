@@ -392,8 +392,23 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-framework-order-execution-base-module">
-<h1>modular_trader.framework.order_execution.base module<a class="headerlink" href="#modular-trader-framework-order-execution-base-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.framework.order_execution.base">
+<span id="modular-trader-framework-order-execution-base-module"></span><h1>modular_trader.framework.order_execution.base module<a class="headerlink" href="#module-modular_trader.framework.order_execution.base" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.order_execution.base.BaseOrderExecution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.order_execution.base.</span></span><span class="sig-name descname"><span class="pre">BaseOrderExecution</span></span><a class="headerlink" href="#modular_trader.framework.order_execution.base.BaseOrderExecution" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for order execution strategies.</p>
+<p>Note that run() is called by __call__() and should not be called directly.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.order_execution.base.BaseOrderExecution.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#modular_trader.framework.order_execution.base.BaseOrderExecution.run" title="Link to this definition">#</a></dt>
+<dd><p>Execute orders from the given allocations.</p>
+<p>This method is called by __call__() and should not be called directly.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -434,6 +449,21 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.order_execution.base.BaseOrderExecution"><code class="docutils literal notranslate"><span class="pre">BaseOrderExecution</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.order_execution.base.BaseOrderExecution.run"><code class="docutils literal notranslate"><span class="pre">BaseOrderExecution.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

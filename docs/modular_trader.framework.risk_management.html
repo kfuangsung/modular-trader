@@ -395,14 +395,93 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.risk_management.base.html">modular_trader.framework.risk_management.base module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.risk_management.fixed.html">modular_trader.framework.risk_management.fixed module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.risk_management.null.html">modular_trader.framework.risk_management.null module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.risk_management.base.html">modular_trader.framework.risk_management.base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement"><code class="docutils literal notranslate"><span class="pre">BaseRiskManagement</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement.run"><code class="docutils literal notranslate"><span class="pre">BaseRiskManagement.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.risk_management.fixed.html">modular_trader.framework.risk_management.fixed module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.risk_management.fixed.html#modular_trader.framework.risk_management.fixed.FixedStopLossRiskManagement"><code class="docutils literal notranslate"><span class="pre">FixedStopLossRiskManagement</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.risk_management.fixed.html#modular_trader.framework.risk_management.fixed.FixedStopLossRiskManagement.percent_loss"><code class="docutils literal notranslate"><span class="pre">FixedStopLossRiskManagement.percent_loss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.risk_management.fixed.html#modular_trader.framework.risk_management.fixed.FixedStopLossRiskManagement.run"><code class="docutils literal notranslate"><span class="pre">FixedStopLossRiskManagement.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_trader.framework.risk_management.null.html">modular_trader.framework.risk_management.null module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_trader.framework.risk_management.null.html#modular_trader.framework.risk_management.null.NullRiskManagement"><code class="docutils literal notranslate"><span class="pre">NullRiskManagement</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_trader.framework.risk_management.null.html#modular_trader.framework.risk_management.null.NullRiskManagement.run"><code class="docutils literal notranslate"><span class="pre">NullRiskManagement.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-modular_trader.framework.risk_management">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-modular_trader.framework.risk_management" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.BaseRiskManagement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.risk_management.</span></span><span class="sig-name descname"><span class="pre">BaseRiskManagement</span></span><a class="headerlink" href="#modular_trader.framework.risk_management.BaseRiskManagement" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for risk management.</p>
+<p>This class defines the interface for all risk management strategies.</p>
+<p>The <cite>__call__</cite> method is called by the framework to apply the risk
+management strategy to the given allocations.</p>
+<p>The <cite>run</cite> method is called by <cite>__call__</cite> and should be implemented by
+subclasses to perform the actual risk management logic.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.BaseRiskManagement.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></span><a class="headerlink" href="#modular_trader.framework.risk_management.BaseRiskManagement.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.FixedStopLossRiskManagement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.risk_management.</span></span><span class="sig-name descname"><span class="pre">FixedStopLossRiskManagement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percent_loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.framework.risk_management.FixedStopLossRiskManagement" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement" title="modular_trader.framework.risk_management.base.BaseRiskManagement"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRiskManagement</span></code></a></p>
+<p>Fixed stop loss.</p>
+<p>Liquidate positions if unrealized loss percent &gt;= <cite>percent_loss</cite>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.FixedStopLossRiskManagement.percent_loss">
+<span class="sig-name descname"><span class="pre">percent_loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#modular_trader.framework.risk_management.FixedStopLossRiskManagement.percent_loss" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.FixedStopLossRiskManagement.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></span><a class="headerlink" href="#modular_trader.framework.risk_management.FixedStopLossRiskManagement.run" title="Link to this definition">#</a></dt>
+<dd><p>Liquidate positions if unrealized loss percent &gt;= <cite>percent_loss</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – The context to get the current positions from.</p></li>
+<li><p><strong>allocations</strong> – The allocations to modify.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified allocations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.NullRiskManagement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.risk_management.</span></span><span class="sig-name descname"><span class="pre">NullRiskManagement</span></span><a class="headerlink" href="#modular_trader.framework.risk_management.NullRiskManagement" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement" title="modular_trader.framework.risk_management.base.BaseRiskManagement"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseRiskManagement</span></code></a></p>
+<p>No-op risk management strategy.</p>
+<p>Leaves allocations unchanged.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.framework.risk_management.NullRiskManagement.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.context.html#modular_trader.context.Context" title="modular_trader.context.Context"><span class="pre">Context</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="modular_trader.allocation.html#modular_trader.allocation.AllocationCollection" title="modular_trader.allocation.AllocationCollection"><span class="pre">AllocationCollection</span></a></span></span><a class="headerlink" href="#modular_trader.framework.risk_management.NullRiskManagement.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -454,7 +533,22 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-modular_trader.framework.risk_management">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.BaseRiskManagement"><code class="docutils literal notranslate"><span class="pre">BaseRiskManagement</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.BaseRiskManagement.run"><code class="docutils literal notranslate"><span class="pre">BaseRiskManagement.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.FixedStopLossRiskManagement"><code class="docutils literal notranslate"><span class="pre">FixedStopLossRiskManagement</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.FixedStopLossRiskManagement.percent_loss"><code class="docutils literal notranslate"><span class="pre">FixedStopLossRiskManagement.percent_loss</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.FixedStopLossRiskManagement.run"><code class="docutils literal notranslate"><span class="pre">FixedStopLossRiskManagement.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.NullRiskManagement"><code class="docutils literal notranslate"><span class="pre">NullRiskManagement</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.risk_management.NullRiskManagement.run"><code class="docutils literal notranslate"><span class="pre">NullRiskManagement.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

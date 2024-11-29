@@ -389,8 +389,122 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-engine-base-module">
-<h1>modular_trader.engine.base module<a class="headerlink" href="#modular-trader-engine-base-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.engine.base">
+<span id="modular-trader-engine-base-module"></span><h1>modular_trader.engine.base module<a class="headerlink" href="#module-modular_trader.engine.base" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.engine.base.</span></span><span class="sig-name descname"><span class="pre">BaseEngine</span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.cancel_all_orders">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel_all_orders</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.cancel_all_orders" title="Link to this definition">#</a></dt>
+<dd><p>Cancel all active orders.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.cancel_orders">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel_orders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.cancel_orders" title="Link to this definition">#</a></dt>
+<dd><p>Cancel all active orders for a given symbol.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.close_all_positions">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_all_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.close_all_positions" title="Link to this definition">#</a></dt>
+<dd><p>Close all positions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.close_position">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.close_position" title="Link to this definition">#</a></dt>
+<dd><p>Close a position for a given symbol.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_cash">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_cash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_cash" title="Link to this definition">#</a></dt>
+<dd><p>Get remaining cash in the account</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_equity">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_equity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_equity" title="Link to this definition">#</a></dt>
+<dd><p>Get the current equity in the account</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_historical_data">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_historical_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_historical_data" title="Link to this definition">#</a></dt>
+<dd><p>Get the historical data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_logger">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_logger" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_name">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_name" title="Link to this definition">#</a></dt>
+<dd><p>Get the name of the engine</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_orders">
+<span class="sig-name descname"><span class="pre">get_orders</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_orders" title="Link to this definition">#</a></dt>
+<dd><p>Get all active orders.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.get_positions">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.get_positions" title="Link to this definition">#</a></dt>
+<dd><p>Get all positions held by the account</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.order_percent">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order_percent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.order_percent" title="Link to this definition">#</a></dt>
+<dd><p>Place an order in the specified asset corresponding to the given percent of the current portfolio value.
+percent is in decimal format; 0.5 = 50%</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.order_share">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order_share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.order_share" title="Link to this definition">#</a></dt>
+<dd><p>Place an order for a fixed number of shares.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.order_target_percent">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order_target_percent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_percent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.order_target_percent" title="Link to this definition">#</a></dt>
+<dd><p>Place an order to adjust a position to a target percent of the current portfolio value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.order_target_share">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order_target_share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.order_target_share" title="Link to this definition">#</a></dt>
+<dd><p>Place an order to adjust a position to a target number of shares.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.order_target_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order_target_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.order_target_value" title="Link to this definition">#</a></dt>
+<dd><p>Place an order to adjust a position to a target amount of money.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.order_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.order_value" title="Link to this definition">#</a></dt>
+<dd><p>Place an order for a fixed amount of money.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.engine.base.BaseEngine.streaming">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streaming</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#modular_trader.engine.base.BaseEngine.streaming" title="Link to this definition">#</a></dt>
+<dd><p>Streaming data from the engine</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -431,6 +545,38 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine"><code class="docutils literal notranslate"><span class="pre">BaseEngine</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.cancel_all_orders"><code class="docutils literal notranslate"><span class="pre">BaseEngine.cancel_all_orders()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.cancel_orders"><code class="docutils literal notranslate"><span class="pre">BaseEngine.cancel_orders()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.close_all_positions"><code class="docutils literal notranslate"><span class="pre">BaseEngine.close_all_positions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.close_position"><code class="docutils literal notranslate"><span class="pre">BaseEngine.close_position()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_cash"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_cash()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_equity"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_equity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_historical_data"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_historical_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_logger"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_logger()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_name"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_orders"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_orders()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.get_positions"><code class="docutils literal notranslate"><span class="pre">BaseEngine.get_positions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.order_percent"><code class="docutils literal notranslate"><span class="pre">BaseEngine.order_percent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.order_share"><code class="docutils literal notranslate"><span class="pre">BaseEngine.order_share()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.order_target_percent"><code class="docutils literal notranslate"><span class="pre">BaseEngine.order_target_percent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.order_target_share"><code class="docutils literal notranslate"><span class="pre">BaseEngine.order_target_share()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.order_target_value"><code class="docutils literal notranslate"><span class="pre">BaseEngine.order_target_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.order_value"><code class="docutils literal notranslate"><span class="pre">BaseEngine.order_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.engine.base.BaseEngine.streaming"><code class="docutils literal notranslate"><span class="pre">BaseEngine.streaming()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

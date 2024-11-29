@@ -389,8 +389,115 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-framework-collection-module">
-<h1>modular_trader.framework.collection module<a class="headerlink" href="#modular-trader-framework-collection-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.framework.collection">
+<span id="modular-trader-framework-collection-module"></span><h1>modular_trader.framework.collection module<a class="headerlink" href="#module-modular_trader.framework.collection" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.framework.collection.</span></span><span class="sig-name descname"><span class="pre">FrameworkCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.asset_selection.base.html#modular_trader.framework.asset_selection.base.BaseAssetSelection" title="modular_trader.framework.asset_selection.base.BaseAssetSelection"><span class="pre">BaseAssetSelection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_generation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" title="modular_trader.framework.signal_generation.base.BaseSignalGeneration"><span class="pre">BaseSignalGeneration</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.portfolio_builder.base.html#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" title="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder"><span class="pre">BasePortfolioBuilder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_execution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.order_execution.base.html#modular_trader.framework.order_execution.base.BaseOrderExecution" title="modular_trader.framework.order_execution.base.BaseOrderExecution"><span class="pre">BaseOrderExecution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_management</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement" title="modular_trader.framework.risk_management.base.BaseRiskManagement"><span class="pre">BaseRiskManagement</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Collection of all the components of a framework.</p>
+<dl class="simple">
+<dt>Contains:</dt><dd><ul class="simple">
+<li><p>asset_selection: Instance of BaseAssetSelection</p></li>
+<li><p>signal_generation: Instance of BaseSignalGeneration</p></li>
+<li><p>portfolio_builder: Instance of BasePortfolioBuilder</p></li>
+<li><p>order_execution: Instance of BaseOrderExecution</p></li>
+<li><p>risk_management: Instance of BaseRiskManagement</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection.asset_selection">
+<span class="sig-name descname"><span class="pre">asset_selection</span></span><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection.asset_selection" title="Link to this definition">#</a></dt>
+<dd><p>Instance of BaseAssetSelection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.framework.asset_selection.base.html#modular_trader.framework.asset_selection.base.BaseAssetSelection" title="modular_trader.framework.asset_selection.base.BaseAssetSelection">modular_trader.framework.asset_selection.base.BaseAssetSelection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection.signal_generation">
+<span class="sig-name descname"><span class="pre">signal_generation</span></span><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection.signal_generation" title="Link to this definition">#</a></dt>
+<dd><p>Instance of BaseSignalGeneration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" title="modular_trader.framework.signal_generation.base.BaseSignalGeneration">modular_trader.framework.signal_generation.base.BaseSignalGeneration</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection.portfolio_builder">
+<span class="sig-name descname"><span class="pre">portfolio_builder</span></span><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection.portfolio_builder" title="Link to this definition">#</a></dt>
+<dd><p>Instance of BasePortfolioBuilder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.framework.portfolio_builder.base.html#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" title="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder">modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection.order_execution">
+<span class="sig-name descname"><span class="pre">order_execution</span></span><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection.order_execution" title="Link to this definition">#</a></dt>
+<dd><p>Instance of BaseOrderExecution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.framework.order_execution.base.html#modular_trader.framework.order_execution.base.BaseOrderExecution" title="modular_trader.framework.order_execution.base.BaseOrderExecution">modular_trader.framework.order_execution.base.BaseOrderExecution</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection.risk_management">
+<span class="sig-name descname"><span class="pre">risk_management</span></span><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection.risk_management" title="Link to this definition">#</a></dt>
+<dd><p>Instance of BaseRiskManagement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement" title="modular_trader.framework.risk_management.base.BaseRiskManagement">modular_trader.framework.risk_management.base.BaseRiskManagement</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">asset_selection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.framework.asset_selection.base.html#modular_trader.framework.asset_selection.base.BaseAssetSelection" title="modular_trader.framework.asset_selection.base.BaseAssetSelection"><span class="pre">BaseAssetSelection</span></a></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.framework.collection.FrameworkCollection.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True,</span> <span class="pre">'extra':</span> <span class="pre">'forbid',</span> <span class="pre">'frozen':</span> <span class="pre">True}</span></em><a class="headerlink" href="#modular_trader.framework.collection.FrameworkCollection.model_config" title="Link to this definition">#</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">order_execution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.framework.order_execution.base.html#modular_trader.framework.order_execution.base.BaseOrderExecution" title="modular_trader.framework.order_execution.base.BaseOrderExecution"><span class="pre">BaseOrderExecution</span></a></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">portfolio_builder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.framework.portfolio_builder.base.html#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" title="modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder"><span class="pre">BasePortfolioBuilder</span></a></em><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">risk_management</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.framework.risk_management.base.html#modular_trader.framework.risk_management.base.BaseRiskManagement" title="modular_trader.framework.risk_management.base.BaseRiskManagement"><span class="pre">BaseRiskManagement</span></a></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">signal_generation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="modular_trader.framework.signal_generation.base.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" title="modular_trader.framework.signal_generation.base.BaseSignalGeneration"><span class="pre">BaseSignalGeneration</span></a></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -431,6 +538,31 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection.asset_selection"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.asset_selection</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection.signal_generation"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.signal_generation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection.portfolio_builder"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.portfolio_builder</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection.order_execution"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.order_execution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection.risk_management"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.risk_management</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.asset_selection</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.framework.collection.FrameworkCollection.model_config"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.model_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.order_execution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.portfolio_builder</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.risk_management</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">FrameworkCollection.signal_generation</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

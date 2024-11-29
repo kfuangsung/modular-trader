@@ -386,8 +386,53 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modular-trader-record-module">
-<h1>modular_trader.record module<a class="headerlink" href="#modular-trader-record-module" title="Link to this heading">#</a></h1>
+  <section id="module-modular_trader.record">
+<span id="modular-trader-record-module"></span><h1>modular_trader.record module<a class="headerlink" href="#module-modular_trader.record" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="modular_trader.record.Recorder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modular_trader.record.</span></span><span class="sig-name descname"><span class="pre">Recorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record:</span> <span class="pre">~typing.Mapping[~typing.Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path:</span> <span class="pre">~os.PathLike</span> <span class="pre">=</span> <span class="pre">PosixPath('/home/runner/.modular_trader_log/record.json')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modular_trader.record.Recorder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Recorder to store and save data to disk.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.record.Recorder.record">
+<span class="sig-name descname"><span class="pre">record</span></span><a class="headerlink" href="#modular_trader.record.Recorder.record" title="Link to this definition">#</a></dt>
+<dd><p>Mapping of data to be stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mapping[Any, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modular_trader.record.Recorder.save_path">
+<span class="sig-name descname"><span class="pre">save_path</span></span><a class="headerlink" href="#modular_trader.record.Recorder.save_path" title="Link to this definition">#</a></dt>
+<dd><p>Path to save the data to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>os.PathLike</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">record</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">FieldInfo(annotation=Mapping[Any,</span> <span class="pre">Any],</span> <span class="pre">required=False,</span> <span class="pre">default_factory=benedict)</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">save_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PathLike</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/home/runner/.modular_trader_log/record.json')</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modular_trader.record.Recorder.save_to_disk">
+<span class="sig-name descname"><span class="pre">save_to_disk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#modular_trader.record.Recorder.save_to_disk" title="Link to this definition">#</a></dt>
+<dd><p>Save the record to disk.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -428,6 +473,25 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder"><code class="docutils literal notranslate"><span class="pre">Recorder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder.record"><code class="docutils literal notranslate"><span class="pre">Recorder.record</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder.save_path"><code class="docutils literal notranslate"><span class="pre">Recorder.save_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Recorder.record</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Recorder.save_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modular_trader.record.Recorder.save_to_disk"><code class="docutils literal notranslate"><span class="pre">Recorder.save_to_disk()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
