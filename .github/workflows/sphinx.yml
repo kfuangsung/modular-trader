@@ -15,7 +15,7 @@ jobs:
         python-version: "3.x"
     
     - name: Install Dependencies
-      run: python3 -m pip install docs/requirements.txt
+      run: python3 -m pip install 'docs/requirements.txt' --user --no-cache-dir
     
     - name: Build Sphinx docs
       run: sphinx-build -b html docs/source docs/_build/html -v
