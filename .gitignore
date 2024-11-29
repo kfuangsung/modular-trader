@@ -1,0 +1,6 @@
+build/
+dist/
+docs/build/
+modular_trader.egg-info/
+modular_trader/
+
