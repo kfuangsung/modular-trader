@@ -5,24 +5,50 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Build HTML
-      uses: ammaraskar/sphinx-action@8.0.2
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    
+    - name: Setup Python 
+      uses: actions/setup-python@v5
       with:
-        docs-folder: "docs/"
-        pre-build-command: "sphinx-apidoc -o . ../modular_trader"
-        build-command: "make clean html"
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: html-docs
-        path: docs/build/html/
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
+        python-version: "3.x"
+    
+    - name: Install Dependencies
+      run: python3 -m pip install docs/requirements.txt
+    
+    - name: Build Sphinx docs
+      run: sphinx-build -b html docs/source docs/_build/html -v
+    
+    - name: List generated files
+      run: ls -l -R docs/_build/html
+
+    - name: Deploy to GitHub pages
+      uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/build/html
+        publish_dir: docs/_build/html
+        destination_dir: docs
+      
+    # permissions:
+    #   contents: write
+    # steps:
+    # - uses: actions/checkout@v4
+    # - name: Build HTML
+    #   uses: ammaraskar/sphinx-action@8.0.2
+    #   with:
+    #     docs-folder: "docs/"
+    #     pre-build-command: "sphinx-apidoc -o . ../modular_trader"
+    #     build-command: "make clean html"
+    # - name: Upload artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: html-docs
+    #     path: docs/build/html/
+    # - name: Deploy
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   if: github.ref == 'refs/heads/main'
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: docs/build/html
