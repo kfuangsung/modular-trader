@@ -1,0 +1,7 @@
+modular\_trader.framework.portfolio\_builder.base module
+========================================================
+
+.. automodule:: modular_trader.framework.portfolio_builder.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

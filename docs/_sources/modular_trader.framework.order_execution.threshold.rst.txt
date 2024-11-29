@@ -1,0 +1,7 @@
+modular\_trader.framework.order\_execution.threshold module
+===========================================================
+
+.. automodule:: modular_trader.framework.order_execution.threshold
+   :members:
+   :undoc-members:
+   :show-inheritance:

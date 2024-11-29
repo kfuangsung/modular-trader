@@ -1,0 +1,7 @@
+modular\_trader.context module
+==============================
+
+.. automodule:: modular_trader.context
+   :members:
+   :undoc-members:
+   :show-inheritance:

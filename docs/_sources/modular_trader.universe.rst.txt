@@ -1,0 +1,7 @@
+modular\_trader.universe module
+===============================
+
+.. automodule:: modular_trader.universe
+   :members:
+   :undoc-members:
+   :show-inheritance:

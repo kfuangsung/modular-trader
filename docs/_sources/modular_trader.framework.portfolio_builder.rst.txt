@@ -1,0 +1,19 @@
+modular\_trader.framework.portfolio\_builder package
+====================================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   modular_trader.framework.portfolio_builder.base
+   modular_trader.framework.portfolio_builder.equal
+
+Module contents
+---------------
+
+.. automodule:: modular_trader.framework.portfolio_builder
+   :members:
+   :undoc-members:
+   :show-inheritance:

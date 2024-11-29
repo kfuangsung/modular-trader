@@ -1,0 +1,19 @@
+modular\_trader.trader package
+==============================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   modular_trader.trader.alpaca
+   modular_trader.trader.base
+
+Module contents
+---------------
+
+.. automodule:: modular_trader.trader
+   :members:
+   :undoc-members:
+   :show-inheritance:

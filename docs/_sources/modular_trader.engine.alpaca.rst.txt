@@ -1,0 +1,7 @@
+modular\_trader.engine.alpaca module
+====================================
+
+.. automodule:: modular_trader.engine.alpaca
+   :members:
+   :undoc-members:
+   :show-inheritance:

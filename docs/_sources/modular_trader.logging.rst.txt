@@ -1,0 +1,19 @@
+modular\_trader.logging package
+===============================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   modular_trader.logging.base
+   modular_trader.logging.trade
+
+Module contents
+---------------
+
+.. automodule:: modular_trader.logging
+   :members:
+   :undoc-members:
+   :show-inheritance:

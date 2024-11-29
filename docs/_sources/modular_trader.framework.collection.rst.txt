@@ -1,0 +1,7 @@
+modular\_trader.framework.collection module
+===========================================
+
+.. automodule:: modular_trader.framework.collection
+   :members:
+   :undoc-members:
+   :show-inheritance:
