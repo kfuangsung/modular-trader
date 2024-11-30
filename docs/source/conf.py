@@ -38,6 +38,7 @@ autoapi_options = [
     "imported-members",
     "show-inheritance-diagram",
 ]
+autoapi_keep_files = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
