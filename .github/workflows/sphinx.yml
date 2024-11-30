@@ -19,12 +19,12 @@ jobs:
         python-version: "3.x"
     
     - name: Install Dependencies
-      run: python3 -m pip install -r docs/requirements.txt --user --no-cache-dir
+      run: | 
+        apt install -y graphviz \
+        && python3 -m pip install -r docs/requirements.txt --user --no-cache-dir
     
     - name: Build Sphinx docs
-      run: |
-        sphinx-apidoc -o docs/source modular_trader -e -f \
-        && sphinx-build -b html docs/source docs/build/html -v -a -E
+      run: sphinx-build -b html docs/source docs/build/html -j auto -vaE
 
     - name: Deploy to GitHub pages
       uses: peaceiris/actions-gh-pages@v4
@@ -33,25 +33,3 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/build/html
         destination_dir: docs
-      
-    # permissions:
-    #   contents: write
-    # steps:
-    # - uses: actions/checkout@v4
-    # - name: Build HTML
-    #   uses: ammaraskar/sphinx-action@8.0.2
-    #   with:
-    #     docs-folder: "docs/"
-    #     pre-build-command: "sphinx-apidoc -o . ../modular_trader"
-    #     build-command: "make clean html"
-    # - name: Upload artifacts
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: html-docs
-    #     path: docs/build/html/
-    # - name: Deploy
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   if: github.ref == 'refs/heads/main'
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: docs/build/html

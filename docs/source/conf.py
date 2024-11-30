@@ -19,19 +19,25 @@ author = "Kachain Fuangsung"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "autoapi.extension",
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.githubpages",
-    "sphinx.ext.autosectionlabel",
-    "sphinx.ext.autosummary",
-    "sphinx_copybutton",
 ]
 
 templates_path = ["_templates"]
 exclude_patterns = []
-autoclass_content = "both"
-autosummary_generate = True
-autodoc_default_options = {"exclude-members": "__init__"}
+autoapi_dirs = ["../../modular_trader"]
+autodoc_typehints = "both"
+autoapi_member_order = "groupwise"
+autoapi_options = [
+    "members",
+    "undoc-members",
+    "private-members",
+    "show-inheritance",
+    "show-module-summary",
+    "special-members",
+    "imported-members",
+    "show-inheritance-diagram",
+]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
