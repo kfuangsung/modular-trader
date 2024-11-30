@@ -18,10 +18,7 @@ author = "Kachain Fuangsung"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    "autoapi.extension",
-    "sphinx.ext.autodoc",
-]
+extensions = ["autoapi.extension", "sphinx.ext.autodoc", "sphinx.ext.githubpages"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
@@ -38,7 +35,6 @@ autoapi_options = [
     "imported-members",
     "show-inheritance-diagram",
 ]
-autoapi_keep_files = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
