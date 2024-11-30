@@ -1,7 +1,0 @@
-modular\_trader.framework.signal\_generation.constant module
-============================================================
-
-.. automodule:: modular_trader.framework.signal_generation.constant
-   :members:
-   :undoc-members:
-   :show-inheritance:

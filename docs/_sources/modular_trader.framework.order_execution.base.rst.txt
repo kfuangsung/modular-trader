@@ -1,7 +1,0 @@
-modular\_trader.framework.order\_execution.base module
-======================================================
-
-.. automodule:: modular_trader.framework.order_execution.base
-   :members:
-   :undoc-members:
-   :show-inheritance:

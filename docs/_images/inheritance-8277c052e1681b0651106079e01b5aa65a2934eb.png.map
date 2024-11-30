@@ -1,0 +1,5 @@
+<map id="inheritancecd69e0a497" name="inheritancecd69e0a497">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,31"/>
+<area shape="rect" id="node2" href="base/index.html#modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder" target="_top" title="Base class for portfolio builders." alt="" coords="125,5,280,31"/>
+<area shape="rect" id="node3" href="equal/index.html#modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder" target="_top" title="Assigns equal weight to all signals. Liquidates positions no longer in signals." alt="" coords="328,5,532,31"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="inheritancefe68856378" name="inheritancefe68856378">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,31"/>
+<area shape="rect" id="node2" href="base/index.html#modular_trader.framework.signal_generation.base.BaseSignalGeneration" target="_top" title="Abstract base class for signal generation." alt="" coords="125,5,292,31"/>
+<area shape="rect" id="node3" href="constant/index.html#modular_trader.framework.signal_generation.constant.ConstantSignalGeneration" target="_top" title="Constant signal generator." alt="" coords="340,5,532,31"/>
+</map>

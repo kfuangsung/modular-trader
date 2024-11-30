@@ -1,7 +1,0 @@
-modular\_trader.signal module
-=============================
-
-.. automodule:: modular_trader.signal
-   :members:
-   :undoc-members:
-   :show-inheritance:

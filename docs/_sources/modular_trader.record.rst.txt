@@ -1,7 +1,0 @@
-modular\_trader.record module
-=============================
-
-.. automodule:: modular_trader.record
-   :members:
-   :undoc-members:
-   :show-inheritance:

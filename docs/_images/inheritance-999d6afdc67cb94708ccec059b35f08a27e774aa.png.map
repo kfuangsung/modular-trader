@@ -1,0 +1,8 @@
+<map id="inheritance57d2306bd8" name="inheritance57d2306bd8">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="284,31,356,56"/>
+<area shape="rect" id="node2" href="base/index.html#modular_trader.indicator.technical.base.BaseIndicator" target="_top" title="Base class for all indicators." alt="" coords="421,31,531,56"/>
+<area shape="rect" id="node10" href="sma/index.html#modular_trader.indicator.technical.sma.SMA" target="_top" title="Simple Moving Average." alt="" coords="589,80,661,105"/>
+<area shape="rect" id="node8" title="All the operations on a read&#45;only sequence." alt="" coords="277,80,363,105"/>
+<area shape="rect" id="node7" title="Base indicator class." alt="" coords="437,80,515,105"/>
+<area shape="rect" id="node11" href="base/index.html#modular_trader.indicator.technical.base.SingleInputMixin" target="_top" title="Mixin for indicators that ingest a single value." alt="" coords="411,129,541,155"/>
+</map>

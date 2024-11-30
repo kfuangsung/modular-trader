@@ -1,7 +1,0 @@
-modular_trader
-==============
-
-.. toctree::
-   :maxdepth: 4
-
-   modular_trader

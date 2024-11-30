@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -42,12 +42,10 @@
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="modular_trader" href="modules.html" />
+    <link rel="next" title="API Reference" href="autoapi/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -127,8 +125,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules.html">
-    modular_trader
+  <a class="nav-link nav-internal" href="autoapi/index.html">
+    API Reference
   </a>
 </li>
 
@@ -224,8 +222,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules.html">
-    modular_trader
+  <a class="nav-link nav-internal" href="autoapi/index.html">
+    API Reference
   </a>
 </li>
 
@@ -294,27 +292,85 @@
 <h1>modular-trader documentation<a class="headerlink" href="#modular-trader-documentation" title="Link to this heading">#</a></h1>
 <p>Modular-trader is a algorithmic trading framework written in Python, designed with focus on modularity and flexibility. The framework provides solution as building blocks for live deployment of algorithmic trading, consists of five modules; Asset Selection, Signal Generation, Portfolio Builder, Order Execution and, Risk Management.</p>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">modular_trader</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modular_trader.html">modular_trader package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.engine.html">modular_trader.engine package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.framework.html">modular_trader.framework package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.logging.html">modular_trader.logging package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.trader.html">modular_trader.trader package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/modular_trader/index.html">modular_trader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/allocation/index.html">modular_trader.allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/common/index.html">modular_trader.common</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/common/constants/index.html">modular_trader.common.constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/common/enums/index.html">modular_trader.common.enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/common/type_aliases/index.html">modular_trader.common.type_aliases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/common/utils/index.html">modular_trader.common.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.html#submodules">Submodules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.allocation.html">modular_trader.allocation module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.context.html">modular_trader.context module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.record.html">modular_trader.record module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.signal.html">modular_trader.signal module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.time.html">modular_trader.time module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modular_trader.universe.html">modular_trader.universe module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/context/index.html">modular_trader.context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/engine/index.html">modular_trader.engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/engine/alpaca/index.html">modular_trader.engine.alpaca</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/engine/base/index.html">modular_trader.engine.base</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modular_trader.html#module-modular_trader">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/framework/index.html">modular_trader.framework</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/framework/asset_selection/index.html">modular_trader.framework.asset_selection</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/asset_selection/base/index.html">modular_trader.framework.asset_selection.base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/asset_selection/manual/index.html">modular_trader.framework.asset_selection.manual</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/framework/collection/index.html">modular_trader.framework.collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/framework/order_execution/index.html">modular_trader.framework.order_execution</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/order_execution/base/index.html">modular_trader.framework.order_execution.base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/order_execution/instant/index.html">modular_trader.framework.order_execution.instant</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/order_execution/threshold/index.html">modular_trader.framework.order_execution.threshold</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/framework/portfolio_builder/index.html">modular_trader.framework.portfolio_builder</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/portfolio_builder/base/index.html">modular_trader.framework.portfolio_builder.base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/portfolio_builder/equal/index.html">modular_trader.framework.portfolio_builder.equal</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/framework/risk_management/index.html">modular_trader.framework.risk_management</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/risk_management/base/index.html">modular_trader.framework.risk_management.base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/risk_management/fixed/index.html">modular_trader.framework.risk_management.fixed</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/risk_management/null/index.html">modular_trader.framework.risk_management.null</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/framework/signal_generation/index.html">modular_trader.framework.signal_generation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/signal_generation/base/index.html">modular_trader.framework.signal_generation.base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/signal_generation/constant/index.html">modular_trader.framework.signal_generation.constant</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/framework/signal_generation/null/index.html">modular_trader.framework.signal_generation.null</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/indicator/index.html">modular_trader.indicator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/indicator/handler/index.html">modular_trader.indicator.handler</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/handler/alpaca/index.html">modular_trader.indicator.handler.alpaca</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/handler/base/index.html">modular_trader.indicator.handler.base</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/indicator/technical/index.html">modular_trader.indicator.technical</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/technical/base/index.html">modular_trader.indicator.technical.base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/technical/rsi/index.html">modular_trader.indicator.technical.rsi</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/technical/settings/index.html">modular_trader.indicator.technical.settings</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/technical/sma/index.html">modular_trader.indicator.technical.sma</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/modular_trader/indicator/technical/stoch/index.html">modular_trader.indicator.technical.stoch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/logging/index.html">modular_trader.logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/logging/base/index.html">modular_trader.logging.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/logging/trade/index.html">modular_trader.logging.trade</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/record/index.html">modular_trader.record</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/signal/index.html">modular_trader.signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/time/index.html">modular_trader.time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/trader/index.html">modular_trader.trader</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/trader/alpaca/index.html">modular_trader.trader.alpaca</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/modular_trader/trader/base/index.html">modular_trader.trader.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/modular_trader/universe/index.html">modular_trader.universe</a></li>
 </ul>
 </li>
 </ul>
@@ -334,11 +390,11 @@
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="modules.html"
+       href="autoapi/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">modular_trader</p>
+        <p class="prev-next-title">API Reference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

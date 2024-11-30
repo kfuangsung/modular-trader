@@ -1,0 +1,6 @@
+<map id="inheritance9e178d957d" name="inheritance9e178d957d">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,75,30"/>
+<area shape="rect" id="node2" href="base/index.html#modular_trader.framework.order_execution.base.BaseOrderExecution" target="_top" title="Base class for order execution strategies." alt="" coords="121,5,269,30"/>
+<area shape="rect" id="node3" href="instant/index.html#modular_trader.framework.order_execution.instant.InstantOrderExecution" target="_top" title="Instantly execute orders from allocations" alt="" coords="316,5,477,30"/>
+<area shape="rect" id="node4" href="threshold/index.html#modular_trader.framework.order_execution.threshold.ThresholdDeviationOrderExecution" target="_top" title="Execute orders when any current positions deviate from the allocation targets by certain threshold in percentage." alt="" coords="523,5,763,30"/>
+</map>

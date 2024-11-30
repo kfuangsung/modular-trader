@@ -1,7 +1,0 @@
-modular\_trader.trader.base module
-==================================
-
-.. automodule:: modular_trader.trader.base
-   :members:
-   :undoc-members:
-   :show-inheritance:

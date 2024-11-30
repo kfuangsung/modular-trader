@@ -1,7 +1,0 @@
-modular\_trader.framework.order\_execution.instant module
-=========================================================
-
-.. automodule:: modular_trader.framework.order_execution.instant
-   :members:
-   :undoc-members:
-   :show-inheritance:

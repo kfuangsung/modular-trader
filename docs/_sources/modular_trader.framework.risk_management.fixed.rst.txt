@@ -1,7 +1,0 @@
-modular\_trader.framework.risk\_management.fixed module
-=======================================================
-
-.. automodule:: modular_trader.framework.risk_management.fixed
-   :members:
-   :undoc-members:
-   :show-inheritance:

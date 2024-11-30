@@ -1,7 +1,0 @@
-modular\_trader.time module
-===========================
-
-.. automodule:: modular_trader.time
-   :members:
-   :undoc-members:
-   :show-inheritance:

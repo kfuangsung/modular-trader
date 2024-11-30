@@ -1,7 +1,0 @@
-modular\_trader.allocation module
-=================================
-
-.. automodule:: modular_trader.allocation
-   :members:
-   :undoc-members:
-   :show-inheritance:

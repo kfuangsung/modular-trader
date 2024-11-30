@@ -1,7 +1,0 @@
-modular\_trader.framework.signal\_generation.base module
-========================================================
-
-.. automodule:: modular_trader.framework.signal_generation.base
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,0 +1,6 @@
+<map id="inheritancef08afdc098" name="inheritancef08afdc098">
+<area shape="rect" id="node1" href="#modular_trader.common.enums.CaseInsensitiveEnum" target="_top" title="Enum class that provides case insensitive value mapping." alt="" coords="388,5,551,31"/>
+<area shape="rect" id="node2" title="Enum where members are also (and must be) strings" alt="" coords="263,5,340,31"/>
+<area shape="rect" id="node3" title="Create a collection of name/value pairs." alt="" coords="5,5,77,31"/>
+<area shape="rect" id="node4" title="Only changes the repr(), leaving str() and format() to the mixed&#45;in type." alt="" coords="125,5,215,31"/>
+</map>

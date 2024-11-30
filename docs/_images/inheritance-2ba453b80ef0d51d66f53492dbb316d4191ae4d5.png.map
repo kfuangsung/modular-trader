@@ -1,0 +1,4 @@
+<map id="inheritance9b82b887ee" name="inheritance9b82b887ee">
+<area shape="rect" id="node1" href="base/index.html#modular_trader.logging.base.BaseLogger" target="_top" title="Base class for loggers." alt="" coords="5,5,104,31"/>
+<area shape="rect" id="node2" href="trade/index.html#modular_trader.logging.trade.TradingLogger" target="_top" title="A logger that logs messages to a file." alt="" coords="152,5,265,31"/>
+</map>

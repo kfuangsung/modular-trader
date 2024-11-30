@@ -1,0 +1,9 @@
+<map id="inheritanceb7e9758f9a" name="inheritanceb7e9758f9a">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="394,5,463,29"/>
+<area shape="rect" id="node2" href="base/index.html#modular_trader.indicator.technical.base.BaseIndicator" target="_top" title="Base class for all indicators." alt="" coords="527,5,633,29"/>
+<area shape="rect" id="node11" href="stoch/index.html#modular_trader.indicator.technical.stoch.STOCH" target="_top" title="Stochastic Oscillator (STOCH)" alt="" coords="694,52,763,76"/>
+<area shape="rect" id="node8" title="All the operations on a read&#45;only sequence." alt="" coords="264,99,345,123"/>
+<area shape="rect" id="node7" title="Base indicator class." alt="" coords="391,99,466,123"/>
+<area shape="rect" id="node12" title="Stochastic." alt="" coords="546,99,614,123"/>
+<area shape="rect" id="node9" href="base/index.html#modular_trader.indicator.technical.base.MultipleInputMixin" target="_top" title="Mixin for indicators that ingest multiple values at once." alt="" coords="512,52,649,76"/>
+</map>

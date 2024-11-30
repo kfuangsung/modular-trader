@@ -1,7 +1,0 @@
-modular\_trader.logging.trade module
-====================================
-
-.. automodule:: modular_trader.logging.trade
-   :members:
-   :undoc-members:
-   :show-inheritance:

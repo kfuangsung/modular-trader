@@ -1,7 +1,0 @@
-modular\_trader.framework.asset\_selection.base module
-======================================================
-
-.. automodule:: modular_trader.framework.asset_selection.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
