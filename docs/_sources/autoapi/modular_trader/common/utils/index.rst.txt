@@ -1,0 +1,53 @@
+modular_trader.common.utils
+===========================
+
+.. py:module:: modular_trader.common.utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   modular_trader.common.utils.get_config
+   modular_trader.common.utils.get_trading_mode
+   modular_trader.common.utils.set_environ_config
+
+
+Module Contents
+---------------
+
+.. py:function:: get_config(path: os.PathLike = DEFAULT_CONFIG_PATH)
+
+   Loads a JSON configuration file.
+
+   Args:
+       path: The path to the configuration file. Defaults to
+           DEFAULT_CONFIG_PATH.
+
+   Returns:
+       The loaded configuration as a dictionary.
+
+   Raises:
+       FileNotFoundError: If the file does not exist.
+       json.JSONDecodeError: If the file is not a valid JSON.
+
+
+.. py:function:: get_trading_mode() -> modular_trader.common.enums.TradingMode
+
+   Gets the trading mode as a TradingMode enum from the environment variable 'MODE'.
+
+   If the variable is not set, it defaults to 'paper'.
+
+   Returns:
+       TradingMode: The trading mode.
+
+
+.. py:function:: set_environ_config(cfg: dict[str, Any])
+
+   Sets environment variables from the given configuration dictionary.
+
+   Args:
+       cfg: The configuration dictionary to set environment variables from.
+
+

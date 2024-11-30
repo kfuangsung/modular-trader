@@ -1,0 +1,42 @@
+modular_trader.indicator.technical.sma
+======================================
+
+.. py:module:: modular_trader.indicator.technical.sma
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.indicator.technical.sma.SMA
+
+
+Module Contents
+---------------
+
+.. py:class:: SMA(period: int, input_indicator: modular_trader.indicator.technical.base.BaseIndicator | None = None, sampling_period: talipp.input.SamplingPeriodType | None = None, cache_size: int | None = None, name: str | None = None)
+
+   Bases: :py:obj:`modular_trader.indicator.technical.base.BaseIndicator`, :py:obj:`talipp.indicators.SMA`, :py:obj:`modular_trader.indicator.technical.base.SingleInputMixin`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.technical.sma.SMA
+      :parts: 1
+      :private-bases:
+
+
+   Simple Moving Average (SMA)
+
+   The Simple Moving Average (SMA) is a technical indicator that calculates the
+   average of a security's price over a specified number of periods. It is used
+   to identify trends and patterns in the price movement of a security. The
+   indicator is a moving average of the price over a specified number of
+   periods.
+
+   Args:
+       period (int): The number of periods to calculate the average over.
+       input_indicator (BaseIndicator | None): The input indicator.
+       sampling_period (SamplingPeriodType | None): The sampling period.
+       cache_size (int | None): The cache size.
+       name (str | None): The name of the indicator.
+
+

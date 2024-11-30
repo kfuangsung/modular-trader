@@ -1,0 +1,102 @@
+modular_trader.common.enums
+===========================
+
+.. py:module:: modular_trader.common.enums
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.common.enums.AssetClass
+   modular_trader.common.enums.CaseInsensitiveEnum
+   modular_trader.common.enums.TradingMode
+
+
+Module Contents
+---------------
+
+.. py:class:: AssetClass
+
+   Bases: :py:obj:`CaseInsensitiveEnum`
+
+   .. autoapi-inheritance-diagram:: modular_trader.common.enums.AssetClass
+      :parts: 1
+      :private-bases:
+
+
+   The class of an asset.
+
+   Attributes:
+       STOCK: Stock asset class.
+       CRYPTO: Cryptocurrency asset class.
+       OPTION: Option asset class.
+
+
+   .. py:attribute:: CRYPTO
+
+
+   .. py:attribute:: OPTION
+
+
+   .. py:attribute:: STOCK
+
+
+.. py:class:: CaseInsensitiveEnum
+
+   Bases: :py:obj:`enum.StrEnum`
+
+   .. autoapi-inheritance-diagram:: modular_trader.common.enums.CaseInsensitiveEnum
+      :parts: 1
+      :private-bases:
+
+
+   Enum class that provides case insensitive value mapping.
+
+   When an enum value is not found in the class, this class tries to find a
+   matching enum value by converting the given value to upper case.
+
+   Attributes:
+       _missing_: The class method that is called when an enum value is not
+           found in the class. This method is used to implement the case
+           insensitive mapping.
+
+
+   .. py:method:: _missing_(value: str) -> typing_extensions.Self | None
+      :classmethod:
+
+
+      Try to find a matching enum value by converting the given value to
+      upper case.
+
+      Args:
+          value: The value to look up in the class.
+
+      Returns:
+          The enum value if found, otherwise None.
+
+
+
+.. py:class:: TradingMode
+
+   Bases: :py:obj:`CaseInsensitiveEnum`
+
+   .. autoapi-inheritance-diagram:: modular_trader.common.enums.TradingMode
+      :parts: 1
+      :private-bases:
+
+
+   The mode of trading.
+
+   Attributes:
+       LIVE: Live trading mode.
+       PAPER: Paper trading mode.
+
+
+   .. py:attribute:: LIVE
+
+
+   .. py:attribute:: PAPER
+
+

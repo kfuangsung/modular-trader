@@ -1,0 +1,127 @@
+modular_trader.allocation
+=========================
+
+.. py:module:: modular_trader.allocation
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   modular_trader.allocation.Allocation
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.allocation.AllocationAdjustment
+   modular_trader.allocation.AllocationCollection
+   modular_trader.allocation.AllocationTarget
+
+
+Module Contents
+---------------
+
+.. py:class:: AllocationAdjustment
+
+   Adjust allocation by a given weight.
+
+   For example, 5% will increase allocation by 5%, while -2% will decrease
+   allocation by 2%
+
+   Attributes:
+       symbol: The symbol of the asset.
+       weight: The amount to increase or decrease the allocation by.
+
+
+   .. py:attribute:: symbol
+      :type:  str
+
+
+   .. py:attribute:: weight
+      :type:  int | float
+
+
+.. py:class:: AllocationCollection
+
+   A collection of allocations.
+
+   Attributes:
+       allocations: The list of allocations.
+
+
+   .. py:method:: __iter__() -> Generator[Allocation, None, None]
+
+      Iterate over all allocations.
+
+
+
+   .. py:method:: __len__() -> int
+
+      Return the number of allocations.
+
+
+
+   .. py:method:: add(allocations: Allocation | Iterable[Allocation]) -> None
+
+      Add one or more allocations to the collection.
+
+      Args:
+          allocations: The allocation(s) to add.
+
+
+
+   .. py:method:: clear() -> None
+
+      Clear all allocations.
+
+
+
+   .. py:method:: remove_symbol(symbol: str)
+
+      Remove all allocations with the given symbol.
+
+      Args:
+          symbol: The symbol to remove.
+
+
+
+   .. py:attribute:: allocations
+      :type:  list[Allocation]
+      :value: None
+
+
+
+   .. py:property:: symbols
+      :type: set[str]
+
+
+      Return all symbols in the collection.
+
+
+
+.. py:class:: AllocationTarget
+
+   A target allocation of a single asset.
+
+   Attributes:
+       symbol: The symbol of the asset.
+       weight: The target weight of the asset in the portfolio.
+
+
+   .. py:attribute:: symbol
+      :type:  str
+
+
+   .. py:attribute:: weight
+      :type:  int | float
+
+
+.. py:data:: Allocation
+   :type:  TypeAlias
+   :value: AllocationTarget | AllocationAdjustment
+
+

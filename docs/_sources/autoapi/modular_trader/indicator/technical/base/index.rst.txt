@@ -1,0 +1,334 @@
+modular_trader.indicator.technical.base
+=======================================
+
+.. py:module:: modular_trader.indicator.technical.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.indicator.technical.base.BaseIndicator
+   modular_trader.indicator.technical.base.MultipleInputMixin
+   modular_trader.indicator.technical.base.SingleInputMixin
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseIndicator(cache_size: int, sampling_period: talipp.input.SamplingPeriodType | None = None, input_indicator: BaseIndicator | None = None, name: str | None = None)
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.technical.base.BaseIndicator
+      :parts: 1
+      :private-bases:
+
+
+   Base class for all indicators.
+
+   Attributes:
+       cache_size (int): The number of last values to keep in memory.
+       sampler (Sampler | None): The sampler used to sample the input data.
+       input_indicator (BaseIndicator | None): The input indicator.
+       previous_time (datetime | None): The time of the last value.
+       name (str | None): The name of the indicator.
+
+
+   .. py:method:: __repr__() -> str
+
+      Return a string representation of the indicator.
+
+      The string representation of the indicator is of the form
+      "<IndicatorName>(name=<name>, value=<value>)" where <IndicatorName>
+      is the name of the indicator class, <name> is the name of the
+      indicator, and <value> is the current value of the indicator.
+
+      Returns:
+          str: The string representation of the indicator.
+
+
+
+   .. py:method:: __str__() -> str
+
+      Return a string representation of the indicator.
+
+      The string representation of the indicator is of the form
+      "<IndicatorName>(name=<name>, value=<value>)" where <IndicatorName>
+      is the name of the indicator class, <name> is the name of the
+      indicator, and <value> is the current value of the indicator.
+
+      Returns:
+          str: The string representation of the indicator.
+
+
+
+   .. py:method:: calibrate_cache_size(input_indicator)
+
+      Calibrate the cache size of the input indicator.
+
+      If the input indicator is not None, the cache size of the input
+      indicator is set to the maximum of the cache size of the indicator
+      and the cache size of the input indicator. This ensures that the
+      input indicator has enough cache size to be used by the indicator.
+
+      Args:
+          input_indicator (BaseIndicator | None): The input indicator.
+
+
+
+   .. py:method:: clean_cache() -> None
+
+      Clean the cache by purging the oldest values.
+
+      If the cache size is set, the method purges the oldest values from the
+      cache until the cache size is reached. This ensures that the cache does
+      not grow indefinitely.
+
+      Note:
+          This method is called automatically by the framework when the
+          indicator is updated.
+
+
+
+   .. py:method:: copy()
+
+      Create a deep copy of the indicator.
+
+      Returns a deep copy of the indicator, which is a new indicator instance
+      with the same configuration and values as the original indicator.
+
+      Returns:
+          BaseIndicator: A deep copy of the indicator.
+
+
+
+   .. py:method:: ingest(open: modular_trader.common.type_aliases.RealNumber | Iterable[modular_trader.common.type_aliases.RealNumber] | None, high: modular_trader.common.type_aliases.RealNumber | Iterable[modular_trader.common.type_aliases.RealNumber] | None, low: modular_trader.common.type_aliases.RealNumber | Iterable[modular_trader.common.type_aliases.RealNumber] | None, close: modular_trader.common.type_aliases.RealNumber | Iterable[modular_trader.common.type_aliases.RealNumber] | None, volume: modular_trader.common.type_aliases.RealNumber | Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, timestamp: modular_trader.common.type_aliases.RealNumber | Iterable[modular_trader.common.type_aliases.DateOrDatetime] | None = None)
+
+      Ingest values into the indicator.
+
+      If an input indicator is set, the values will be ingested into the input indicator.
+      Otherwise, the values will be ingested into this indicator.
+
+      Args:
+          open: The open prices.
+          high: The high prices.
+          low: The low prices.
+          close: The close prices.
+          volume: The volumes.
+          timestamp: The timestamps.
+
+
+
+   .. py:method:: is_same_period(timestamp: modular_trader.common.type_aliases.DateOrDatetime | None) -> bool
+
+      Check if the timestamp is in the same period as the previous time.
+
+      Args:
+          timestamp (DateOrDatetime | None): The timestamp to check.
+
+      Returns:
+          bool: True if the timestamp is in the same period as the previous time, False otherwise.
+
+      Note:
+          This method is used to determine if the indicator should recalculate its value
+          when new data is available. If the timestamp is in the same period as the
+          previous time, the indicator will not recalculate its value.
+
+
+
+   .. py:method:: make_ohlcv(open: Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, high: Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, low: Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, close: Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, volume: Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, timestamp: Iterable[modular_trader.common.type_aliases.DateOrDatetime] | None = None) -> talipp.ohlcv.OHLCV
+
+      Create an OHLCV object from the given values.
+
+      Args:
+          open: The open prices.
+          high: The high prices.
+          low: The low prices.
+          close: The close prices.
+          volume: The volumes.
+          timestamp: The timestamps.
+
+      Returns:
+          OHLCV: The created OHLCV object.
+
+
+
+   .. py:attribute:: _cache_size
+
+
+   .. py:attribute:: _input_indicator
+      :value: None
+
+
+
+   .. py:attribute:: _name
+      :value: 'BaseIndicator'
+
+
+
+   .. py:attribute:: _previous_time
+
+
+   .. py:attribute:: _sampler
+      :value: None
+
+
+
+   .. py:attribute:: cache_size
+
+
+   .. py:property:: is_ready
+      :type: bool
+
+
+      Check if the indicator has calculated a valid value.
+
+      The indicator is considered ready when it has calculated a valid
+      value. This is useful for checking if the indicator has finished its
+      warmup period.
+
+      Returns:
+          bool: True if the indicator has calculated a valid value, False otherwise.
+
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: previous_time
+
+
+   .. py:attribute:: sampler
+
+
+   .. py:property:: time
+      :type: datetime.datetime
+
+
+
+   .. py:property:: value
+      :type: modular_trader.common.type_aliases.RealNumber | None
+
+
+      Get the current value of the indicator.
+
+      The current value of the indicator is the last value calculated
+      by the indicator. If the indicator has not finished its warmup
+      period, None is returned.
+
+      Returns:
+          RealNumber | None: The current value of the indicator, or None if the indicator has not finished its warmup period.
+
+
+
+.. py:class:: MultipleInputMixin
+
+   Mixin for indicators that ingest multiple values at once.
+
+   The `_ingest` method is called by the `ingest` method of the indicator,
+   and is responsible for updating the indicator with the ingested values.
+
+   The default implementation of `_ingest` takes an iterable of values and
+   ingests each of them one by one into the indicator. The `clean_cache`
+   method of the indicator is called at the end to purge the oldest values
+   from the cache.
+
+   The default implementation of `_ingest` also handles the case where
+   the values are passed as separate arguments instead of an iterable.
+
+
+   .. py:method:: _(open: modular_trader.common.type_aliases.RealNumber | None, high: modular_trader.common.type_aliases.RealNumber | None, low: modular_trader.common.type_aliases.RealNumber | None, close: modular_trader.common.type_aliases.RealNumber | None, volume: modular_trader.common.type_aliases.RealNumber | None = None, timestamp: modular_trader.common.type_aliases.DateOrDatetime | None = None) -> None
+
+      Ingests a single value into the indicator.
+
+      Args:
+          open (RealNumber | None): The open price.
+          high (RealNumber | None): The high price.
+          low (RealNumber | None): The low price.
+          close (RealNumber | None): The close price.
+          volume (RealNumber | None): The volume.
+              Defaults to None.
+          timestamp (DateOrDatetime | None): The timestamp.
+              Defaults to None.
+
+      Returns:
+          None
+
+
+
+   .. py:method:: _ingest(open: Iterable[modular_trader.common.type_aliases.RealNumber] | None, high: Iterable[modular_trader.common.type_aliases.RealNumber] | None, low: Iterable[modular_trader.common.type_aliases.RealNumber] | None, close: Iterable[modular_trader.common.type_aliases.RealNumber] | None, volume: Iterable[modular_trader.common.type_aliases.RealNumber] | None = None, timestamp: Iterable[modular_trader.common.type_aliases.DateOrDatetime] | None = None) -> None
+
+      Ingests a single value into the indicator.
+
+      Args:
+          open (Iterable[RealNumber] | None): The open prices.
+          high (Iterable[RealNumber] | None): The high prices.
+          low (Iterable[RealNumber] | None): The low prices.
+          close (Iterable[RealNumber] | None): The close prices.
+          volume (Iterable[RealNumber] | None): The volumes.
+              Defaults to None.
+          timestamp (Iterable[DateOrDatetime] | None): The timestamps.
+              Defaults to None.
+
+      Returns:
+          None
+
+
+
+.. py:class:: SingleInputMixin
+
+   Mixin for indicators that ingest a single value.
+
+   Provides a default implementation for the `_ingest` method that handles
+   ingesting a single value into the indicator.
+
+   The `_ingest` method is called by the `ingest` method of the indicator, and
+   is responsible for updating the indicator with the ingested value.
+
+   The default implementation of `_ingest` checks if the timestamp of the
+   ingested value is in the same period as the previous time, and if so,
+   updates the indicator with the new value. If the timestamp is not in the
+   same period, the indicator is reset with the new value.
+
+   The default implementation of `_ingest` also calls the `clean_cache` method
+   of the indicator to purge the oldest values from the cache.
+
+   Attributes:
+       None
+
+   Methods:
+       _ingest: Ingests a single value into the indicator.
+
+
+   .. py:method:: _(close: Iterable[modular_trader.common.type_aliases.RealNumber], *args, **kwargs)
+
+      Ingests an iterable of values into the indicator.
+
+      Args:
+          close (Iterable[RealNumber]): The values to ingest.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+      Returns:
+          None
+
+
+
+   .. py:method:: _ingest(close: modular_trader.common.type_aliases.RealNumber, timestamp: modular_trader.common.type_aliases.DateOrDatetime | None = None, *args, **kwargs) -> None
+
+      Ingests a single value into the indicator.
+
+      Args:
+          close (RealNumber): The value to ingest.
+          timestamp (DateOrDatetime | None): The timestamp of the value.
+              Defaults to None.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+      Returns:
+          None
+
+
+

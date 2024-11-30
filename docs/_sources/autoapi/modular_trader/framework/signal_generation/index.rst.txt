@@ -1,0 +1,132 @@
+modular_trader.framework.signal_generation
+==========================================
+
+.. py:module:: modular_trader.framework.signal_generation
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/framework/signal_generation/base/index
+   /autoapi/modular_trader/framework/signal_generation/constant/index
+   /autoapi/modular_trader/framework/signal_generation/null/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.signal_generation.BaseSignalGeneration
+   modular_trader.framework.signal_generation.ConstantSignalGeneration
+   modular_trader.framework.signal_generation.NullSignalGeneration
+
+
+Package Contents
+----------------
+
+.. py:class:: BaseSignalGeneration
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.signal_generation.BaseSignalGeneration
+      :parts: 1
+      :private-bases:
+
+
+   Abstract base class for signal generation.
+
+   Attributes:
+       context: Context
+           The framework context.
+       universe: AssetUniverse
+           The asset universe to generate signals for.
+
+   Methods:
+       run(context: Context, universe: AssetUniverse) -> Iterable[Signal]:
+           Must be implemented by subclasses.
+           Called by __call__() to generate signals.
+
+
+   .. py:method:: __call__(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse)
+
+      Generate signals.
+
+      Args:
+          context: Context
+              The framework context.
+          universe: AssetUniverse
+              The asset universe to generate signals for.
+
+      Returns:
+          Iterable[Signal]:
+              An iterable of signals.
+
+
+
+   .. py:method:: run(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse) -> Iterable[modular_trader.signal.Signal]
+      :abstractmethod:
+
+
+      Must be implemented by subclasses.
+
+      Called by __call__() to generate signals.
+
+
+
+.. py:class:: ConstantSignalGeneration
+
+   Bases: :py:obj:`modular_trader.framework.signal_generation.base.BaseSignalGeneration`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.signal_generation.ConstantSignalGeneration
+      :parts: 1
+      :private-bases:
+
+
+   Constant signal generator.
+
+   Generates a signal for each symbol in the universe with a constant direction.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse) -> Iterable[modular_trader.signal.Signal]
+
+      Returns an iterable of constant signals.
+
+      Args:
+          context: Context
+          universe: AssetUniverse
+
+      Returns:
+          An iterable of signals.
+
+
+
+   .. py:attribute:: direction
+      :type:  modular_trader.signal.SignalDirection
+      :value: None
+
+
+
+.. py:class:: NullSignalGeneration
+
+   Bases: :py:obj:`modular_trader.framework.signal_generation.base.BaseSignalGeneration`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.signal_generation.NullSignalGeneration
+      :parts: 1
+      :private-bases:
+
+
+   Signal generation strategy that doesn't generate any signals.
+
+   This signal generation strategy is useful for testing or debugging purposes.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse) -> Iterable[None]
+
+      Returns an empty iterable of signals.
+
+
+

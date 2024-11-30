@@ -1,0 +1,108 @@
+modular_trader.framework.risk_management
+========================================
+
+.. py:module:: modular_trader.framework.risk_management
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/framework/risk_management/base/index
+   /autoapi/modular_trader/framework/risk_management/fixed/index
+   /autoapi/modular_trader/framework/risk_management/null/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.risk_management.BaseRiskManagement
+   modular_trader.framework.risk_management.FixedStopLossRiskManagement
+   modular_trader.framework.risk_management.NullRiskManagement
+
+
+Package Contents
+----------------
+
+.. py:class:: BaseRiskManagement
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.risk_management.BaseRiskManagement
+      :parts: 1
+      :private-bases:
+
+
+   Base class for risk management.
+
+   This class defines the interface for all risk management strategies.
+
+   The `__call__` method is called by the framework to apply the risk
+   management strategy to the given allocations.
+
+   The `run` method is called by `__call__` and should be implemented by
+   subclasses to perform the actual risk management logic.
+
+
+   .. py:method:: __call__(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection)
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> modular_trader.allocation.AllocationCollection
+      :abstractmethod:
+
+
+
+.. py:class:: FixedStopLossRiskManagement
+
+   Bases: :py:obj:`modular_trader.framework.risk_management.base.BaseRiskManagement`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.risk_management.FixedStopLossRiskManagement
+      :parts: 1
+      :private-bases:
+
+
+   Fixed stop loss.
+
+   Liquidate positions if unrealized loss percent >= `percent_loss`.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> modular_trader.allocation.AllocationCollection
+
+      Liquidate positions if unrealized loss percent >= `percent_loss`.
+
+      Args:
+          context: The context to get the current positions from.
+          allocations: The allocations to modify.
+
+      Returns:
+          The modified allocations.
+
+
+
+   .. py:attribute:: percent_loss
+      :type:  float
+      :value: None
+
+
+
+.. py:class:: NullRiskManagement
+
+   Bases: :py:obj:`modular_trader.framework.risk_management.base.BaseRiskManagement`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.risk_management.NullRiskManagement
+      :parts: 1
+      :private-bases:
+
+
+   No-op risk management strategy.
+
+   Leaves allocations unchanged.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> modular_trader.allocation.AllocationCollection
+
+

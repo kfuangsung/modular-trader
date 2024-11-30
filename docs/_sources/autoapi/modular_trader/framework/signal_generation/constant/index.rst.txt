@@ -1,0 +1,50 @@
+modular_trader.framework.signal_generation.constant
+===================================================
+
+.. py:module:: modular_trader.framework.signal_generation.constant
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.signal_generation.constant.ConstantSignalGeneration
+
+
+Module Contents
+---------------
+
+.. py:class:: ConstantSignalGeneration
+
+   Bases: :py:obj:`modular_trader.framework.signal_generation.base.BaseSignalGeneration`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.signal_generation.constant.ConstantSignalGeneration
+      :parts: 1
+      :private-bases:
+
+
+   Constant signal generator.
+
+   Generates a signal for each symbol in the universe with a constant direction.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse) -> Iterable[modular_trader.signal.Signal]
+
+      Returns an iterable of constant signals.
+
+      Args:
+          context: Context
+          universe: AssetUniverse
+
+      Returns:
+          An iterable of signals.
+
+
+
+   .. py:attribute:: direction
+      :type:  modular_trader.signal.SignalDirection
+      :value: None
+
+
+

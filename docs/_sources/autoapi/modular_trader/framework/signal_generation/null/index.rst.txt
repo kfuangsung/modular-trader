@@ -1,0 +1,37 @@
+modular_trader.framework.signal_generation.null
+===============================================
+
+.. py:module:: modular_trader.framework.signal_generation.null
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.signal_generation.null.NullSignalGeneration
+
+
+Module Contents
+---------------
+
+.. py:class:: NullSignalGeneration
+
+   Bases: :py:obj:`modular_trader.framework.signal_generation.base.BaseSignalGeneration`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.signal_generation.null.NullSignalGeneration
+      :parts: 1
+      :private-bases:
+
+
+   Signal generation strategy that doesn't generate any signals.
+
+   This signal generation strategy is useful for testing or debugging purposes.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse) -> Iterable[None]
+
+      Returns an empty iterable of signals.
+
+
+

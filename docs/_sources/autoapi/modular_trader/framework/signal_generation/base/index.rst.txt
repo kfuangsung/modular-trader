@@ -1,0 +1,66 @@
+modular_trader.framework.signal_generation.base
+===============================================
+
+.. py:module:: modular_trader.framework.signal_generation.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.signal_generation.base.BaseSignalGeneration
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseSignalGeneration
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.signal_generation.base.BaseSignalGeneration
+      :parts: 1
+      :private-bases:
+
+
+   Abstract base class for signal generation.
+
+   Attributes:
+       context: Context
+           The framework context.
+       universe: AssetUniverse
+           The asset universe to generate signals for.
+
+   Methods:
+       run(context: Context, universe: AssetUniverse) -> Iterable[Signal]:
+           Must be implemented by subclasses.
+           Called by __call__() to generate signals.
+
+
+   .. py:method:: __call__(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse)
+
+      Generate signals.
+
+      Args:
+          context: Context
+              The framework context.
+          universe: AssetUniverse
+              The asset universe to generate signals for.
+
+      Returns:
+          Iterable[Signal]:
+              An iterable of signals.
+
+
+
+   .. py:method:: run(context: modular_trader.context.Context, universe: modular_trader.universe.AssetUniverse) -> Iterable[modular_trader.signal.Signal]
+      :abstractmethod:
+
+
+      Must be implemented by subclasses.
+
+      Called by __call__() to generate signals.
+
+
+

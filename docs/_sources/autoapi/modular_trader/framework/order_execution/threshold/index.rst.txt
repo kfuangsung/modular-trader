@@ -1,0 +1,48 @@
+modular_trader.framework.order_execution.threshold
+==================================================
+
+.. py:module:: modular_trader.framework.order_execution.threshold
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.order_execution.threshold.ThresholdDeviationOrderExecution
+
+
+Module Contents
+---------------
+
+.. py:class:: ThresholdDeviationOrderExecution
+
+   Bases: :py:obj:`modular_trader.framework.order_execution.instant.InstantOrderExecution`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.order_execution.threshold.ThresholdDeviationOrderExecution
+      :parts: 1
+      :private-bases:
+
+
+   Execute orders when any current positions deviate from the allocation targets by certain threshold in percentage.
+
+   The threshold is in decimal format; e.g. 0.05 = 5%
+
+   Args:
+       threshold (float, optional): The threshold in decimal format. Defaults to 0.05.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> None
+
+      Execute orders from the given allocations.
+
+      This method is called by __call__() and should not be called directly.
+
+
+
+   .. py:attribute:: threshold
+      :type:  float
+      :value: None
+
+
+

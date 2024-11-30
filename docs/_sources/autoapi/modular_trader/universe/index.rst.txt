@@ -1,0 +1,101 @@
+modular_trader.universe
+=======================
+
+.. py:module:: modular_trader.universe
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.universe.AssetUniverse
+
+
+Module Contents
+---------------
+
+.. py:class:: AssetUniverse
+
+   Manage the dynamic list of assets in the strategy universe.
+
+   Attributes:
+       universe (set[str]): The set of assets that are currently in the
+           universe.
+       added (set[str]): The set of assets that have been added in the current
+           context.
+       removed (set[str]): The set of assets that have been removed in the
+           current context.
+
+
+   .. py:method:: _(symbols: Iterable[str]) -> None
+
+      Add multiple assets to the universe.
+
+      Args:
+          symbols (Iterable[str]): The symbols of the assets to add.
+
+
+
+   .. py:method:: __iter__() -> Iterator[str]
+
+      Iterate over the assets in the universe.
+
+
+
+   .. py:method:: add(symbol: str) -> None
+
+      Add a single asset to the universe.
+
+      If the asset is not already in the universe, it is added and the added
+      set is updated. If the asset is already in the universe, the added set
+      is not updated.
+
+      Args:
+          symbol (str): The symbol of the asset to add.
+
+
+
+   .. py:method:: remove(symbol: str) -> None
+
+      Remove a single asset from the universe.
+
+      If the asset is in the universe, it is removed and the removed set is
+      updated. If the asset is not in the universe, the removed set is not
+      updated.
+
+      Args:
+          symbol (str): The symbol of the asset to remove.
+
+
+
+   .. py:method:: update(symbols: Iterable[str]) -> None
+
+      Update the universe by adding and removing assets.
+
+      The added and removed sets are cleared before updating the universe.
+
+      Args:
+          symbols (Iterable[str]): The symbols of the assets to add to the
+              universe.
+
+
+
+   .. py:attribute:: added
+      :type:  set[str]
+      :value: None
+
+
+
+   .. py:attribute:: removed
+      :type:  set[str]
+      :value: None
+
+
+
+   .. py:attribute:: universe
+      :type:  set[str]
+      :value: None
+
+
+

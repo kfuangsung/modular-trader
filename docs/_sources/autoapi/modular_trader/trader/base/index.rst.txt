@@ -1,0 +1,67 @@
+modular_trader.trader.base
+==========================
+
+.. py:module:: modular_trader.trader.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.trader.base.BaseTrader
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseTrader(engine: modular_trader.engine.base.BaseEngine, framework: modular_trader.framework.collection.FrameworkCollection, indicator: modular_trader.indicator.handler.base.BaseIndicatorHandler, context: modular_trader.context.Context, recorder: modular_trader.record.Recorder)
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.trader.base.BaseTrader
+      :parts: 1
+      :private-bases:
+
+
+   Abstract base class for traders.
+
+   Attributes:
+       engine (BaseEngine): The engine to use for running the backtest.
+       framework (FrameworkCollection): The framework to use for running the backtest.
+       indicator (BaseIndicatorHandler | None): The indicator to use for running the backtest.
+       context (Context): The context to use for running the backtest.
+       recorder (Recorder): The recorder to use for running the backtest.
+
+   Properties:
+       logger (BaseLogger): The logger to use for logging.
+
+   Methods:
+       run ():
+           Runs the backtest.
+
+
+   .. py:method:: run()
+      :abstractmethod:
+
+
+
+   .. py:attribute:: context
+
+
+   .. py:attribute:: engine
+
+
+   .. py:attribute:: framework
+
+
+   .. py:attribute:: indicator
+
+
+   .. py:attribute:: logger
+      :type:  modular_trader.logging.base.BaseLogger
+
+
+   .. py:attribute:: recorder
+
+

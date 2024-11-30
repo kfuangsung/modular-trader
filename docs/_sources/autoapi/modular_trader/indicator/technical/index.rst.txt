@@ -1,0 +1,107 @@
+modular_trader.indicator.technical
+==================================
+
+.. py:module:: modular_trader.indicator.technical
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/indicator/technical/base/index
+   /autoapi/modular_trader/indicator/technical/rsi/index
+   /autoapi/modular_trader/indicator/technical/settings/index
+   /autoapi/modular_trader/indicator/technical/sma/index
+   /autoapi/modular_trader/indicator/technical/stoch/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.indicator.technical.RSI
+   modular_trader.indicator.technical.SMA
+   modular_trader.indicator.technical.STOCH
+
+
+Package Contents
+----------------
+
+.. py:class:: RSI(period: int, input_indicator: modular_trader.indicator.technical.base.BaseIndicator | None = None, sampling_period: talipp.input.SamplingPeriodType | None = None, cache_size: int | None = None, name: str | None = None)
+
+   Bases: :py:obj:`modular_trader.indicator.technical.base.BaseIndicator`, :py:obj:`talipp.indicators.RSI`, :py:obj:`modular_trader.indicator.technical.base.SingleInputMixin`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.technical.RSI
+      :parts: 1
+      :private-bases:
+
+
+   Relative Strength Index (RSI)
+
+   The RSI is a technical indicator used to measure the strength of a stock or
+   currency's recent price action. It is an oscillator that computes the speed and
+   change of price movements by comparing the magnitude of recent gains to recent
+   losses. The RSI is usually plotted below an asset's price chart and can have a
+   reading from 0 to 100. Readings above 70 are considered overbought while
+   readings below 30 are considered oversold.
+
+   Args:
+       period (int): The period of the RSI.
+       input_indicator (BaseIndicator | None): The input indicator.
+       sampling_period (SamplingPeriodType | None): The sampling period.
+       cache_size (int | None): The cache size.
+       name (str | None): The name of the indicator.
+
+
+.. py:class:: SMA(period: int, input_indicator: modular_trader.indicator.technical.base.BaseIndicator | None = None, sampling_period: talipp.input.SamplingPeriodType | None = None, cache_size: int | None = None, name: str | None = None)
+
+   Bases: :py:obj:`modular_trader.indicator.technical.base.BaseIndicator`, :py:obj:`talipp.indicators.SMA`, :py:obj:`modular_trader.indicator.technical.base.SingleInputMixin`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.technical.SMA
+      :parts: 1
+      :private-bases:
+
+
+   Simple Moving Average (SMA)
+
+   The Simple Moving Average (SMA) is a technical indicator that calculates the
+   average of a security's price over a specified number of periods. It is used
+   to identify trends and patterns in the price movement of a security. The
+   indicator is a moving average of the price over a specified number of
+   periods.
+
+   Args:
+       period (int): The number of periods to calculate the average over.
+       input_indicator (BaseIndicator | None): The input indicator.
+       sampling_period (SamplingPeriodType | None): The sampling period.
+       cache_size (int | None): The cache size.
+       name (str | None): The name of the indicator.
+
+
+.. py:class:: STOCH(period: int, smoothing_period: int, input_indicator: modular_trader.indicator.technical.base.BaseIndicator | None = None, sampling_period: talipp.input.SamplingPeriodType | None = None, cache_size: int | None = None, name: str | None = None)
+
+   Bases: :py:obj:`modular_trader.indicator.technical.base.BaseIndicator`, :py:obj:`talipp.indicators.Stoch`, :py:obj:`modular_trader.indicator.technical.base.MultipleInputMixin`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.technical.STOCH
+      :parts: 1
+      :private-bases:
+
+
+   Stochastic Oscillator (STOCH)
+
+   The Stochastic Oscillator is a momentum indicator that compares the closing
+   price of a security to its price range over a given period of time. The
+   Stochastic Oscillator is used to generate overbought and oversold signals.
+
+   Args:
+       period (int): The period of the Stochastic Oscillator.
+       smoothing_period (int): The smoothing period of the Stochastic Oscillator.
+       input_indicator (BaseIndicator | None): The input indicator.
+       sampling_period (SamplingPeriodType | None): The sampling period.
+       cache_size (int | None): The cache size.
+       name (str | None): The name of the indicator.
+
+

@@ -1,0 +1,115 @@
+modular_trader.framework.order_execution
+========================================
+
+.. py:module:: modular_trader.framework.order_execution
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/framework/order_execution/base/index
+   /autoapi/modular_trader/framework/order_execution/instant/index
+   /autoapi/modular_trader/framework/order_execution/threshold/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.order_execution.BaseOrderExecution
+   modular_trader.framework.order_execution.InstantOrderExecution
+   modular_trader.framework.order_execution.ThresholdDeviationOrderExecution
+
+
+Package Contents
+----------------
+
+.. py:class:: BaseOrderExecution
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.order_execution.BaseOrderExecution
+      :parts: 1
+      :private-bases:
+
+
+   Base class for order execution strategies.
+
+   Note that run() is called by __call__() and should not be called directly.
+
+
+   .. py:method:: __call__(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> None
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> None
+      :abstractmethod:
+
+
+      Execute orders from the given allocations.
+
+      This method is called by __call__() and should not be called directly.
+
+
+
+.. py:class:: InstantOrderExecution
+
+   Bases: :py:obj:`modular_trader.framework.order_execution.base.BaseOrderExecution`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.order_execution.InstantOrderExecution
+      :parts: 1
+      :private-bases:
+
+
+   Instantly execute orders from allocations
+
+   Iterate through all allocations and place the corresponding orders.
+   If an order is already pending, skip it.
+   If the allocation is an AllocationTarget, close the position if weight is 0,
+   otherwise place an order to set the weight to the target value.
+   If the allocation is an AllocationAdjustment, place an order to adjust the
+   weight by the target value.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> None
+
+      Execute orders from the given allocations.
+
+      This method is called by __call__() and should not be called directly.
+
+
+
+.. py:class:: ThresholdDeviationOrderExecution
+
+   Bases: :py:obj:`modular_trader.framework.order_execution.instant.InstantOrderExecution`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.order_execution.ThresholdDeviationOrderExecution
+      :parts: 1
+      :private-bases:
+
+
+   Execute orders when any current positions deviate from the allocation targets by certain threshold in percentage.
+
+   The threshold is in decimal format; e.g. 0.05 = 5%
+
+   Args:
+       threshold (float, optional): The threshold in decimal format. Defaults to 0.05.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> None
+
+      Execute orders from the given allocations.
+
+      This method is called by __call__() and should not be called directly.
+
+
+
+   .. py:attribute:: threshold
+      :type:  float
+      :value: None
+
+
+

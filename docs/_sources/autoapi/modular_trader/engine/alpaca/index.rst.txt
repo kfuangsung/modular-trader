@@ -1,0 +1,645 @@
+modular_trader.engine.alpaca
+============================
+
+.. py:module:: modular_trader.engine.alpaca
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.engine.alpaca.AlpacaEngine
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   modular_trader.engine.alpaca.get_api_key
+   modular_trader.engine.alpaca.get_secret_key
+
+
+Module Contents
+---------------
+
+.. py:class:: AlpacaEngine(/, **data: Any)
+
+   Bases: :py:obj:`modular_trader.engine.base.BaseEngine`, :py:obj:`pydantic.BaseModel`
+
+   .. autoapi-inheritance-diagram:: modular_trader.engine.alpaca.AlpacaEngine
+      :parts: 1
+      :private-bases:
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: __del__() -> None
+
+      Destructor for the AlpacaEngine class.
+
+      This method is called when the object is garbage collected. It
+      closes the Alpaca trading and data streams, and deletes the
+      clients and streams to free up memory.
+
+
+
+   .. py:method:: _close_websocket()
+      :async:
+
+
+      Close the Alpaca trading and data streams.
+
+      This method is called by the destructor to ensure that the streams are
+      closed when the object is garbage collected.
+
+
+
+   .. py:method:: _init_assets() -> dict[str, alpaca.trading.models.Asset]
+
+      Initialize the assets dictionary.
+
+      This method retrieves all active assets for the specified asset_class
+      using the Alpaca trading client and stores them in the _assets
+      dictionary. The keys are the symbol names and the values are the Asset
+      objects.
+
+      Returns:
+          dict[str, Asset]: The assets dictionary.
+
+
+
+   .. py:method:: _init_crypto_data(_api_key: str, _secret_key: str) -> None
+
+      Initializes the crypto data clients.
+
+      This method takes in the API key and secret key as arguments and
+      initializes the crypto historical data client and stream using the
+      Alpaca trading client.
+
+      Args:
+          _api_key (str): The API key for the Alpaca trading client and
+              stream.
+          _secret_key (str): The secret key for the Alpaca trading client
+              and stream.
+
+
+
+   .. py:method:: _init_data(_api_key: str, _secret_key: str) -> None
+
+      Initializes the data clients for the specified asset class.
+
+      This method takes in the API key and secret key as arguments and
+      initializes the data clients for the specified asset class using the
+      Alpaca trading client.
+
+      Args:
+          _api_key (str): The API key for the Alpaca trading client and
+              stream.
+          _secret_key (str): The secret key for the Alpaca trading client
+              and stream.
+
+      Raises:
+          ValueError: If the asset class is not supported.
+
+
+
+   .. py:method:: _init_option_data(_api_key: str, _secret_key: str) -> None
+
+      Initializes the option data clients.
+
+      This method takes in the API key and secret key as arguments and
+      initializes the option historical data client and stream using the
+      Alpaca trading client.
+
+      Args:
+          _api_key (str): The API key for the Alpaca trading client and
+              stream.
+          _secret_key (str): The secret key for the Alpaca trading client
+              and stream.
+
+
+
+   .. py:method:: _init_stock_data(_api_key: str, _secret_key: str) -> None
+
+      Initializes the stock data clients.
+
+      This method takes in the API key and secret key as arguments and
+      initializes the stock historical data client and stream using the
+      Alpaca trading client.
+
+      Args:
+          _api_key (str): The API key for the Alpaca trading client and
+              stream.
+          _secret_key (str): The secret key for the Alpaca trading client
+              and stream.
+
+
+
+   .. py:method:: _init_trading(_api_key: str, _secret_key: str) -> None
+
+      Initializes the Alpaca trading client and stream.
+
+      This method takes in the API key and secret key as arguments and
+      initializes the Alpaca trading client and stream with the given
+      credentials. The `paper` argument is set to `True` if the engine is in
+      paper trading mode.
+
+      Args:
+          _api_key (str): The API key for the Alpaca trading client and
+              stream.
+          _secret_key (str): The secret key for the Alpaca trading client
+              and stream.
+
+
+
+   .. py:method:: _initialize()
+
+      Initialize trading and data clients and streams.
+
+      This method is called after the model is validated and initialized.
+      It sets up the Alpaca trading and data clients and streams using the
+      API key and secret key stored in the environment variables.
+
+
+
+   .. py:method:: cancel_all_orders() -> list[alpaca.trading.requests.CancelOrderResponse]
+
+      Cancel all active orders.
+
+      Returns:
+          list[CancelOrderResponse]: A list of CancelOrderResponse objects for all canceled orders.
+
+
+
+   .. py:method:: cancel_order(order_id: uuid.UUID | str) -> alpaca.trading.requests.CancelOrderResponse
+
+      Cancel an order by ID.
+
+      Args:
+          order_id (UUID | str): The order ID to cancel.
+
+      Returns:
+          CancelOrderResponse: The response from Alpaca.
+
+
+
+   .. py:method:: cancel_orders(symbol: str)
+
+      Cancel all active orders for the given symbol.
+
+      Args:
+          symbol (str): The symbol for which to cancel all orders.
+
+      Returns:
+          NotImplemented: This method is not implemented.
+
+
+
+   .. py:method:: close_all_positions(cancel_orders: bool = True) -> alpaca.trading.models.ClosePositionResponse
+
+      Close all open positions.
+
+      Args:
+          cancel_orders (bool, optional): If true, all open orders will also be canceled. Defaults to True.
+
+      Returns:
+          ClosePositionResponse: The response from Alpaca.
+
+
+
+   .. py:method:: close_position(symbol: str) -> alpaca.trading.models.Order
+
+      Close a position for a given symbol.
+
+      Args:
+          symbol (str): The symbol of the asset to close.
+
+      Returns:
+          Order: The order response from Alpaca.
+
+
+
+   .. py:method:: get_account() -> alpaca.trading.models.TradeAccount
+
+      Gets the account information for the Alpaca trading client.
+
+      Returns:
+          TradeAccount: The account information.
+
+
+
+   .. py:method:: get_cash() -> float
+
+      Gets the current cash balance in the Alpaca account.
+
+      Returns:
+          float: The current cash balance.
+
+
+
+   .. py:method:: get_equity() -> float
+
+      Gets the current equity in the Alpaca account.
+
+      Returns:
+          float: The current equity.
+
+
+
+   .. py:method:: get_historical_data(symbols: str | list[str], start: datetime.datetime, end: datetime.datetime | None = None, timeframe: alpaca.data.timeframe.TimeFrame | None = TimeFrame.Day, adjustment: alpaca.data.enums.Adjustment | None = Adjustment.ALL, **kwargs) -> pandas.DataFrame
+
+      Gets the historical data for the given symbols, start date, end date,
+      timeframe, and adjustment.
+
+      Args:
+          symbols (str | list[str]): The symbols to get the historical data for.
+          start (datetime): The start date of the historical data.
+          end (datetime | None): The end date of the historical data.
+              If None, the data will be fetched until the current date.
+          timeframe (TimeFrame | None): The timeframe of the historical data.
+              If None, the data will be fetched in the Day timeframe.
+          adjustment (Adjustment | None): The adjustment of the historical data.
+              If None, the data will be fetched with the ALL adjustment.
+
+      Returns:
+          pd.DataFrame: The historical data in a MultiIndex DataFrame.
+
+
+
+   .. py:method:: get_latest_bar(symbol: str) -> dict[str, alpaca.data.models.Bar]
+
+      Gets the latest bar for the given symbol.
+
+      Args:
+          symbol (str): The symbol of the asset.
+
+      Returns:
+          dict[str, Bar]: A dictionary containing the latest bar.
+
+      Raises:
+          NotImplementedError: If the asset class is US_OPTION.
+          ValueError: If the asset class is not supported.
+
+
+
+   .. py:method:: get_logger()
+
+      Returns the logger of the engine.
+
+      Returns:
+          BaseLogger: The logger of the engine.
+
+
+
+   .. py:method:: get_name() -> str
+
+      Returns the name of the engine, which is "Alpaca".
+
+
+
+   .. py:method:: get_open_position(symbol: str) -> alpaca.trading.models.Position | None
+
+      Gets the open position for the given symbol.
+
+      Args:
+          symbol (str): The symbol of the asset.
+
+      Returns:
+          Position | None: The open position if it exists, otherwise None.
+
+
+
+   .. py:method:: get_orders() -> list[alpaca.trading.models.Order]
+
+      Get all active orders.
+
+      Returns:
+          list[Order]: A list of Order objects for all active orders.
+
+
+
+   .. py:method:: get_positions() -> list[alpaca.trading.models.Position]
+
+      Gets all positions held by the Alpaca account.
+
+      Returns:
+          list[Position]: The list of positions.
+
+
+
+   .. py:method:: get_positions_serialize() -> list[dict[str, Any]]
+
+      Gets all positions held by the Alpaca account as a list of serialized dictionaries.
+
+      Returns:
+          list[dict[str, Any]]: The list of serialized positions.
+
+
+
+   .. py:method:: is_fractionable(symbol: str) -> bool
+
+      Checks if a given asset is fractionable.
+
+      Args:
+          symbol (str): The symbol of the asset.
+
+      Returns:
+          bool: True if the asset is fractionable, False otherwise.
+
+
+
+   .. py:method:: is_tradeable(symbol: str) -> bool
+
+      Checks if a given asset is tradeable.
+
+      Args:
+          symbol (str): The symbol of the asset.
+
+      Returns:
+          bool: True if the asset is tradeable, False otherwise.
+
+
+
+   .. py:method:: order_percent(symbol: str, percent: float, order_type: alpaca.trading.enums.OrderType | None = OrderType.MARKET, time_in_force: alpaca.trading.enums.TimeInForce | None = TimeInForce.GTC, **kwargs)
+
+      Places an order in the specified asset corresponding to the given percent of the current portfolio value.
+      percent is in decimal format; 0.5 = 50%
+
+
+
+   .. py:method:: order_share(symbol: str, share: int | float, order_type: alpaca.trading.enums.OrderType | None = OrderType.MARKET, time_in_force: alpaca.trading.enums.TimeInForce | None = TimeInForce.GTC, **kwargs) -> alpaca.trading.models.Order
+
+      Places an order for a fixed number of shares of the given symbol.
+
+      Args:
+          symbol (str): The symbol of the asset to order.
+          share (int | float): The number of shares to order. If the asset is not fractionable, the value will be rounded down to the nearest integer.
+          order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+          time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
+
+      Returns:
+          Order: The order response from Alpaca.
+
+
+
+   .. py:method:: order_target_percent(symbol: str, target_percent: float, order_type: alpaca.trading.enums.OrderType | None = OrderType.MARKET, time_in_force: alpaca.trading.enums.TimeInForce | None = TimeInForce.GTC, **kwargs) -> alpaca.trading.models.Order
+
+      Places an order to adjust the current position in the given symbol to the target percent of the current portfolio value.
+      percent is in decimal format; 0.5 = 50%
+
+      Args:
+          symbol (str): The symbol of the asset to order.
+          target_percent (float): The target percent of the portfolio value.
+          order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+          time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
+
+      Returns:
+          Order: The order response from Alpaca.
+
+
+
+   .. py:method:: order_target_share(symbol: str, target_share: int | float, order_type: alpaca.trading.enums.OrderType | None = OrderType.MARKET, time_in_force: alpaca.trading.enums.TimeInForce | None = TimeInForce.GTC, **kwargs) -> alpaca.trading.models.Order
+
+      Places an order to adjust the current position in the given symbol to the target number of shares.
+
+      If no position exists, the order will be placed as a regular order for the target number of shares.
+      If a position exists, the order will be placed as a regular order for the difference between the target number of shares and the current number of shares.
+
+      Args:
+          symbol (str): The symbol of the asset to order.
+          target_share (int | float): The target number of shares.
+          order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+          time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
+
+      Returns:
+          Order: The order response from Alpaca.
+
+
+
+   .. py:method:: order_target_value(symbol, target_value: float, order_type: alpaca.trading.enums.OrderType | None = OrderType.MARKET, time_in_force: alpaca.trading.enums.TimeInForce | None = TimeInForce.GTC, **kwargs)
+
+      Places an order to adjust the current position in the given symbol to the target value.
+
+      If no position exists, the order will be placed as a regular order for the target value.
+      If a position exists, the order will be placed as a regular order for the difference between the target value and the current value.
+
+      Args:
+          symbol (str): The symbol of the asset to order.
+          target_value (float): The target value.
+          order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+          time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
+
+      Returns:
+          Order: The order response from Alpaca.
+
+
+
+   .. py:method:: order_value(symbol: str, value: float, order_type: alpaca.trading.enums.OrderType | None = OrderType.MARKET, time_in_force: alpaca.trading.enums.TimeInForce | None = TimeInForce.GTC, **kwargs)
+
+      Places an order for a fixed amount of money of the given symbol.
+
+      Args:
+          symbol (str): The symbol of the asset to order.
+          value (float): The amount of money to order. If the asset is not fractionable, the value will be rounded down to the nearest integer.
+          order_type (OrderType, optional): The order type. Defaults to OrderType.MARKET.
+          time_in_force (TimeInForce, optional): The time in force. Defaults to TimeInForce.GTC.
+
+      Returns:
+          Order: The order response from Alpaca.
+
+
+
+   .. py:method:: stream_data() -> None
+      :async:
+
+
+      Run the data stream.
+
+      This method will block until the program is stopped and will run the data stream
+      in an infinite loop. The data stream will call the callback function passed to
+      `subscribe_minute_bars` and `subscribe_daily_bars` with the respective data.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          This will block the current task, so you should run this in an asyncio task.
+
+
+
+   .. py:method:: stream_trade() -> None
+      :async:
+
+
+      Run the trading stream.
+
+      This method will block until the program is stopped and will run the trading stream
+      in an infinite loop. The trading stream will call the callback function passed to
+      `subscribe_trade_update` with the trade update data.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          This will block the current task, so you should run this in an asyncio task.
+
+
+
+   .. py:method:: streaming() -> None
+      :async:
+
+
+      Run the trading and data streams in an infinite loop.
+
+      This method will block until the program is stopped and will run the trading
+      and data streams in an infinite loop. The trading stream will call the callback
+      function passed to `subscribe_trade_update` with the trade update data.
+      The data stream will call the callback function passed to `subscribe_minute_bars`
+      and `subscribe_daily_bars` with the respective data.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          This will block the current task, so you should run this in an asyncio task.
+
+
+
+   .. py:method:: subscribe_daily_bars(handler: Callable[[alpaca.data.models.Bar], Awaitable[None]], symbols: list[str]) -> None
+
+      Subscribe to daily bars.
+
+      Args:
+          handler (Callable[[Bar], Awaitable[None]]): The callback to be called when a daily bar occurs.
+          symbols (list[str]): The symbols for which to subscribe to daily bars.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          The callback will be passed the Bar object as an argument.
+
+
+
+   .. py:method:: subscribe_minute_bars(handler: Callable[[alpaca.data.models.Bar], Awaitable[None]], symbols: list[str]) -> None
+
+      Subscribe to minute bars.
+
+      Args:
+          handler (Callable[[Bar], Awaitable[None]]): The callback to be called when a minute bar occurs.
+          symbols (list[str]): The symbols for which to subscribe to minute bars.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          The callback will be passed the Bar object as an argument.
+
+
+
+   .. py:method:: subscribe_trade_update(handler: Callable[[Any], None]) -> None
+
+      Subscribe to trade updates.
+
+      Args:
+          handler (Callable[[Any], None]): The callback to be called when a trade update occurs.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          The callback will be passed the Bar object as an argument.
+
+
+
+   .. py:method:: unsubscribe_daily_bars(symbols: list[str]) -> None
+
+      Unsubscribe from daily bars.
+
+      Args:
+          symbols (list[str]): The symbols for which to unsubscribe from daily bars.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          This will stop the callback from being called on daily bars.
+
+
+
+   .. py:method:: unsubscribe_minute_bars(symbols: list[str]) -> None
+
+      Unsubscribe from minute bars.
+
+      Args:
+          symbols (list[str]): The symbols for which to unsubscribe from minute bars.
+
+      Returns:
+          None: This function does not return a value.
+
+      Notes:
+          This will stop the callback from being called on minute bars.
+
+
+
+   .. py:attribute:: asset_class
+      :type:  alpaca.trading.enums.AssetClass
+      :value: None
+
+
+
+   .. py:attribute:: feed
+      :type:  alpaca.data.enums.DataFeed | alpaca.data.enums.CryptoFeed | alpaca.data.enums.OptionsFeed | None
+      :value: None
+
+
+
+   .. py:property:: is_paper
+      :type: bool
+
+
+      Checks if the engine is in paper trading mode.
+
+      Returns:
+          bool: True if in paper trading mode, False otherwise.
+
+
+
+   .. py:attribute:: logger
+      :type:  modular_trader.logging.BaseLogger
+      :value: None
+
+
+
+   .. py:attribute:: mode
+      :type:  modular_trader.common.enums.TradingMode
+      :value: None
+
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+
+.. py:function:: get_api_key() -> str | None
+
+   Retrieves the Alpaca API key from the "ALPACA_API_KEY" environment variable.
+
+   Returns:
+       str | None: The Alpaca API key, or None if not set.
+
+
+.. py:function:: get_secret_key() -> str | None
+
+   Retrieves the Alpaca API secret key from the "ALPACA_SECRET_KEY" environment variable.
+
+   Returns:
+       str | None: The Alpaca API secret key, or None if not set.
+
+

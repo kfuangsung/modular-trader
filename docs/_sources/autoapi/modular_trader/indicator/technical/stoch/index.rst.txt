@@ -1,0 +1,41 @@
+modular_trader.indicator.technical.stoch
+========================================
+
+.. py:module:: modular_trader.indicator.technical.stoch
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.indicator.technical.stoch.STOCH
+
+
+Module Contents
+---------------
+
+.. py:class:: STOCH(period: int, smoothing_period: int, input_indicator: modular_trader.indicator.technical.base.BaseIndicator | None = None, sampling_period: talipp.input.SamplingPeriodType | None = None, cache_size: int | None = None, name: str | None = None)
+
+   Bases: :py:obj:`modular_trader.indicator.technical.base.BaseIndicator`, :py:obj:`talipp.indicators.Stoch`, :py:obj:`modular_trader.indicator.technical.base.MultipleInputMixin`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.technical.stoch.STOCH
+      :parts: 1
+      :private-bases:
+
+
+   Stochastic Oscillator (STOCH)
+
+   The Stochastic Oscillator is a momentum indicator that compares the closing
+   price of a security to its price range over a given period of time. The
+   Stochastic Oscillator is used to generate overbought and oversold signals.
+
+   Args:
+       period (int): The period of the Stochastic Oscillator.
+       smoothing_period (int): The smoothing period of the Stochastic Oscillator.
+       input_indicator (BaseIndicator | None): The input indicator.
+       sampling_period (SamplingPeriodType | None): The sampling period.
+       cache_size (int | None): The cache size.
+       name (str | None): The name of the indicator.
+
+

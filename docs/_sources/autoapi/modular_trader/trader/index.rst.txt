@@ -1,0 +1,215 @@
+modular_trader.trader
+=====================
+
+.. py:module:: modular_trader.trader
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/trader/alpaca/index
+   /autoapi/modular_trader/trader/base/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.trader.AlpacaTrader
+   modular_trader.trader.BaseTrader
+
+
+Package Contents
+----------------
+
+.. py:class:: AlpacaTrader(engine: modular_trader.engine.alpaca.AlpacaEngine, framework: modular_trader.framework.collection.FrameworkCollection, subscription_symbols: list[str], indicator: modular_trader.indicator.handler.alpaca.AlpacaIndicatorHandler | None = None, context: modular_trader.context.Context | None = Context(), recorder: modular_trader.record.Recorder | None = Recorder(), is_log_heartbeat: bool = True)
+
+   Bases: :py:obj:`modular_trader.trader.base.BaseTrader`
+
+   .. autoapi-inheritance-diagram:: modular_trader.trader.AlpacaTrader
+      :parts: 1
+      :private-bases:
+
+
+   A trader class that uses Alpaca as the engine.
+
+   This class is responsible for setting up the subscriptions, and handling the
+   trade updates, minute bars, and daily bars.
+
+   Attributes:
+       engine (AlpacaEngine): The Alpaca engine instance.
+       framework (FrameworkCollection): The framework instance.
+       subscription_symbols (list[str]): The symbols to subscribe to.
+       indicator (AlpacaIndicatorHandler | None): The indicator handler instance.
+       context (Context | None): The context instance.
+       recorder (Recorder | None): The recorder instance.
+       is_log_heartbeat (bool): Whether to log heartbeats.
+       daily_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the
+           daily bar heartbeat.
+       minute_bar_heartbeat_timestamp (pendulum.DateTime): The timestamp of the
+           minute bar heartbeat.
+
+
+   .. py:method:: get_historical_data(symbols: list[str], length: int, frequency: modular_trader.indicator.handler.alpaca.Frequency, delay: pendulum.Duration = pendulum.duration(minutes=0)) -> pandas.DataFrame
+
+      Get the historical data.
+
+      Args:
+          symbols (list[str]): The symbols for which to get the historical data.
+          length (int): The length of the historical data.
+          frequency (Frequency): The frequency of the historical data.
+          delay (bool): Whether to delay the request if it fails.
+
+      Returns:
+          pd.DataFrame: The historical data.
+
+
+
+   .. py:method:: get_n_trading_days_in_year(asset_class: alpaca.trading.enums.AssetClass) -> int | float
+
+      Get the number of trading days in a year for the given asset class.
+
+      Args:
+          asset_class (AssetClass): The asset class.
+
+      Returns:
+          int | float: The number of trading days in a year.
+
+
+
+   .. py:method:: get_n_trading_minutes_in_day(asset_class: alpaca.trading.enums.AssetClass) -> int | float
+
+      Get the number of trading minutes in a day for the given asset class.
+
+      Args:
+          asset_class (AssetClass): The asset class.
+
+      Returns:
+          int | float: The number of trading minutes in a day.
+
+
+
+   .. py:method:: handle_daily_bars(bar) -> None
+      :async:
+
+
+      Handle daily bars.
+
+      This method will log the daily bar and record the status of the trader.
+
+
+
+   .. py:method:: handle_minute_bars(bar) -> None
+      :async:
+
+
+      Handle minute bars.
+
+      This method will log the minute bar and record the status of the trader.
+
+
+
+   .. py:method:: handle_trade_update(data) -> None
+      :async:
+
+
+      Handle trade updates.
+
+      This method will log the trade update and record the status of the trader.
+
+
+
+   .. py:method:: init_subscription() -> None
+
+      Initialize the subscriptions.
+
+      This method will set up the subscriptions for the symbols in the
+      `subscription_symbols` attribute.
+
+
+
+   .. py:method:: record_status() -> None
+
+      Record the status of the trader.
+
+      This method will record the positions, indicators, and other relevant
+      information of the trader.
+
+
+
+   .. py:method:: run() -> None
+
+      Run the trader.
+
+      This method will start the engine and set up the subscriptions.
+
+
+
+   .. py:attribute:: daily_bar_heartbeat_timestamp
+
+
+   .. py:attribute:: is_log_heartbeat
+      :value: True
+
+
+
+   .. py:attribute:: minute_bar_heartbeat_timestamp
+
+
+   .. py:attribute:: subscription_symbols
+
+
+.. py:class:: BaseTrader(engine: modular_trader.engine.base.BaseEngine, framework: modular_trader.framework.collection.FrameworkCollection, indicator: modular_trader.indicator.handler.base.BaseIndicatorHandler, context: modular_trader.context.Context, recorder: modular_trader.record.Recorder)
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.trader.BaseTrader
+      :parts: 1
+      :private-bases:
+
+
+   Abstract base class for traders.
+
+   Attributes:
+       engine (BaseEngine): The engine to use for running the backtest.
+       framework (FrameworkCollection): The framework to use for running the backtest.
+       indicator (BaseIndicatorHandler | None): The indicator to use for running the backtest.
+       context (Context): The context to use for running the backtest.
+       recorder (Recorder): The recorder to use for running the backtest.
+
+   Properties:
+       logger (BaseLogger): The logger to use for logging.
+
+   Methods:
+       run ():
+           Runs the backtest.
+
+
+   .. py:method:: run()
+      :abstractmethod:
+
+
+
+   .. py:attribute:: context
+
+
+   .. py:attribute:: engine
+
+
+   .. py:attribute:: framework
+
+
+   .. py:attribute:: indicator
+
+
+   .. py:attribute:: logger
+      :type:  modular_trader.logging.base.BaseLogger
+
+
+   .. py:attribute:: recorder
+
+

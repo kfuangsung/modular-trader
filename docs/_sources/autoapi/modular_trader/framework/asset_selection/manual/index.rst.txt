@@ -1,0 +1,50 @@
+modular_trader.framework.asset_selection.manual
+===============================================
+
+.. py:module:: modular_trader.framework.asset_selection.manual
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.asset_selection.manual.ManualAssetSelection
+
+
+Module Contents
+---------------
+
+.. py:class:: ManualAssetSelection
+
+   Bases: :py:obj:`modular_trader.framework.asset_selection.base.BaseAssetSelection`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.asset_selection.manual.ManualAssetSelection
+      :parts: 1
+      :private-bases:
+
+
+   Selects the assets based on a predefined list of symbols.
+
+   This class is used when the assets to be traded are known in advance.
+
+   Attributes:
+       symbols (list[str]): A list of symbol strings.
+
+
+   .. py:method:: run(context: modular_trader.context.Context) -> Iterable[str]
+
+      Selects the assets based on a predefined list of symbols.
+
+      Args:
+          context (Context): The framework context.
+
+      Returns:
+          Iterable[str]: An iterable of symbol strings.
+
+
+
+   .. py:attribute:: symbols
+      :type:  list[str]
+
+

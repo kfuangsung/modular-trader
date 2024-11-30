@@ -1,0 +1,6 @@
+modular_trader.indicator.technical.settings
+===========================================
+
+.. py:module:: modular_trader.indicator.technical.settings
+
+

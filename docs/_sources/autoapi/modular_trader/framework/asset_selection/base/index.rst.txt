@@ -1,0 +1,49 @@
+modular_trader.framework.asset_selection.base
+=============================================
+
+.. py:module:: modular_trader.framework.asset_selection.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.asset_selection.base.BaseAssetSelection
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseAssetSelection
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.asset_selection.base.BaseAssetSelection
+      :parts: 1
+      :private-bases:
+
+
+   Base class for asset selection.
+
+   This class defines the interface for all asset selection strategies.
+
+
+   .. py:method:: __call__(context: modular_trader.context.Context)
+
+      Selects the assets to be used in the backtest.
+
+      Called by the framework to select the assets to be used in the backtest.
+
+
+
+   .. py:method:: run(context: modular_trader.context.Context) -> Iterable[str]
+      :abstractmethod:
+
+
+      Selects the assets to be used in the backtest.
+
+      Must be implemented by subclasses.
+
+
+

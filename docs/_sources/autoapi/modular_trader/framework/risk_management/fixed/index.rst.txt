@@ -1,0 +1,50 @@
+modular_trader.framework.risk_management.fixed
+==============================================
+
+.. py:module:: modular_trader.framework.risk_management.fixed
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.risk_management.fixed.FixedStopLossRiskManagement
+
+
+Module Contents
+---------------
+
+.. py:class:: FixedStopLossRiskManagement
+
+   Bases: :py:obj:`modular_trader.framework.risk_management.base.BaseRiskManagement`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.risk_management.fixed.FixedStopLossRiskManagement
+      :parts: 1
+      :private-bases:
+
+
+   Fixed stop loss.
+
+   Liquidate positions if unrealized loss percent >= `percent_loss`.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> modular_trader.allocation.AllocationCollection
+
+      Liquidate positions if unrealized loss percent >= `percent_loss`.
+
+      Args:
+          context: The context to get the current positions from.
+          allocations: The allocations to modify.
+
+      Returns:
+          The modified allocations.
+
+
+
+   .. py:attribute:: percent_loss
+      :type:  float
+      :value: None
+
+
+

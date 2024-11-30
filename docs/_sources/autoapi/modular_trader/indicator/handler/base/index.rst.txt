@@ -1,0 +1,49 @@
+modular_trader.indicator.handler.base
+=====================================
+
+.. py:module:: modular_trader.indicator.handler.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.indicator.handler.base.BaseIndicatorHandler
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseIndicatorHandler
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.handler.base.BaseIndicatorHandler
+      :parts: 1
+      :private-bases:
+
+
+   Abstract base class for indicator handlers.
+
+
+   .. py:method:: update()
+      :abstractmethod:
+
+
+      Update the indicators.
+
+      This method is called for each new bar.
+
+
+
+   .. py:method:: warmup()
+      :abstractmethod:
+
+
+      Warmup the indicators.
+
+      This method is called once when the indicator handler is created.
+
+
+

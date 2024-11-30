@@ -1,0 +1,41 @@
+modular_trader
+==============
+
+.. py:module:: modular_trader
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/allocation/index
+   /autoapi/modular_trader/common/index
+   /autoapi/modular_trader/context/index
+   /autoapi/modular_trader/engine/index
+   /autoapi/modular_trader/framework/index
+   /autoapi/modular_trader/indicator/index
+   /autoapi/modular_trader/logging/index
+   /autoapi/modular_trader/record/index
+   /autoapi/modular_trader/signal/index
+   /autoapi/modular_trader/time/index
+   /autoapi/modular_trader/trader/index
+   /autoapi/modular_trader/universe/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   modular_trader.__version__
+
+
+Package Contents
+----------------
+
+.. py:data:: __version__
+   :value: ['0.0.2']
+
+

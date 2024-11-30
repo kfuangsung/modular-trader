@@ -1,0 +1,83 @@
+modular_trader.framework
+========================
+
+.. py:module:: modular_trader.framework
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/modular_trader/framework/asset_selection/index
+   /autoapi/modular_trader/framework/collection/index
+   /autoapi/modular_trader/framework/order_execution/index
+   /autoapi/modular_trader/framework/portfolio_builder/index
+   /autoapi/modular_trader/framework/risk_management/index
+   /autoapi/modular_trader/framework/signal_generation/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.FrameworkCollection
+
+
+Package Contents
+----------------
+
+.. py:class:: FrameworkCollection(/, **data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.FrameworkCollection
+      :parts: 1
+      :private-bases:
+
+
+   Collection of all the components of a framework.
+
+   Contains:
+       - asset_selection: Instance of BaseAssetSelection
+       - signal_generation: Instance of BaseSignalGeneration
+       - portfolio_builder: Instance of BasePortfolioBuilder
+       - order_execution: Instance of BaseOrderExecution
+       - risk_management: Instance of BaseRiskManagement
+
+   Attributes:
+       asset_selection: Instance of BaseAssetSelection
+       signal_generation: Instance of BaseSignalGeneration
+       portfolio_builder: Instance of BasePortfolioBuilder
+       order_execution: Instance of BaseOrderExecution
+       risk_management: Instance of BaseRiskManagement
+
+
+   .. py:attribute:: asset_selection
+      :type:  modular_trader.framework.asset_selection.base.BaseAssetSelection
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+
+   .. py:attribute:: order_execution
+      :type:  modular_trader.framework.order_execution.base.BaseOrderExecution
+
+
+   .. py:attribute:: portfolio_builder
+      :type:  modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder
+
+
+   .. py:attribute:: risk_management
+      :type:  modular_trader.framework.risk_management.base.BaseRiskManagement
+
+
+   .. py:attribute:: signal_generation
+      :type:  modular_trader.framework.signal_generation.base.BaseSignalGeneration
+
+

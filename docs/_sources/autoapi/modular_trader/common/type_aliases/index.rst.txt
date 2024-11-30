@@ -1,0 +1,28 @@
+modular_trader.common.type_aliases
+==================================
+
+.. py:module:: modular_trader.common.type_aliases
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   modular_trader.common.type_aliases.DateOrDatetime
+   modular_trader.common.type_aliases.RealNumber
+
+
+Module Contents
+---------------
+
+.. py:data:: DateOrDatetime
+   :type:  TypeAlias
+   :value: date | datetime
+
+
+.. py:data:: RealNumber
+   :type:  TypeAlias
+   :value: int | float
+
+

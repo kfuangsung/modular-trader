@@ -1,0 +1,45 @@
+modular_trader.framework.risk_management.base
+=============================================
+
+.. py:module:: modular_trader.framework.risk_management.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.risk_management.base.BaseRiskManagement
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseRiskManagement
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.risk_management.base.BaseRiskManagement
+      :parts: 1
+      :private-bases:
+
+
+   Base class for risk management.
+
+   This class defines the interface for all risk management strategies.
+
+   The `__call__` method is called by the framework to apply the risk
+   management strategy to the given allocations.
+
+   The `run` method is called by `__call__` and should be implemented by
+   subclasses to perform the actual risk management logic.
+
+
+   .. py:method:: __call__(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection)
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> modular_trader.allocation.AllocationCollection
+      :abstractmethod:
+
+
+

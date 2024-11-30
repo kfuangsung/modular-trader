@@ -1,0 +1,112 @@
+modular_trader.signal
+=====================
+
+.. py:module:: modular_trader.signal
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.signal.Signal
+   modular_trader.signal.SignalCollection
+   modular_trader.signal.SignalDirection
+
+
+Module Contents
+---------------
+
+.. py:class:: Signal
+
+   A signal.
+
+   A signal is an object that contains information about a trading signal.
+   The signal is defined by the following attributes:
+   - `symbol`: The symbol of the asset.
+   - `direction`: The direction of the signal.
+
+
+   .. py:attribute:: direction
+      :type:  SignalDirection
+
+
+   .. py:attribute:: symbol
+      :type:  str
+
+
+.. py:class:: SignalCollection
+
+   A collection of signals.
+
+   This class represents a collection of trading signals.
+   It contains the following attributes:
+   - `signals`: A list of Signal objects.
+
+
+   .. py:method:: __iter__() -> Generator[Signal, None, None]
+
+      Iterate over the signals.
+
+
+
+   .. py:method:: __len__() -> int
+
+      Return the number of signals.
+
+
+
+   .. py:method:: add(signals: Signal | Iterable[Signal]) -> None
+
+      Add a signal or signals to the collection.
+
+      Args:
+          signals: A signal or an iterable of signals.
+
+
+
+   .. py:method:: clear() -> None
+
+      Clear the collection of signals.
+
+
+
+   .. py:attribute:: signals
+      :type:  list[Signal]
+      :value: None
+
+
+
+.. py:class:: SignalDirection(*args, **kwds)
+
+   Bases: :py:obj:`enum.Enum`
+
+   .. autoapi-inheritance-diagram:: modular_trader.signal.SignalDirection
+      :parts: 1
+      :private-bases:
+
+
+   The direction of a signal.
+
+   This enum defines the possible directions of a signal.
+   The direction can be one of the following values:
+   - `UP`: The signal is indicating a long position.
+   - `DOWN`: The signal is indicating a short position.
+   - `FLAT`: The signal is indicating no position.
+
+
+   .. py:attribute:: DOWN
+      :value: -1
+
+
+
+   .. py:attribute:: FLAT
+      :value: 0
+
+
+
+   .. py:attribute:: UP
+      :value: 1
+
+
+

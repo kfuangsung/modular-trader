@@ -1,0 +1,44 @@
+modular_trader.framework.order_execution.instant
+================================================
+
+.. py:module:: modular_trader.framework.order_execution.instant
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.order_execution.instant.InstantOrderExecution
+
+
+Module Contents
+---------------
+
+.. py:class:: InstantOrderExecution
+
+   Bases: :py:obj:`modular_trader.framework.order_execution.base.BaseOrderExecution`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.order_execution.instant.InstantOrderExecution
+      :parts: 1
+      :private-bases:
+
+
+   Instantly execute orders from allocations
+
+   Iterate through all allocations and place the corresponding orders.
+   If an order is already pending, skip it.
+   If the allocation is an AllocationTarget, close the position if weight is 0,
+   otherwise place an order to set the weight to the target value.
+   If the allocation is an AllocationAdjustment, place an order to adjust the
+   weight by the target value.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> None
+
+      Execute orders from the given allocations.
+
+      This method is called by __call__() and should not be called directly.
+
+
+

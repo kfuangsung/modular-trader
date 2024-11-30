@@ -1,0 +1,66 @@
+modular_trader.common.constants
+===============================
+
+.. py:module:: modular_trader.common.constants
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   modular_trader.common.constants.DEFAULT_CONFIG_FILE
+   modular_trader.common.constants.DEFAULT_CONFIG_PATH
+   modular_trader.common.constants.DEFAULT_DIR_NAME
+   modular_trader.common.constants.DEFAULT_DIR_PATH
+   modular_trader.common.constants.DEFAULT_FILE_ROTATION_SIZE_MB
+   modular_trader.common.constants.DEFAULT_LOG_FILE
+   modular_trader.common.constants.DEFAULT_LOG_PATH
+   modular_trader.common.constants.DEFAULT_RECORD_FILE
+   modular_trader.common.constants.DEFAULT_RECORD_PATH
+   modular_trader.common.constants.HOME
+
+
+Module Contents
+---------------
+
+.. py:data:: DEFAULT_CONFIG_FILE
+   :type:  str
+   :value: 'config.json'
+
+
+.. py:data:: DEFAULT_CONFIG_PATH
+   :type:  os.PathLike
+
+.. py:data:: DEFAULT_DIR_NAME
+   :type:  str
+   :value: '.modular_trader_log'
+
+
+.. py:data:: DEFAULT_DIR_PATH
+   :type:  os.PathLike
+
+.. py:data:: DEFAULT_FILE_ROTATION_SIZE_MB
+   :type:  int
+   :value: 100
+
+
+.. py:data:: DEFAULT_LOG_FILE
+   :type:  str
+   :value: 'trader.log'
+
+
+.. py:data:: DEFAULT_LOG_PATH
+   :type:  os.PathLike
+
+.. py:data:: DEFAULT_RECORD_FILE
+   :type:  str
+   :value: 'record.json'
+
+
+.. py:data:: DEFAULT_RECORD_PATH
+   :type:  os.PathLike
+
+.. py:data:: HOME
+   :type:  os.PathLike
+

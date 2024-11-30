@@ -1,0 +1,116 @@
+modular_trader.logging.base
+===========================
+
+.. py:module:: modular_trader.logging.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.logging.base.BaseLogger
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseLogger(logger: loguru._logger.Logger = logger)
+
+   Base class for loggers.
+
+   Attributes:
+       logger (loguru.Logger): The logger to use.
+
+
+   .. py:method:: critical(message: str, *args, **kwargs) -> None
+
+      Logs a message at the critical level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: debug(message: str, *args, **kwargs) -> None
+
+      Logs a message at the debug level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: error(message: str, *args, **kwargs) -> None
+
+      Logs a message at the error level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: exception(message: str, *args, **kwargs) -> None
+
+      Logs an exception at the error level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: info(message: str, *args, **kwargs) -> None
+
+      Logs a message at the info level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: success(message: str, *args, **kwargs) -> None
+
+      Logs a message at the success level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: trace(message: str, *args, **kwargs) -> None
+
+      Logs a message at the trace level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: warning(message: str, *args, **kwargs) -> None
+
+      Logs a message at the warning level.
+
+      Args:
+          message (str): The message to log.
+          *args: Additional positional arguments.
+          **kwargs: Additional keyword arguments.
+
+
+
+   .. py:attribute:: logger
+
+

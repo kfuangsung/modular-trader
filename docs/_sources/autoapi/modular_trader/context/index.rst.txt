@@ -1,0 +1,82 @@
+modular_trader.context
+======================
+
+.. py:module:: modular_trader.context
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.context.Context
+
+
+Module Contents
+---------------
+
+.. py:class:: Context(/, **data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+   .. autoapi-inheritance-diagram:: modular_trader.context.Context
+      :parts: 1
+      :private-bases:
+
+
+   The framework context.
+
+   Attributes:
+       universe (AssetUniverse): The asset universe.
+       signals (SignalCollection): The collection of signals.
+       allocations (AllocationCollection): The collection of allocations.
+       indicators (BaseIndicatorHandler | None): The indicator handler, if any.
+       engine (BaseEngine | None): The engine, if any.
+       latest_prices (Mapping[str, float]): The latest prices of all assets.
+
+
+   .. py:attribute:: allocations
+      :type:  modular_trader.allocation.AllocationCollection
+      :value: None
+
+
+
+   .. py:attribute:: engine
+      :type:  modular_trader.engine.base.BaseEngine | None
+      :value: None
+
+
+
+   .. py:attribute:: indicators
+      :type:  modular_trader.indicator.handler.base.BaseIndicatorHandler | None
+      :value: None
+
+
+
+   .. py:attribute:: latest_prices
+      :type:  Mapping[str, float]
+      :value: None
+
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+
+   .. py:attribute:: signals
+      :type:  modular_trader.signal.SignalCollection
+      :value: None
+
+
+
+   .. py:attribute:: universe
+      :type:  modular_trader.universe.AssetUniverse
+      :value: None
+
+
+

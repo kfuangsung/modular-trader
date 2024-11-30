@@ -1,0 +1,34 @@
+modular_trader.framework.risk_management.null
+=============================================
+
+.. py:module:: modular_trader.framework.risk_management.null
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.risk_management.null.NullRiskManagement
+
+
+Module Contents
+---------------
+
+.. py:class:: NullRiskManagement
+
+   Bases: :py:obj:`modular_trader.framework.risk_management.base.BaseRiskManagement`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.risk_management.null.NullRiskManagement
+      :parts: 1
+      :private-bases:
+
+
+   No-op risk management strategy.
+
+   Leaves allocations unchanged.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, allocations: modular_trader.allocation.AllocationCollection) -> modular_trader.allocation.AllocationCollection
+
+

@@ -1,0 +1,170 @@
+modular_trader.engine.base
+==========================
+
+.. py:module:: modular_trader.engine.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.engine.base.BaseEngine
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseEngine
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: modular_trader.engine.base.BaseEngine
+      :parts: 1
+      :private-bases:
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: cancel_all_orders() -> Any
+      :abstractmethod:
+
+
+      Cancel all active orders.
+
+
+
+   .. py:method:: cancel_orders(symbol: str) -> Any
+      :abstractmethod:
+
+
+      Cancel all active orders for a given symbol.
+
+
+
+   .. py:method:: close_all_positions() -> Any
+      :abstractmethod:
+
+
+      Close all positions
+
+
+
+   .. py:method:: close_position(symbol: str) -> Any
+      :abstractmethod:
+
+
+      Close a position for a given symbol.
+
+
+
+   .. py:method:: get_cash() -> int | float
+      :abstractmethod:
+
+
+      Get remaining cash in the account
+
+
+
+   .. py:method:: get_equity() -> int | float
+      :abstractmethod:
+
+
+      Get the current equity in the account
+
+
+
+   .. py:method:: get_historical_data()
+      :abstractmethod:
+
+
+      Get the historical data
+
+
+
+   .. py:method:: get_logger()
+      :abstractmethod:
+
+
+
+   .. py:method:: get_name() -> str
+      :abstractmethod:
+
+
+      Get the name of the engine
+
+
+
+   .. py:method:: get_orders() -> Any
+
+      Get all active orders.
+
+
+
+   .. py:method:: get_positions()
+      :abstractmethod:
+
+
+      Get all positions held by the account
+
+
+
+   .. py:method:: order_percent(symbol: str, percent: int | float) -> Any
+      :abstractmethod:
+
+
+      Place an order in the specified asset corresponding to the given percent of the current portfolio value.
+      percent is in decimal format; 0.5 = 50%
+
+
+
+   .. py:method:: order_share(symbol: str, share: int | float) -> Any
+      :abstractmethod:
+
+
+      Place an order for a fixed number of shares.
+
+
+
+   .. py:method:: order_target_percent(symbol: str, target_percent: int | float) -> Any
+      :abstractmethod:
+
+
+      Place an order to adjust a position to a target percent of the current portfolio value.
+
+
+
+   .. py:method:: order_target_share(symbol: str, target_share: int | float) -> Any
+      :abstractmethod:
+
+
+      Place an order to adjust a position to a target number of shares.
+
+
+
+   .. py:method:: order_target_value(symbol: str, target_value: int | float) -> Any
+      :abstractmethod:
+
+
+      Place an order to adjust a position to a target amount of money.
+
+
+
+   .. py:method:: order_value(symbol: str, value: int | float) -> Any
+      :abstractmethod:
+
+
+      Place an order for a fixed amount of money.
+
+
+
+   .. py:method:: streaming() -> None
+      :abstractmethod:
+
+
+      Streaming data from the engine
+
+
+

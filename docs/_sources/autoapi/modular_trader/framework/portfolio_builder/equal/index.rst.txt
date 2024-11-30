@@ -1,0 +1,32 @@
+modular_trader.framework.portfolio_builder.equal
+================================================
+
+.. py:module:: modular_trader.framework.portfolio_builder.equal
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder
+
+
+Module Contents
+---------------
+
+.. py:class:: EqualWeightPortfolioBuilder
+
+   Bases: :py:obj:`modular_trader.framework.portfolio_builder.base.BasePortfolioBuilder`
+
+   .. autoapi-inheritance-diagram:: modular_trader.framework.portfolio_builder.equal.EqualWeightPortfolioBuilder
+      :parts: 1
+      :private-bases:
+
+
+   Assigns equal weight to all signals. Liquidates positions no longer in signals.
+
+
+   .. py:method:: run(context: modular_trader.context.Context, signals: modular_trader.signal.SignalCollection) -> Iterable[modular_trader.allocation.Allocation]
+
+

@@ -1,0 +1,189 @@
+modular_trader.indicator.handler.alpaca
+=======================================
+
+.. py:module:: modular_trader.indicator.handler.alpaca
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   modular_trader.indicator.handler.alpaca.STALE_DURATION
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   modular_trader.indicator.handler.alpaca.AlpacaIndicatorHandler
+   modular_trader.indicator.handler.alpaca.Frequency
+
+
+Module Contents
+---------------
+
+.. py:class:: AlpacaIndicatorHandler
+
+   Bases: :py:obj:`modular_trader.indicator.handler.base.BaseIndicatorHandler`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.handler.alpaca.AlpacaIndicatorHandler
+      :parts: 1
+      :private-bases:
+
+
+   Alpaca indicator handler.
+
+   This class is used to handle indicators for Alpaca.
+
+   Attributes:
+       indicators (list[BaseIndicator]):
+           The list of indicators to be used.
+       frequency (Frequency):
+           The frequency of the indicator handler.
+       warmup_length (int | None):
+           The length of the warmup period. If None, it is set to the maximum
+           cache size of the indicators.
+       _attached_indicators (benedict):
+           The dictionary of attached indicators. The keys are the symbol names
+           and the values are the indicator objects.
+
+
+   .. py:method:: __iter__() -> Generator[modular_trader.indicator.technical.base.BaseIndicator, None, None]
+
+      Iterate over the indicators.
+
+      Yields:
+          BaseIndicator: The next indicator.
+
+
+
+   .. py:method:: __post_init__() -> None
+
+      Find the minimum cache size of the indicators and use it to set the warmup
+      length. If warmup_length is already set, it is not changed.
+
+
+
+   .. py:method:: get(symbol: str, name: str | None = None) -> modular_trader.indicator.technical.base.BaseIndicator | Mapping[str, modular_trader.indicator.technical.base.BaseIndicator] | None
+
+      Get the indicator(s) by symbol and name.
+
+      Args:
+          symbol (str): The symbol name.
+          name (str | None): The indicator name. If None, it returns all
+              indicators for the symbol.
+
+      Returns:
+          BaseIndicator | Mapping[str, BaseIndicator] | None: The indicator or
+              all indicators for the symbol if name is None. If the symbol or
+              indicator is not found, it returns None.
+
+
+
+   .. py:method:: init_indicator(universe: modular_trader.universe.AssetUniverse) -> None
+
+      Initialize the indicators for added symbols and remove them for removed
+      symbols.
+
+      Args:
+          universe (AssetUniverse): The asset universe.
+
+      Returns:
+          None
+
+
+
+   .. py:method:: update(bar: alpaca.data.models.bars.Bar) -> None
+
+      Update the indicators for the given symbol.
+
+      Args:
+          bar (Bar): The bar to update the indicators with.
+
+      Returns:
+          None
+
+
+
+   .. py:method:: warmup(data: pandas.DataFrame) -> None
+
+      Warm up the indicators from historical data.
+
+      Args:
+          data (pd.DataFrame): The historical data to warm up the indicators.
+              The DataFrame should have a MultiIndex [symbol, ...].
+
+      Returns:
+          None
+
+
+
+   .. py:attribute:: _attached_indicators
+      :type:  benedict.benedict
+      :value: None
+
+
+
+   .. py:attribute:: attached_indicators
+
+
+   .. py:attribute:: frequency
+      :type:  Frequency
+      :value: None
+
+
+
+   .. py:attribute:: indicators
+      :type:  list[modular_trader.indicator.technical.base.BaseIndicator]
+      :value: None
+
+
+
+   .. py:property:: is_warmup
+      :type: bool
+
+
+      Check if the warmup period is finished.
+
+      Returns:
+          bool: True if the warmup period is finished, False otherwise.
+
+
+
+   .. py:attribute:: symbols
+
+
+   .. py:attribute:: warmup_length
+      :type:  int | None
+      :value: None
+
+
+
+.. py:class:: Frequency(*args, **kwds)
+
+   Bases: :py:obj:`enum.Enum`
+
+   .. autoapi-inheritance-diagram:: modular_trader.indicator.handler.alpaca.Frequency
+      :parts: 1
+      :private-bases:
+
+
+   Frequency of the indicator handler.
+
+   This enum specifies the frequency of the indicator handler.
+
+   Attributes:
+       MINUTE: The indicator handler is run on a minute frequency.
+       DAY: The indicator handler is run on a daily frequency.
+
+
+   .. py:attribute:: DAY
+
+
+   .. py:attribute:: MINUTE
+
+
+.. py:data:: STALE_DURATION
+
