@@ -20,7 +20,7 @@ jobs:
     
     - name: Install Dependencies
       run: | 
-        apt install -y graphviz \
+        sudo apt install -y graphviz \
         && python3 -m pip install -r docs/requirements.txt --user --no-cache-dir
     
     - name: Build Sphinx docs
